@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B42F0AB224C540A3009BF79C /* Sqlite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F0AB124C540A3009BF79C /* Sqlite.swift */; };
 		B43DD4D924C4648000B9FA21 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43DD4CF24C4646200B9FA21 /* SQLite.framework */; };
 		B43DD4DA24C4648000B9FA21 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B43DD4CF24C4646200B9FA21 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B49339DF24BB0D940084C73E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49339DE24BB0D940084C73E /* AppDelegate.swift */; };
@@ -100,6 +101,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B42F0AB124C540A3009BF79C /* Sqlite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite.swift; sourceTree = "<group>"; };
 		B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		B49339DB24BB0D940084C73E /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49339DE24BB0D940084C73E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,12 +194,13 @@
 			children = (
 				B49339DE24BB0D940084C73E /* AppDelegate.swift */,
 				B49339E024BB0D940084C73E /* ContentView.swift */,
+				B42F0AB124C540A3009BF79C /* Sqlite.swift */,
+				B4E46DE924C45153004E6299 /* Data.swift */,
 				B49339E224BB0D960084C73E /* Assets.xcassets */,
 				B49339E724BB0D960084C73E /* Main.storyboard */,
 				B49339EA24BB0D960084C73E /* Info.plist */,
 				B49339EB24BB0D960084C73E /* Macondo.entitlements */,
 				B49339E424BB0D960084C73E /* Preview Content */,
-				B4E46DE924C45153004E6299 /* Data.swift */,
 			);
 			path = Macondo;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B49339E124BB0D940084C73E /* ContentView.swift in Sources */,
+				B42F0AB224C540A3009BF79C /* Sqlite.swift in Sources */,
 				B4E46DEA24C45153004E6299 /* Data.swift in Sources */,
 				B49339DF24BB0D940084C73E /* AppDelegate.swift in Sources */,
 			);

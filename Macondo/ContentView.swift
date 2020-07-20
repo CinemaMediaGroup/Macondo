@@ -9,11 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
         Button(action: {
-            print("Test")
+            Sqlite.createTables()
         }){
-            Text("Deploy")
+            Text("Init")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
