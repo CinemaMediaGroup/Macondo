@@ -1,6 +1,6 @@
 ## Macondo
 
-A serverless blog framework with GUI, powered by [Swift](https://github.com/apple/swift)
+A serverless blog framework with GUI, powered by [Swift](https://github.com/apple/swift).
 
 ## Credits
 
