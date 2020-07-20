@@ -117,6 +117,7 @@
 		B49339FB24BB0D960084C73E /* MacondoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacondoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49339FF24BB0D960084C73E /* MacondoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoUITests.swift; sourceTree = "<group>"; };
 		B4933A0124BB0D960084C73E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4D7EEFF24C54DE00046D7D9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B4E46DE924C45153004E6299 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +171,7 @@
 		B49339D224BB0D940084C73E = {
 			isa = PBXGroup;
 			children = (
+				B4D7EEFF24C54DE00046D7D9 /* README.md */,
 				B49339DD24BB0D940084C73E /* Macondo */,
 				B49339F324BB0D960084C73E /* MacondoTests */,
 				B49339FE24BB0D960084C73E /* MacondoUITests */,
