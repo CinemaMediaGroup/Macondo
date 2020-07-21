@@ -111,6 +111,25 @@ struct Sqlite {
                 t.column(adImage)
             })
             
+            //videoDatas table
+            let vd = Table("videoDatas")
+            
+            //videoDatas columns settings
+            let vid = Expression<Int64>("vid")
+            let vdNameJA = Expression<String>("nameJA")
+            let vdNameZH = Expression<String>("nameZH")
+            let vdImage = Expression<String>("image")
+            
+            //create animeDatas table
+            try database.run(vd.create{t in
+                t.column(vid,primaryKey: true)
+                t.column(vdNameJA)
+                t.column(vdNameZH)
+                t.column(vdImage)
+            })
+            
+            
+            
         }catch{
             print(error)
         }
