@@ -78,3 +78,33 @@ struct MetaData{
         self.name = name
     }
 }
+
+struct LinksData{
+    var lid : Int
+    var orders : Int
+    var name : String
+    var url : String
+    var sort : String
+    var image : String
+    var description : String
+    
+    init() {
+        lid = 0
+        orders = 0
+        name = ""
+        url = ""
+        sort = ""
+        image = ""
+        description = ""
+    }
+    
+    init(lid: Int, orders: Int, name: String, url: String, sort: String, image: String, description: String) {
+        self.lid = lid
+        self.orders = orders
+        self.name = name
+        self.url = url
+        self.sort = sort
+        self.image = image
+        self.description = description
+    }
+}
