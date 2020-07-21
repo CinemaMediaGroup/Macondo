@@ -133,10 +133,10 @@ struct Sqlite {
             
             //bookDatas columns settings
             let bid = Expression<Int64>("bid")
-            let bdName = Expression<String>("String")
-            let bdIsbn = Expression<String>("String")
-            let bdLsbn = Expression<String>("String")
-            let bdImage = Expression<String>("String")
+            let bdName = Expression<String>("name")
+            let bdIsbn = Expression<String>("isbn")
+            let bdLsbn = Expression<String>("lsbn")
+            let bdImage = Expression<String>("image")
             
             //create bookDatas table
             try database.run(bd.create{t in
@@ -145,6 +145,21 @@ struct Sqlite {
                 t.column(bdIsbn)
                 t.column(bdLsbn)
                 t.column(bdImage)
+            })
+            
+            //settingDatas table
+            let sd = Table("settingDatas")
+            
+            //settingDatas columns settings
+            let sid = Expression<Int64>("sid")
+            let sdName = Expression<String>("name")
+            let sdField = Expression<String>("field")
+            
+            //create settingDatas table
+            try database.run(sd.create{t in
+                t.column(sid,primaryKey: true)
+                t.column(sdName)
+                t.column(sdField)
             })
             
         }catch{
