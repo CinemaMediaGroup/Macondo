@@ -129,3 +129,24 @@ struct AnimeData{
         self.image = image
     }
 }
+
+struct VideoData{
+    var vid : Int
+    var nameJA : String
+    var nameZH : String
+    var image : String
+    
+    init() {
+        vid = 0
+        nameJA = ""
+        nameZH = ""
+        image = ""
+    }
+    
+    init(vid: Int, nameJA: String, nameZH: String, image: String) {
+        self.vid = vid
+        self.nameJA = nameJA
+        self.nameZH = nameZH
+        self.image = image
+    }
+}
