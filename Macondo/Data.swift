@@ -21,6 +21,8 @@ struct PostData{
     var text : String
     var thumbUrl : String
     var summary : String
+    var category : String
+    var tag : String
     
     init() {
         cid = 0
@@ -32,9 +34,11 @@ struct PostData{
         text = ""
         thumbUrl = ""
         summary = ""
+        category = ""
+        tag = ""
     }
     
-    init(cid : Int,type : Int,title : String,slug : String,created : String,modified : String,text : String,thumbUrl : String,summary : String) {
+    init(cid : Int,type : Int,title : String,slug : String,created : String,modified : String,text : String,thumbUrl : String,summary : String,category : String,tag : String) {
         self.cid = cid
         self.type = type
         self.title = title
@@ -44,5 +48,12 @@ struct PostData{
         self.text = text
         self.thumbUrl = thumbUrl
         self.summary = summary
+        self.category = category
+        self.tag = tag
     }
+}
+
+struct MetaData{
+    var mid : Int
+    var cnt : Int
 }
