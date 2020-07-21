@@ -51,6 +51,26 @@ struct Sqlite {
                 t.column(pdCategory)
                 t.column(pdTag)
             })
+            
+            //metaDatas table
+            let md = Table("metaDatas")
+            
+            //metaDatas columns settings
+            let mid = Expression<Int64>("mid")
+            let mdCnt = Expression<Int64>("cnt")
+            let mdType = Expression<String>("type")
+            let mdSlug = Expression<String>("slug")
+            let mdName = Expression<String>("name")
+            
+            //create metaDatas table
+            try database.run(md.create{t in
+                t.column(mid,primaryKey: true)
+                t.column(mdCnt)
+                t.column(mdType)
+                t.column(mdSlug)
+                t.column(mdName)
+            })
+            
         }catch{
             print(error)
         }
