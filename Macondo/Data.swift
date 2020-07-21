@@ -150,3 +150,27 @@ struct VideoData{
         self.image = image
     }
 }
+
+struct BookData{
+    var bid : Int
+    var name : String
+    var isbn : String
+    var lsbn : String
+    var image : String
+    
+    init() {
+        bid = 0
+        name = ""
+        isbn = ""
+        lsbn = ""
+        image = ""
+    }
+    
+    init(bid: Int, name: String, isbn: String, lsbn: String, image: String) {
+        self.bid = bid
+        self.name = name
+        self.isbn = isbn
+        self.lsbn = lsbn
+        self.image = image
+    }
+}
