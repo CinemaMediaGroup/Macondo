@@ -108,3 +108,24 @@ struct LinksData{
         self.description = description
     }
 }
+
+struct AnimeData{
+    var aid : Int
+    var nameJA : String
+    var nameZH : String
+    var image : String
+    
+    init() {
+        aid = 0
+        nameJA = ""
+        nameZH = ""
+        image = ""
+    }
+    
+    init(aid: Int, nameJA: String, nameZH: String, image: String) {
+        self.aid = aid
+        self.nameJA = nameJA
+        self.nameZH = nameZH
+        self.image = image
+    }
+}
