@@ -71,6 +71,29 @@ struct Sqlite {
                 t.column(mdName)
             })
             
+            //linksDatas table
+            let ld = Table("linksData")
+            
+            //linksDatas columns settings
+            let lid = Expression<Int64>("lid")
+            let ldOrders = Expression<Int64>("orders")
+            let ldName = Expression<String>("name")
+            let ldUrl = Expression<String>("url")
+            let ldSort = Expression<String>("sort")
+            let ldImage = Expression<String>("image")
+            let ldDescription = Expression<String>("description")
+            
+            //create linksDatas table
+            try database.run(ld.create{t in
+                t.column(lid,primaryKey: true)
+                t.column(ldOrders)
+                t.column(ldName)
+                t.column(ldUrl)
+                t.column(ldSort)
+                t.column(ldImage)
+                t.column(ldDescription)
+            })
+            
         }catch{
             print(error)
         }
