@@ -174,3 +174,21 @@ struct BookData{
         self.image = image
     }
 }
+
+struct Setting{
+    var sid : Int
+    var name : String
+    var field : String
+    
+    init() {
+        sid = 0
+        name = ""
+        field = ""
+    }
+    
+    init(sid: Int, name: String, field: String) {
+        self.sid = sid
+        self.name = name
+        self.field = field
+    }
+}
