@@ -128,7 +128,24 @@ struct Sqlite {
                 t.column(vdImage)
             })
             
+            //bookDatas table
+            let bd = Table("bookDatas")
             
+            //bookDatas columns settings
+            let bid = Expression<Int64>("bid")
+            let bdName = Expression<String>("String")
+            let bdIsbn = Expression<String>("String")
+            let bdLsbn = Expression<String>("String")
+            let bdImage = Expression<String>("String")
+            
+            //create bookDatas table
+            try database.run(bd.create{t in
+                t.column(bid,primaryKey: true)
+                t.column(bdName)
+                t.column(bdIsbn)
+                t.column(bdLsbn)
+                t.column(bdImage)
+            })
             
         }catch{
             print(error)
