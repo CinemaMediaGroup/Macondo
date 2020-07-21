@@ -13,7 +13,7 @@ struct Sqlite {
     static func createTables(){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print(path)
+        print("Database folder: " +  path)
         do{
             //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
