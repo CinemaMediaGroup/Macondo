@@ -72,7 +72,7 @@ struct Sqlite {
             })
             
             //linksDatas table
-            let ld = Table("linksData")
+            let ld = Table("linksDatas")
             
             //linksDatas columns settings
             let lid = Expression<Int64>("lid")
@@ -92,6 +92,23 @@ struct Sqlite {
                 t.column(ldSort)
                 t.column(ldImage)
                 t.column(ldDescription)
+            })
+            
+            //animeDatas table
+            let ad = Table("animeDatas")
+            
+            //animeDatas columns settings
+            let aid = Expression<Int64>("aid")
+            let adNameJA = Expression<String>("nameJA")
+            let adNameZH = Expression<String>("nameZH")
+            let adImage = Expression<String>("image")
+            
+            //create animeDatas table
+            try database.run(ad.create{t in
+                t.column(aid,primaryKey: true)
+                t.column(adNameJA)
+                t.column(adNameZH)
+                t.column(adImage)
             })
             
         }catch{
