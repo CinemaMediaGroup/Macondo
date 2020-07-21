@@ -175,7 +175,7 @@ struct BookData{
     }
 }
 
-struct Setting{
+struct SettingData{
     var sid : Int
     var name : String
     var field : String
