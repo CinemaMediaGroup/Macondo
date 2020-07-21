@@ -34,6 +34,8 @@ struct Sqlite {
             let pdText = Expression<String>("text")
             let pdThumbUrl = Expression<String>("thumbUrl")
             let pdSummary = Expression<String>("summary")
+            let pdCategory = Expression<String>("category")
+            let pdTag = Expression<String>("tag")
         
             //create postDatas table
             try database.run(pd.create{t in
@@ -46,6 +48,8 @@ struct Sqlite {
                 t.column(pdText)
                 t.column(pdThumbUrl)
                 t.column(pdSummary)
+                t.column(pdCategory)
+                t.column(pdTag)
             })
         }catch{
             print(error)
