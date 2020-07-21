@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isModal : Bool = false
     var body: some View {
         VStack{
             VStack{
@@ -16,7 +17,6 @@ struct ContentView: View {
                 Text("Welcome to Macondo")
                     .font(.largeTitle)
                     .fontWeight(.thin)
-                    
                 Text("Version 1.0")
                     .font(.headline)
                     .fontWeight(.thin)
@@ -24,8 +24,8 @@ struct ContentView: View {
             }
             .padding()
             VStack(alignment: .leading){
-                Button(action: {
-                    
+                Button(action:{
+                    self.isModal = true
                 }) {
                     HStack{
                         Image("newPost").resizable().frame(width:32,height: 32)
@@ -34,11 +34,13 @@ struct ContentView: View {
                                 .fontWeight(.bold)
                             Text("Create a post quickly and easily")
                                 .fontWeight(.thin)
-                                
                         }
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
+                .sheet(isPresented: $isModal){
+                    NewPostView()
+                }
                 Button(action: {
                     
                 }){
@@ -69,5 +71,15 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct NewPostView : View{
+    @State var name = ""
+    var body : some View {
+        VStack{
+            TextField("placeholder",text: $name)
+            
+        }
     }
 }
