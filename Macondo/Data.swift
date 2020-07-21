@@ -56,4 +56,25 @@ struct PostData{
 struct MetaData{
     var mid : Int
     var cnt : Int
+    //'0' stands for 'tag' while
+    //'1' stands for 'category'.
+    var type : Int
+    var slug : String
+    var name : String
+    
+    init(){
+        mid = 0
+        cnt = 0
+        type = 0
+        slug = ""
+        name = ""
+    }
+    
+    init(mid : Int,cnt : Int,type : Int,slug : String,name : String) {
+        self.mid = mid
+        self.cnt = cnt
+        self.type = type
+        self.slug = name
+        self.name = name
+    }
 }
