@@ -39,7 +39,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .sheet(isPresented: $isModal){
-                    NewPostView()
+                    NewPostView(isVisible: self.$isModal)
                 }
                 Button(action: {
                     
@@ -75,11 +75,43 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct NewPostView : View{
-    @State var name = ""
+    @Binding var isVisible: Bool
+    @State var title : String = ""
+    @State var text : String = ""
+    @State var image : String = ""
+    @State var summary : String = ""
+    @State var category : String = ""
+    @State var tag : String = ""
     var body : some View {
         VStack{
-            TextField("placeholder",text: $name)
-            
+            HStack{
+                VStack{
+                    TextField("Add title",text: $title)
+                    TextField("Start writing or type",text: $text)
+                }
+                VStack{
+                    TextField("thumbUrl",text: $image)
+                    TextField("summary",text: $summary)
+                    TextField("category",text: $category)
+                    TextField("tag",text: $tag)
+                }
+            }
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.isVisible = false
+                }){
+                    Text("Cancel")
+                }
+                Button(action:{
+                    Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    self.isVisible = false
+                }){
+                    Text("Publish")
+                }
+            }
         }
+        .padding()
+        .frame(width: 400, height: 200)
     }
 }

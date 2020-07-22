@@ -166,6 +166,53 @@ struct Sqlite {
             print(error)
         }
     }
+    
+    static func newPost(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //postDatas table
+            let pd = Table("postDatas")
+            
+            //postDatas columns settings
+            let cid = Expression<Int64>("cid")
+            let pdType = Expression<Int64>("type")
+            let pdTitle = Expression<String>("title")
+            let pdSlug = Expression<String>("slug")
+            let pdCreated = Expression<String>("created")
+            let pdModified = Expression<String>("modified")
+            let pdText = Expression<String>("text")
+            let pdThumbUrl = Expression<String>("thumbUrl")
+            let pdSummary = Expression<String>("summary")
+            let pdCategory = Expression<String>("category")
+            let pdTag = Expression<String>("tag")
+            
+            let maxCid : Int64 = Int64(try database.scalar(pd.count))
+            
+            try database.run(pd.insert(
+                cid <- (maxCid + 1),
+                pdType <- 0,
+                pdTitle <- Base64.toBase64(s: title),
+                pdSlug <- Base64.toBase64(s: title),
+                pdCreated <- Base64.toBase64(s: Time.getTime()),
+                pdModified <- Base64.toBase64(s: Time.getTime()),
+                pdText <- text,//pdText <- Base64.toBase64(s: text))
+                pdThumbUrl <- Base64.toBase64(s: thumbUrl),
+                pdSummary <- Base64.toBase64(s: summary),
+                pdCategory <- Base64.toBase64(s: category),
+                pdTag <- Base64.toBase64(s: tag)
+            ))
+        }catch{
+            print(error)
+        }
+    }
 }
 
 /*
