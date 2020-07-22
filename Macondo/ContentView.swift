@@ -90,11 +90,19 @@ struct NewPostView : View{
                     TextField("Start writing or type",text: $text)
                 }
                 VStack{
-                    TextField("thumbUrl",text: $image)
-                    TextField("summary",text: $summary)
-                    TextField("category",text: $category)
-                    TextField("tag",text: $tag)
+                    Text("Category(split by ','): ")
+                    TextField("",text: $category)
+                    Text("Tag(split by ','): ")
+                    TextField("",text: $tag)
                 }
+            }
+            HStack{
+                Text("Thumb Url: ")
+                TextField("",text: $image)
+            }
+            HStack{
+                Text("Summary: ")
+                TextField("",text: $summary)
             }
             Spacer()
             HStack{
@@ -112,6 +120,5 @@ struct NewPostView : View{
             }
         }
         .padding()
-        .frame(width: 400, height: 200)
     }
 }
