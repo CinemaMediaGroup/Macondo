@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isModal : Bool = false
     var body: some View {
+        NavigationView{
         VStack{
             VStack{
                 Image("logo").resizable().frame(width: 128,height: 128)
@@ -24,11 +24,11 @@ struct ContentView: View {
             }
             .padding()
             VStack(alignment: .leading){
-                Button(action:{
-                    self.isModal = true
-                }) {
+                NavigationLink(destination: NewPostView()){
                     HStack{
-                        Image("newPost").resizable().frame(width:32,height: 32)
+                        Image("newPost")
+                            .resizable()
+                            .frame(width:32,height: 32)
                         VStack(alignment: .leading){
                             Text("Get started with a post")
                                 .fontWeight(.bold)
@@ -38,9 +38,16 @@ struct ContentView: View {
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
-                .sheet(isPresented: $isModal){
-                    NewPostView(isVisible: self.$isModal)
+                
+                /*Button(action:{
+                    //self.isModal = true
+                }) {
+                    
                 }
+                .buttonStyle(PlainButtonStyle())*/
+                /*.sheet(isPresented: $isModal){
+                    NewPostView(isVisible: self.$isModal)
+                }*/
                 Button(action: {
                     
                 }){
@@ -64,6 +71,7 @@ struct ContentView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
 }
 
@@ -75,7 +83,6 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct NewPostView : View{
-    @Binding var isVisible: Bool
     @State var title : String = ""
     @State var text : String = ""
     @State var image : String = ""
@@ -107,13 +114,11 @@ struct NewPostView : View{
             Spacer()
             HStack{
                 Button(action: {
-                    self.isVisible = false
                 }){
                     Text("Cancel")
                 }
                 Button(action:{
                     Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
-                    self.isVisible = false
                 }){
                     Text("Publish")
                 }
