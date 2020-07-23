@@ -13,10 +13,17 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
-
-
-    @IBOutlet weak var menu: NSMenu!
+    @IBOutlet weak var darkModeItem: NSMenuItem!
     
+    @IBAction func setDarkMode(_ sender: Any) {
+        NSApp.appearance = NSAppearance(named: .darkAqua)
+    }
+    @IBAction func setLightMode(_ sender: Any) {
+        NSApp.appearance = NSAppearance(named: .aqua)
+    }
+    @IBAction func setSystemMode(_ sender: Any) {
+        NSApp.appearance = nil
+    }
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
@@ -35,7 +42,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-
 }
 
