@@ -13,8 +13,12 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
+    //view menu item declaration
     @IBOutlet weak var darkModeItem: NSMenuItem!
+    @IBOutlet weak var lightModeItem: NSMenuItem!
+    @IBOutlet weak var systemModeItem: NSMenuItem!
     
+    //view menu item action
     @IBAction func setDarkMode(_ sender: Any) {
         NSApp.appearance = NSAppearance(named: .darkAqua)
     }
@@ -24,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func setSystemMode(_ sender: Any) {
         NSApp.appearance = nil
     }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()

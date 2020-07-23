@@ -688,7 +688,9 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Macondo" customModuleProvider="target">
                     <connections>
+                        <outlet property="lightModeItem" destination="E7P-4F-7Sh" id="Wrj-DZ-Buu"/>
                         <outlet property="lightModelSelected" destination="E7P-4F-7Sh" id="ZZ0-H5-gjl"/>
+                        <outlet property="systemModeItem" destination="DjR-9t-eav" id="Bld-FR-LoL"/>
                         <outlet property="systemModelSelected" destination="DjR-9t-eav" id="M4B-MM-NIs"/>
                     </connections>
                 </customObject>
