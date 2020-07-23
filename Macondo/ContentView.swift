@@ -114,14 +114,16 @@ struct NewPostView : View{
             Spacer()
             HStack{
                 Button(action: {
+                    
                 }){
                     Text("Cancel")
                 }
+                
                 Button(action:{
                     Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
                 }){
                     Text("Publish")
-                }
+                }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
             }
         }
         .padding()
