@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PostData{
+struct PostData : Hashable{
     var cid : Int
     //'0' stands for 'post' while
     //'1' stands for 'page'.
@@ -50,6 +50,14 @@ struct PostData{
         self.summary = summary
         self.category = category
         self.tag = tag
+    }
+    
+    func getCid() -> Int{
+        return cid
+    }
+    
+    func getTitle() -> String{
+        return title
     }
 }
 
