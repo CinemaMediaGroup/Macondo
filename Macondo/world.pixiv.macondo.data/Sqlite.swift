@@ -230,10 +230,8 @@ struct Sqlite {
             
             //postDatas columns settings
             let cid = Expression<Int64>("cid")
-            let pdType = Expression<Int64>("type")
             let pdTitle = Expression<String>("title")
             let pdSlug = Expression<String>("slug")
-            let pdCreated = Expression<String>("created")
             let pdModified = Expression<String>("modified")
             let pdText = Expression<String>("text")
             let pdThumbUrl = Expression<String>("thumbUrl")
