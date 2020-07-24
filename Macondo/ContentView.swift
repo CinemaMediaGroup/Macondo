@@ -15,13 +15,21 @@ class ViewNavigation: ObservableObject {
 struct ContentView: View {
     @EnvironmentObject var showView : ViewNavigation
     
+    /*
+        0 -> MainView
+        1 -> NewPostView
+        2 -> ManagePostView
+     */
+    
     var body: some View {
         //NavigationView{
         ZStack{
             if self.showView.showView == 0 {
                 MainView()
-            }else {
+            }else if self.showView.showView == 1{
                 NewPostView()
+            }else if self.showView.showView == 2{
+                ManagePostView()
             }
         }
     }
@@ -143,7 +151,9 @@ struct MainView : View{
                 
                 //For edit
                 VStack(alignment: .leading){
-                    NavigationLink(destination: ManagePostView()){
+                    Button(action: {
+                        self.showView.showView = 2
+                    }){
                         HStack{
                             Image("newPost")
                                 .resizable()
@@ -235,6 +245,8 @@ struct MainView : View{
 }
 
 struct NewPostView : View{
+     @EnvironmentObject var showView : ViewNavigation
+    
     @State var title : String = ""
     @State var text : String = ""
     @State var image : String = ""
@@ -266,13 +278,14 @@ struct NewPostView : View{
             Spacer()
             HStack{
                 Button(action: {
-                    
+                    self.showView.showView = 0
                 }){
                     Text("Cancel")
-                }.disabled(true)
+                }
                 
                 Button(action:{
                     Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    self.showView.showView = 0
                 }){
                     Text("Publish")
                 }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
@@ -283,6 +296,8 @@ struct NewPostView : View{
 }
 
 struct EditPostView : View{
+     @EnvironmentObject var showView : ViewNavigation
+    
     @State var title : String
     @State var text : String
     @State var image : String
@@ -328,13 +343,14 @@ struct EditPostView : View{
             Spacer()
             HStack{
                 Button(action: {
+                    self.showView.showView = 0
                 }){
                     Text("Cancel")
-                }.disabled(true)
+                }
                 
                 Button(action:{
                     Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
-                    
+                    self.showView.showView = 0
                 }){
                     Text("Update")
                 }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
@@ -346,63 +362,18 @@ struct EditPostView : View{
 }
 
 struct ManagePostView : View{
-    @State var isActive = true
     
     var pds = Sqlite.getPostList()
     var body: some View {
-        //NavigationView{
+        NavigationView{
             HStack{
                 List(pds, id: \.self) { (pd)  in
-          //          NavigationLink(destination: EditPostView(cid: pd.getCid())){
-            //            Text(pd.getTitle())
-              //      }
-                    Button(action: {
-                        EditPostView(cid: pd.getCid())
-                    }){
+                    NavigationLink(destination: EditPostView(cid: pd.getCid())){
                         Text(pd.getTitle())
                     }
                 }
                 Spacer()
             }
-        //}
-    }
-}
-
-/*struct ContentView: View {
-    @State var showView = false
-
-    var body: some View {
-        GeometryReader { proxy in
-            ZStack {
-                if self.showView {
-                    VStack {
-                        Text("Settings View")
-                        Button(action: {
-                            withAnimation {
-                                self.showView.toggle()
-                            }
-                        }, label: {
-                            Text("Back")
-                        })
-                    }
-                    .frame(width: proxy.size.width, height: proxy.size.height)
-                    .background(Color.red)
-                    .transition(.move(edge: .trailing))
-                } else {
-                    VStack {
-                        Text("Home View")
-                        Button(action: {
-                            withAnimation {
-                                self.showView.toggle()
-                            }
-                        }, label: {
-                            Text("Settings")
-                        })
-                    }
-                    .frame(width: proxy.size.width, height: proxy.size.height)
-                    .background(Color.green)
-                }
-            }
         }
     }
-}*/
+}
