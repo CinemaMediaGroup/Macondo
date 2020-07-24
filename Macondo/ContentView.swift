@@ -114,7 +114,7 @@ struct ContentView: View {
                     
                     //For edit
                     VStack(alignment: .leading){
-                        NavigationLink(destination: EditPostView()){
+                        NavigationLink(destination: ManagePostView()){
                             HStack{
                                 Image("newPost")
                                     .resizable()
@@ -199,8 +199,9 @@ struct ContentView: View {
                     }
                 }
                 .padding()
+                Spacer()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            //.frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
@@ -305,5 +306,24 @@ struct EditPostView : View{
             }
         }
         .padding()
+    }
+}
+
+struct ManagePostView : View{
+    var pds = Sqlite.getPostList()
+    var body: some View {
+        HStack{
+            List(pds, id: \.self) { (pd)  in
+                VStack {
+                    Text(pd.getTitle())
+                    Spacer()
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    print("play \(pd.getCid())")
+                }
+            }
+            Spacer()
+        }
     }
 }
