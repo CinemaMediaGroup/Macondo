@@ -262,12 +262,26 @@ struct NewPostView : View{
 }
 
 struct EditPostView : View{
-    @State var title : String = ""
-    @State var text : String = ""
-    @State var image : String = ""
-    @State var summary : String = ""
-    @State var category : String = ""
-    @State var tag : String = ""
+    @State var title : String
+    @State var text : String
+    @State var image : String
+    @State var summary : String
+    @State var category : String
+    @State var tag : String
+    
+    var cid : Int = 0;
+    
+    init(cid : Int){
+        let pd : PostData = Sqlite.getPost(cidd: cid)
+        self.cid = cid
+        _title = State(initialValue: pd.getTitle())
+        _text = State(initialValue: pd.getText())
+        _image = State(initialValue: pd.getThumbUrl())
+        _summary = State(initialValue: pd.getSummary())
+        _category = State(initialValue: pd.getCategory())
+        _tag = State(initialValue: pd.getTag())
+    }
+    
     var body : some View {
         VStack{
             HStack{
@@ -299,11 +313,12 @@ struct EditPostView : View{
                 }.disabled(true)
                 
                 Button(action:{
-                    //Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
                 }){
                     Text("Update")
                 }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
             }
+            Spacer()
         }
         .padding()
     }
@@ -312,18 +327,15 @@ struct EditPostView : View{
 struct ManagePostView : View{
     var pds = Sqlite.getPostList()
     var body: some View {
-        HStack{
-            List(pds, id: \.self) { (pd)  in
-                VStack {
-                    Text(pd.getTitle())
-                    Spacer()
+        NavigationView{
+            HStack{
+                List(pds, id: \.self) { (pd)  in
+                    NavigationLink(destination: EditPostView(cid: pd.getCid())){
+                        Text(pd.getTitle())
+                    }
                 }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    print("play \(pd.getCid())")
-                }
+                Spacer()
             }
-            Spacer()
         }
     }
 }

@@ -59,6 +59,26 @@ struct PostData : Hashable{
     func getTitle() -> String{
         return title
     }
+    
+    func getText() -> String{
+        return text
+    }
+    
+    func getThumbUrl() -> String{
+        return thumbUrl
+    }
+    
+    func getSummary() -> String{
+        return summary
+    }
+    
+    func getCategory() -> String{
+        return category
+    }
+    
+    func getTag() -> String{
+        return tag
+    }
 }
 
 struct MetaData{
