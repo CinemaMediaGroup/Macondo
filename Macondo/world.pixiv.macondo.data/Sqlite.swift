@@ -286,7 +286,9 @@ struct Sqlite {
             let pdTag = Expression<String>("tag")
             
             for pds in try database.prepare(pd){
-                
+                if Int(pds[pdType]) == 1{
+                    continue
+                }
                 res.append(PostData(cid: Int(pds[cid]), type: Int(pds[pdType]),
                                     title: Base64.toString(s: pds[pdTitle]),
                                     slug: Base64.toString(s: pds[pdSlug]),
