@@ -746,6 +746,163 @@ struct Sqlite {
             print(error)
         }
     }
+    
+    static func getLinkData(lidd : Int) -> LinksData{
+        var res : LinksData = LinksData()
+        
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //linksDatas table
+            let ld = Table("linksDatas")
+            
+            //linksDatas columns settings
+            let lid = Expression<Int64>("lid")
+            let ldOrders = Expression<Int64>("orders")
+            let ldName = Expression<String>("name")
+            let ldUrl = Expression<String>("url")
+            let ldSort = Expression<String>("sort")
+            let ldImage = Expression<String>("image")
+            let ldDescription = Expression<String>("description")
+            
+            for lds in try database.prepare(ld){
+                if Int(lds[lid]) != lidd{
+                    continue
+                }
+                res = LinksData(lid: Int(lds[lid]),orders: Int(lds[ldOrders]),
+                                    name: Base64.toString(s: lds[ldName]),
+                                    url: Base64.toString(s: lds[ldUrl]),
+                                    sort: Base64.toString(s: lds[ldSort]),
+                                    image: Base64.toString(s: lds[ldImage]),
+                                    description: Base64.toString(s: lds[ldDescription]
+                                    ))
+            }
+        }catch{
+            print(error)
+        }
+        return res
+    }
+    
+    static func newLink(name : String,url : String,image : String,description : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //linksDatas table
+            let ld = Table("linksDatas")
+            
+            //linksDatas columns settings
+            let lid = Expression<Int64>("lid")
+            let ldOrders = Expression<Int64>("orders")
+            let ldName = Expression<String>("name")
+            let ldUrl = Expression<String>("url")
+            let ldSort = Expression<String>("sort")
+            let ldImage = Expression<String>("image")
+            let ldDescription = Expression<String>("description")
+            
+            let maxLid : Int64 = Int64(try database.scalar(ld.count))
+            
+            try database.run(ld.insert(
+                lid <- (maxLid + 1),
+                ldOrders <- (maxLid + 100),
+                ldName <- Base64.toBase64(s: name),
+                ldUrl <- Base64.toBase64(s: url),
+                ldSort <- Base64.toBase64(s: "ten"),
+                ldImage <- Base64.toBase64(s: image),
+                ldDescription <- Base64.toBase64(s: description)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
+    static func getLinkList() -> [LinksData]{
+        var res : [LinksData] = [LinksData]()
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //linksDatas table
+            let ld = Table("linksDatas")
+            
+            //linksDatas columns settings
+            let lid = Expression<Int64>("lid")
+            let ldOrders = Expression<Int64>("orders")
+            let ldName = Expression<String>("name")
+            let ldUrl = Expression<String>("url")
+            let ldSort = Expression<String>("sort")
+            let ldImage = Expression<String>("image")
+            let ldDescription = Expression<String>("description")
+            
+            for lds in try database.prepare(ld){
+                res.append(LinksData(lid: Int(lds[lid]),orders: Int(lds[ldOrders]),
+                                     name: Base64.toString(s: lds[ldName]),
+                                     url: Base64.toString(s: lds[ldUrl]),
+                                     sort: Base64.toString(s: lds[ldSort]),
+                                     image: Base64.toString(s: lds[ldImage]),
+                                     description: Base64.toString(s: lds[ldDescription]
+                )))
+            }
+        }catch{
+            print(error)
+        }
+        
+        return res
+    }
+    
+    static func editLink(lidd : Int,name : String,url : String,image : String,description : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //linksDatas table
+            let ld = Table("linksDatas")
+            
+            //linksDatas columns settings
+            let lid = Expression<Int64>("lid")
+            let ldName = Expression<String>("name")
+            let ldUrl = Expression<String>("url")
+            let ldImage = Expression<String>("image")
+            let ldDescription = Expression<String>("description")
+            
+            let curLid = lidd
+            let curLd = ld.filter(lid == Int64(curLid))
+            
+            try database.run(curLd.update(
+                ldName <- Base64.toBase64(s: name),
+                ldUrl <- Base64.toBase64(s: url),
+                ldImage <- Base64.toBase64(s: image),
+                ldDescription <- Base64.toBase64(s: description)
+            ))
+        }catch{
+            print(error)
+        }
+    }
 }
 
 /*

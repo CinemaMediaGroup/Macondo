@@ -115,7 +115,7 @@ struct MetaData : Hashable{
     }
 }
 
-struct LinksData{
+struct LinksData : Hashable{
     var lid : Int
     var orders : Int
     var name : String
@@ -142,6 +142,26 @@ struct LinksData{
         self.sort = sort
         self.image = image
         self.description = description
+    }
+    
+    func getLid() -> Int{
+        return lid
+    }
+    
+    func getName() -> String{
+        return name
+    }
+    
+    func getUrl() -> String{
+        return url
+    }
+    
+    func getImage() -> String{
+        return image
+    }
+    
+    func getDescription() -> String{
+        return description
     }
 }
 

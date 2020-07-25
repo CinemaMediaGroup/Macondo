@@ -25,6 +25,8 @@ struct ContentView: View {
         6 -> ManageCategoryView
         7 -> NewTagView
         8 -> ManageTagView
+        9 -> NewLinkView
+       10 -> ManageLinkView
      */
     
     var body: some View {
@@ -48,6 +50,10 @@ struct ContentView: View {
                 NewTagView()
             }else if self.showView.showView == 8{
                 ManageTagView()
+            }else if self.showView.showView == 9{
+                NewLinkView()
+            }else if self.showView.showView == 10{
+                ManageLinkView()
             }
         }
     }
@@ -126,7 +132,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 9
                     }){
                         HStack{
                             Image("newLink").resizable().frame(width:32,height: 32)
@@ -214,7 +220,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                    
+                        self.showView.showView = 10
                     }){
                         HStack{
                             Image("newLink").resizable().frame(width:32,height: 32)
@@ -682,6 +688,104 @@ struct EditTagView : View{
                 }){
                     Text("Update")
                 }.disabled(text.isEmpty)
+            }
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+
+struct NewLinkView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var name : String = ""
+    @State var url : String = ""
+    @State var image : String = ""
+    @State var description : String = ""
+    
+    var body : some View {
+        VStack{
+            TextField("Name",text: $name)
+            TextField("Link",text: $url)
+            TextField("Thumb Url",text: $image)
+            TextField("Description",text: $description)
+            
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.newLink(name: self.name,url: self.url,image: self.image,description: self.description)
+                    self.showView.showView = 0
+                }){
+                    Text("Publish")
+                }.disabled(name.isEmpty || url.isEmpty || image.isEmpty || description.isEmpty)
+            }
+        }
+        .padding()
+    }
+}
+
+struct ManageLinkView : View{
+    var lds = Sqlite.getLinkList()
+    var body: some View {
+        NavigationView{
+            HStack{
+                List(lds, id: \.self) { (ld)  in
+                    NavigationLink(destination: EditLinkView(lid: ld.getLid())){
+                        Text(ld.getName())
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+struct EditLinkView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var name : String = ""
+    @State var url : String = ""
+    @State var image : String = ""
+    @State var description : String = ""
+    
+    var lid : Int = 0;
+    
+    init(lid : Int){
+        let ld : LinksData = Sqlite.getLinkData(lidd: lid)
+        self.lid = lid
+        _name = State(initialValue: ld.getName())
+        _url = State(initialValue: ld.getUrl())
+        _image = State(initialValue: ld.getImage())
+        _description = State(initialValue: ld.getDescription())
+    }
+    
+    var body : some View {
+        VStack{
+            TextField("Name",text: $name)
+            TextField("Link",text: $url)
+            TextField("Thumb Url",text: $image)
+            TextField("Description",text: $description)
+            
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.editLink(lidd: self.lid,name: self.name,url: self.url,image: self.image,description: self.description)
+                    self.showView.showView = 0
+                }){
+                    Text("Update")
+                }.disabled(name.isEmpty || url.isEmpty || image.isEmpty || description.isEmpty)
             }
             Spacer()
         }
