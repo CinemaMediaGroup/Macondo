@@ -22,6 +22,7 @@ struct ContentView: View {
         3 -> NewPageView
         4 -> ManagePageView
         5 -> NewCategoryView
+        6 -> ManageCategoryView
      */
     
     var body: some View {
@@ -39,6 +40,8 @@ struct ContentView: View {
                 ManagePageView()
             }else if self.showView.showView == 5{
                 NewCategoryView()
+            }else if self.showView.showView == 6{
+                ManageCategoryView()
             }
         }
     }
@@ -185,7 +188,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 6
                     }){
                         HStack{
                             Image("newCategory").resizable().frame(width:32,height: 32)
@@ -317,7 +320,7 @@ struct EditPostView : View{
     var cid : Int = 0;
     
     init(cid : Int){
-        let pd : PostData = Sqlite.getPost(cidd: cid)
+        let pd : PostData = Sqlite.getPostData(cidd: cid)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
         _text = State(initialValue: pd.getText())
@@ -455,7 +458,7 @@ struct ManagePageView : View{
 }
 
 struct EditPageView : View{
-     @EnvironmentObject var showView : ViewNavigation
+    @EnvironmentObject var showView : ViewNavigation
     
     @State var title : String
     @State var text : String
@@ -467,7 +470,7 @@ struct EditPageView : View{
     var cid : Int = 0;
     
     init(cid : Int){
-        let pd : PostData = Sqlite.getPost(cidd: cid)
+        let pd : PostData = Sqlite.getPostData(cidd: cid)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
         _text = State(initialValue: pd.getText())
@@ -541,6 +544,60 @@ struct NewCategoryView : View{
                     Text("Publish")
                 }.disabled(text.isEmpty)
             }
+        }
+        .padding()
+    }
+}
+
+struct ManageCategoryView : View{
+    var mds = Sqlite.getCategoryList()
+    var body: some View {
+        NavigationView{
+            HStack{
+                List(mds, id: \.self) { (md)  in
+                    NavigationLink(destination: EditCategoryView(mid: md.getMid())){
+                        Text(md.getName())
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+struct EditCategoryView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var text : String
+    
+    var mid : Int = 0;
+    
+    init(mid : Int){
+        let md : MetaData = Sqlite.getMetaData(midd: mid)
+        self.mid = mid
+        _text = State(initialValue: md.getName())
+    }
+    
+    var body : some View {
+        VStack{
+            TextField("Name",text: $text)
+
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.editCategory(midd: self.mid,name: self.text)
+                    self.showView.showView = 0
+                }){
+                    Text("Update")
+                }.disabled(text.isEmpty)
+            }
+            Spacer()
         }
         .padding()
     }

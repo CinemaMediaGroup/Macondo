@@ -308,7 +308,7 @@ struct Sqlite {
         return res
     }
     
-    static func getPost(cidd : Int) -> PostData{
+    static func getPostData(cidd : Int) -> PostData{
         var res : PostData = PostData()
         
         var database : Connection
@@ -533,6 +533,114 @@ struct Sqlite {
         }catch{
             print(error)
         }
+    }
+    
+    static func getCategoryList() -> [MetaData]{
+        var res : [MetaData] = [MetaData]()
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //metaDatas table
+            let md = Table("metaDatas")
+            
+            //metaDatas columns settings
+            let mid = Expression<Int64>("mid")
+            let mdCnt = Expression<Int64>("cnt")
+            let mdType = Expression<Int64>("type")
+            let mdSlug = Expression<String>("slug")
+            let mdName = Expression<String>("name")
+            
+            for mds in try database.prepare(md){
+                if Int(mds[mdType]) == 0{
+                    continue
+                }
+                res.append(MetaData(mid: Int(mds[mid]), cnt: Int(mds[mdCnt]),
+                                    type: Int(mds[mdType]),
+                                    slug: Base64.toString(s: mds[mdSlug]),
+                                    name: Base64.toString(s: mds[mdName])))
+            }
+        }catch{
+            print(error)
+        }
+        
+        return res
+    }
+    
+    static func editCategory(midd : Int,name : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //metaDatas table
+            let md = Table("metaDatas")
+            
+            //metaDatas columns settings
+            let mid = Expression<Int64>("mid")
+            let mdSlug = Expression<String>("slug")
+            let mdName = Expression<String>("name")
+            
+            let curMid = midd
+            let curMd = md.filter(mid == Int64(curMid))
+            
+            try database.run(curMd.update(
+                mdSlug <- Base64.toBase64(s: name),
+                mdName <- Base64.toBase64(s: name)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
+    static func getMetaData(midd : Int) -> MetaData{
+        var res : MetaData = MetaData()
+        
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //metaDatas table
+            let md = Table("metaDatas")
+                       
+            //metaDatas columns settings
+            let mid = Expression<Int64>("mid")
+            let mdCnt = Expression<Int64>("cnt")
+            let mdType = Expression<Int64>("type")
+            let mdSlug = Expression<String>("slug")
+            let mdName = Expression<String>("name")
+            
+            for mds in try database.prepare(md){
+                if Int(mds[mid]) != midd{
+                    continue
+                }
+                res = MetaData(mid: Int(mds[mid]),
+                               cnt: Int(mds[mdCnt]),
+                               type: Int(mds[mdType]),
+                                    slug: Base64.toString(s: mds[mdSlug]),
+                                    name: Base64.toString(s: mds[mdName]))
+            }
+        }catch{
+            print(error)
+        }
+        return res
     }
 }
 

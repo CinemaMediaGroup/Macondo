@@ -81,7 +81,7 @@ struct PostData : Hashable{
     }
 }
 
-struct MetaData{
+struct MetaData : Hashable{
     var mid : Int
     var cnt : Int
     //'0' stands for 'tag' while
@@ -104,6 +104,14 @@ struct MetaData{
         self.type = type
         self.slug = name
         self.name = name
+    }
+    
+    func getMid() -> Int {
+        return mid
+    }
+    
+    func getName() -> String{
+        return name
     }
 }
 
