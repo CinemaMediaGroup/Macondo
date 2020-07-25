@@ -903,6 +903,153 @@ struct Sqlite {
             print(error)
         }
     }
+    
+    static func getBookData(bidd : Int) -> BookData{
+        var res : BookData = BookData()
+        
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //bookDatas table
+            let bd = Table("bookDatas")
+            
+            //bookDatas columns settings
+            let bid = Expression<Int64>("bid")
+            let bdName = Expression<String>("name")
+            let bdIsbn = Expression<String>("isbn")
+            let bdLsbn = Expression<String>("lsbn")
+            let bdImage = Expression<String>("image")
+            
+            for bds in try database.prepare(bd){
+                if Int(bds[bid]) != bidd{
+                    continue
+                }
+                res = BookData(bid: Int(bds[bid]),
+                                    name: Base64.toString(s: bds[bdName]),
+                                    isbn: Base64.toString(s: bds[bdIsbn]),
+                                    lsbn: Base64.toString(s: bds[bdLsbn]),
+                                    image: Base64.toString(s: bds[bdImage])
+                                    )
+            }
+        }catch{
+            print(error)
+        }
+        return res
+    }
+    
+    static func newBook(name : String,isbn : String,lsbn : String,image : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //bookDatas table
+            let bd = Table("bookDatas")
+            
+            //bookDatas columns settings
+            let bid = Expression<Int64>("bid")
+            let bdName = Expression<String>("name")
+            let bdIsbn = Expression<String>("isbn")
+            let bdLsbn = Expression<String>("lsbn")
+            let bdImage = Expression<String>("image")
+            
+            let maxBid : Int64 = Int64(try database.scalar(bd.count))
+            
+            try database.run(bd.insert(
+                bid <- (maxBid + 1),
+                bdName <- Base64.toBase64(s: name),
+                bdIsbn <- Base64.toBase64(s: isbn),
+                bdLsbn <- Base64.toBase64(s: lsbn),
+                bdImage <- Base64.toBase64(s: image)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
+    static func getBookList() -> [BookData]{
+        var res : [BookData] = [BookData]()
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //bookDatas table
+            let bd = Table("bookDatas")
+            
+            //bookDatas columns settings
+            let bid = Expression<Int64>("bid")
+            let bdName = Expression<String>("name")
+            let bdIsbn = Expression<String>("isbn")
+            let bdLsbn = Expression<String>("lsbn")
+            let bdImage = Expression<String>("image")
+            
+            for bds in try database.prepare(bd){
+                res.append(BookData(bid: Int(bds[bid]),
+                                     name: Base64.toString(s: bds[bdName]),
+                                     isbn: Base64.toString(s: bds[bdIsbn]),
+                                     lsbn: Base64.toString(s: bds[bdLsbn]),
+                                     image: Base64.toString(s: bds[bdImage])
+                ))
+            }
+        }catch{
+            print(error)
+        }
+        
+        return res
+    }
+    
+    static func editBook(bidd : Int,name : String,isbn : String,lsbn : String,image : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //bookDatas table
+            let bd = Table("bookDatas")
+            
+            //bookDatas columns settings
+            let bid = Expression<Int64>("bid")
+            let bdName = Expression<String>("name")
+            let bdIsbn = Expression<String>("isbn")
+            let bdLsbn = Expression<String>("lsbn")
+            let bdImage = Expression<String>("image")
+            
+            let curBid = bidd
+            let curBd = bd.filter(bid == Int64(curBid))
+            
+            try database.run(curBd.update(
+                bdName <- Base64.toBase64(s: name),
+                bdIsbn <- Base64.toBase64(s: isbn),
+                bdLsbn <- Base64.toBase64(s: lsbn),
+                bdImage <- Base64.toBase64(s: image)
+            ))
+        }catch{
+            print(error)
+        }
+    }
 }
 
 /*

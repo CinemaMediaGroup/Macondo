@@ -207,7 +207,7 @@ struct VideoData{
     }
 }
 
-struct BookData{
+struct BookData : Hashable{
     var bid : Int
     var name : String
     var isbn : String
@@ -228,6 +228,26 @@ struct BookData{
         self.isbn = isbn
         self.lsbn = lsbn
         self.image = image
+    }
+    
+    func getBid() -> Int{
+        return bid
+    }
+    
+    func getName() -> String{
+        return name
+    }
+    
+    func getISBN() -> String{
+        return isbn
+    }
+    
+    func getLSBN() -> String{
+        return lsbn
+    }
+    
+    func getImage() -> String{
+        return image
     }
 }
 

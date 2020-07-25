@@ -27,6 +27,8 @@ struct ContentView: View {
         8 -> ManageTagView
         9 -> NewLinkView
        10 -> ManageLinkView
+       11 -> NewBookView
+       12 -> ManageBookView
      */
     
     var body: some View {
@@ -54,6 +56,10 @@ struct ContentView: View {
                 NewLinkView()
             }else if self.showView.showView == 10{
                 ManageLinkView()
+            }else if self.showView.showView == 11{
+                NewBookView()
+            }else if self.showView.showView == 12{
+                ManageBookView()
             }
         }
     }
@@ -142,7 +148,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action:{
-                        
+                        self.showView.showView = 11
                     }){
                         HStack{
                             Image("newBook").resizable().frame(width:32,height: 32)
@@ -230,7 +236,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 12
                     }){
                         HStack{
                             Image("newBook").resizable().frame(width:32,height: 32)
@@ -786,6 +792,103 @@ struct EditLinkView : View{
                 }){
                     Text("Update")
                 }.disabled(name.isEmpty || url.isEmpty || image.isEmpty || description.isEmpty)
+            }
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+struct NewBookView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var name : String = ""
+    @State var isbn : String = ""
+    @State var lsbn : String = ""
+    @State var image : String = ""
+    
+    var body : some View {
+        VStack{
+            TextField("Name",text: $name)
+            TextField("ISBN",text: $isbn)
+            TextField("LSBN",text: $lsbn)
+            TextField("Thumb Url",text: $image)
+            
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.newBook(name: self.name,isbn: self.isbn,lsbn: self.lsbn,image: self.image)
+                    self.showView.showView = 0
+                }){
+                    Text("Publish")
+                }.disabled(name.isEmpty || isbn.isEmpty || lsbn.isEmpty || image.isEmpty)
+            }
+        }
+        .padding()
+    }
+}
+
+struct ManageBookView : View{
+    var bds = Sqlite.getBookList()
+    var body: some View {
+        NavigationView{
+            HStack{
+                List(bds, id: \.self) { (bd)  in
+                    NavigationLink(destination: EditBookView(bid: bd.getBid())){
+                        Text(bd.getName())
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+struct EditBookView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var name : String = ""
+    @State var isbn : String = ""
+    @State var lsbn : String = ""
+    @State var image : String = ""
+    
+    var bid : Int = 0;
+    
+    init(bid : Int){
+        let bd : BookData = Sqlite.getBookData(bidd: bid)
+        self.bid = bid
+        _name = State(initialValue: bd.getName())
+        _isbn = State(initialValue: bd.getISBN())
+        _lsbn = State(initialValue: bd.getLSBN())
+        _image = State(initialValue: bd.getImage())
+    }
+    
+    var body : some View {
+        VStack{
+            TextField("Name",text: $name)
+            TextField("ISBN",text: $isbn)
+            TextField("LSBN",text: $lsbn)
+            TextField("Thumb Url",text: $image)
+            
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.editBook(bidd: self.bid,name: self.name,isbn: self.isbn,lsbn: self.lsbn,image: self.image)
+                    self.showView.showView = 0
+                }){
+                    Text("Update")
+                }.disabled(name.isEmpty || isbn.isEmpty || lsbn.isEmpty || image.isEmpty)
             }
             Spacer()
         }
