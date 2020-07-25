@@ -29,6 +29,10 @@ struct ContentView: View {
        10 -> ManageLinkView
        11 -> NewBookView
        12 -> ManageBookView
+       13 -> NewAnimeView
+       14 -> ManageAnimeView
+       15 -> NewVideoView
+       16 -> ManageVideoView
      */
     
     var body: some View {
@@ -60,6 +64,14 @@ struct ContentView: View {
                 NewBookView()
             }else if self.showView.showView == 12{
                 ManageBookView()
+            }else if self.showView.showView == 13{
+                NewAnimeView()
+            }else if self.showView.showView == 14{
+                ManageAnimeView()
+            }else if self.showView.showView == 15{
+                NewVideoView()
+            }else if self.showView.showView == 16{
+                ManageVideoView()
             }
         }
     }
@@ -158,7 +170,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 13
                     }){
                         HStack{
                             Image("newAnime").resizable().frame(width:32,height: 32)
@@ -168,7 +180,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 15
                     }){
                         HStack{
                             Image("newVideo").resizable().frame(width:32,height: 32)
@@ -246,7 +258,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 14
                     }){
                         HStack{
                             Image("newAnime").resizable().frame(width:32,height: 32)
@@ -256,7 +268,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 16
                     }){
                         HStack{
                             Image("newVideo").resizable().frame(width:32,height: 32)
@@ -889,6 +901,190 @@ struct EditBookView : View{
                 }){
                     Text("Update")
                 }.disabled(name.isEmpty || isbn.isEmpty || lsbn.isEmpty || image.isEmpty)
+            }
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+struct NewAnimeView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var nameJA : String = ""
+    @State var nameZH : String = ""
+    @State var image : String = ""
+    
+    var body : some View {
+        VStack{
+            TextField("Japanese Name",text: $nameJA)
+            TextField("Chinese Name",text: $nameZH)
+            TextField("Thumb Url",text: $image)
+            
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.newAnime(nameJA: self.nameJA,nameZH: self.nameZH,image: self.image)
+                    self.showView.showView = 0
+                }){
+                    Text("Publish")
+                }.disabled(nameJA.isEmpty || nameZH.isEmpty || image.isEmpty)
+            }
+        }
+        .padding()
+    }
+}
+
+struct ManageAnimeView : View{
+    var ads = Sqlite.getAnimeList()
+    var body: some View {
+        NavigationView{
+            HStack{
+                List(ads, id: \.self) { (ad)  in
+                    NavigationLink(destination: EditAnimeView(aid: ad.getAid())){
+                        Text(ad.getNameZH())
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+struct EditAnimeView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var nameJA : String = ""
+    @State var nameZH : String = ""
+    @State var image : String = ""
+    
+    var aid : Int = 0;
+    
+    init(aid : Int){
+        let ad : AnimeData = Sqlite.getAnimeData(aidd: aid)
+        self.aid = aid
+        _nameJA = State(initialValue: ad.getNameJA())
+        _nameZH = State(initialValue: ad.getNameZH())
+        _image = State(initialValue: ad.getImage())
+    }
+    
+    var body : some View {
+        VStack{
+            TextField("Japanese Name",text: $nameJA)
+            TextField("Chinese Name",text: $nameZH)
+            TextField("Thumb Url",text: $image)
+            
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.editAnime(aidd: self.aid,nameJA: self.nameJA,nameZH: self.nameZH,image: self.image)
+                    self.showView.showView = 0
+                }){
+                    Text("Update")
+                }.disabled(nameJA.isEmpty || nameZH.isEmpty || image.isEmpty)
+            }
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+struct NewVideoView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var nameJA : String = ""
+    @State var nameZH : String = ""
+    @State var image : String = ""
+    
+    var body : some View {
+        VStack{
+            TextField("Japanese Name",text: $nameJA)
+            TextField("Chinese Name",text: $nameZH)
+            TextField("Thumb Url",text: $image)
+            
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.newVideo(nameJA: self.nameJA,nameZH: self.nameZH,image: self.image)
+                    self.showView.showView = 0
+                }){
+                    Text("Publish")
+                }.disabled(nameJA.isEmpty || nameZH.isEmpty || image.isEmpty)
+            }
+        }
+        .padding()
+    }
+}
+
+struct ManageVideoView : View{
+    var vds = Sqlite.getVideoList()
+    var body: some View {
+        NavigationView{
+            HStack{
+                List(vds, id: \.self) { (vd)  in
+                    NavigationLink(destination: EditVideoView(vid: vd.getVid())){
+                        Text(vd.getNameZH())
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+struct EditVideoView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var nameJA : String = ""
+    @State var nameZH : String = ""
+    @State var image : String = ""
+    
+    var vid : Int = 0;
+    
+    init(vid : Int){
+        let vd : VideoData = Sqlite.getVideoData(vidd: vid)
+        self.vid = vid
+        _nameJA = State(initialValue: vd.getNameJA())
+        _nameZH = State(initialValue: vd.getNameZH())
+        _image = State(initialValue: vd.getImage())
+    }
+    
+    var body : some View {
+        VStack{
+            TextField("Japanese Name",text: $nameJA)
+            TextField("Chinese Name",text: $nameZH)
+            TextField("Thumb Url",text: $image)
+            
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.editVideo(vidd: self.vid,nameJA: self.nameJA,nameZH: self.nameZH,image: self.image)
+                    self.showView.showView = 0
+                }){
+                    Text("Update")
+                }.disabled(nameJA.isEmpty || nameZH.isEmpty || image.isEmpty)
             }
             Spacer()
         }

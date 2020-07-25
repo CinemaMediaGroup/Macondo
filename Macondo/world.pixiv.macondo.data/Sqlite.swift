@@ -1050,6 +1050,284 @@ struct Sqlite {
             print(error)
         }
     }
+    
+    static func getAnimeData(aidd : Int) -> AnimeData{
+        var res : AnimeData = AnimeData()
+        
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //animeDatas table
+            let ad = Table("animeDatas")
+            
+            //animeDatas columns settings
+            let aid = Expression<Int64>("aid")
+            let adNameJA = Expression<String>("nameJA")
+            let adNameZH = Expression<String>("nameZH")
+            let adImage = Expression<String>("image")
+            
+            for ads in try database.prepare(ad){
+                if Int(ads[aid]) != aidd{
+                    continue
+                }
+                res = AnimeData(aid: Int(ads[aid]),
+                                    nameJA: Base64.toString(s: ads[adNameJA]),
+                                    nameZH: Base64.toString(s: ads[adNameZH]),
+                                    image: Base64.toString(s: ads[adImage])
+                                    )
+            }
+        }catch{
+            print(error)
+        }
+        return res
+    }
+    
+    static func newAnime(nameJA : String,nameZH : String,image : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //animeDatas table
+            let ad = Table("animeDatas")
+            
+            //animeDatas columns settings
+            let aid = Expression<Int64>("aid")
+            let adNameJA = Expression<String>("nameJA")
+            let adNameZH = Expression<String>("nameZH")
+            let adImage = Expression<String>("image")
+            
+            let maxAid : Int64 = Int64(try database.scalar(ad.count))
+            
+            try database.run(ad.insert(
+                aid <- (maxAid + 1),
+                adNameJA <- Base64.toBase64(s: nameJA),
+                adNameZH <- Base64.toBase64(s: nameZH),
+                adImage <- Base64.toBase64(s: image)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
+    static func getAnimeList() -> [AnimeData]{
+        var res : [AnimeData] = [AnimeData]()
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //animeDatas table
+            let ad = Table("animeDatas")
+            
+            //animeDatas columns settings
+            let aid = Expression<Int64>("aid")
+            let adNameJA = Expression<String>("nameJA")
+            let adNameZH = Expression<String>("nameZH")
+            let adImage = Expression<String>("image")
+            
+            for ads in try database.prepare(ad){
+                res.append(AnimeData(aid: Int(ads[aid]),
+                                     nameJA: Base64.toString(s: ads[adNameJA]),
+                                     nameZH: Base64.toString(s: ads[adNameZH]),
+                                     image: Base64.toString(s: ads[adImage])
+                ))
+            }
+        }catch{
+            print(error)
+        }
+        
+        return res
+    }
+    
+    static func editAnime(aidd : Int,nameJA : String,nameZH : String,image : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //animeDatas table
+            let ad = Table("animeDatas")
+            
+            //animeDatas columns settings
+            let aid = Expression<Int64>("aid")
+            let adNameJA = Expression<String>("nameJA")
+            let adNameZH = Expression<String>("nameZH")
+            let adImage = Expression<String>("image")
+            
+            let curAid = aidd
+            let curAd = ad.filter(aid == Int64(curAid))
+            
+            try database.run(curAd.update(
+                adNameJA <- Base64.toBase64(s: nameJA),
+                adNameZH <- Base64.toBase64(s: nameZH),
+                adImage <- Base64.toBase64(s: image)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
+    static func getVideoData(vidd : Int) -> VideoData{
+        var res : VideoData = VideoData()
+        
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //VideoDatas table
+            let vd = Table("videoDatas")
+            
+            //VideoDatas columns settings
+            let vid = Expression<Int64>("vid")
+            let vdNameJA = Expression<String>("nameJA")
+            let vdNameZH = Expression<String>("nameZH")
+            let vdImage = Expression<String>("image")
+            
+            for vds in try database.prepare(vd){
+                if Int(vds[vid]) != vidd{
+                    continue
+                }
+                res = VideoData(vid: Int(vds[vid]),
+                                    nameJA: Base64.toString(s: vds[vdNameJA]),
+                                    nameZH: Base64.toString(s: vds[vdNameZH]),
+                                    image: Base64.toString(s: vds[vdImage])
+                                    )
+            }
+        }catch{
+            print(error)
+        }
+        return res
+    }
+    
+    static func newVideo(nameJA : String,nameZH : String,image : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //VideoDatas table
+            let vd = Table("videoDatas")
+            
+            //VideoDatas columns settings
+            let vid = Expression<Int64>("vid")
+            let vdNameJA = Expression<String>("nameJA")
+            let vdNameZH = Expression<String>("nameZH")
+            let vdImage = Expression<String>("image")
+            
+            let maxVid : Int64 = Int64(try database.scalar(vd.count))
+            
+            try database.run(vd.insert(
+                vid <- (maxVid + 1),
+                vdNameJA <- Base64.toBase64(s: nameJA),
+                vdNameZH <- Base64.toBase64(s: nameZH),
+                vdImage <- Base64.toBase64(s: image)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
+    static func getVideoList() -> [VideoData]{
+        var res : [VideoData] = [VideoData]()
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //VideoDatas table
+            let vd = Table("videoDatas")
+            
+            //VideoDatas columns settings
+            let vid = Expression<Int64>("vid")
+            let vdNameJA = Expression<String>("nameJA")
+            let vdNameZH = Expression<String>("nameZH")
+            let vdImage = Expression<String>("image")
+            
+            for vds in try database.prepare(vd){
+                res.append(VideoData(vid: Int(vds[vid]),
+                                     nameJA: Base64.toString(s: vds[vdNameJA]),
+                                     nameZH: Base64.toString(s: vds[vdNameZH]),
+                                     image: Base64.toString(s: vds[vdImage])
+                ))
+            }
+        }catch{
+            print(error)
+        }
+        
+        return res
+    }
+    
+    static func editVideo(vidd : Int,nameJA : String,nameZH : String,image : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //VideoDatas table
+            let vd = Table("VideoDatas")
+            
+            //VideoDatas columns settings
+            let vid = Expression<Int64>("vid")
+            let vdNameJA = Expression<String>("nameJA")
+            let vdNameZH = Expression<String>("nameZH")
+            let vdImage = Expression<String>("image")
+            
+            let curVid = vidd
+            let curVd = vd.filter(vid == Int64(curVid))
+            
+            try database.run(curVd.update(
+                vdNameJA <- Base64.toBase64(s: nameJA),
+                vdNameZH <- Base64.toBase64(s: nameZH),
+                vdImage <- Base64.toBase64(s: image)
+            ))
+        }catch{
+            print(error)
+        }
+    }
 }
 
 /*

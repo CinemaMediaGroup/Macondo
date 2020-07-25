@@ -165,7 +165,7 @@ struct LinksData : Hashable{
     }
 }
 
-struct AnimeData{
+struct AnimeData : Hashable{
     var aid : Int
     var nameJA : String
     var nameZH : String
@@ -184,9 +184,25 @@ struct AnimeData{
         self.nameZH = nameZH
         self.image = image
     }
+    
+    func getAid() -> Int{
+        return aid
+    }
+    
+    func getNameJA() -> String{
+        return nameJA
+    }
+    
+    func getNameZH() -> String{
+        return nameZH
+    }
+    
+    func getImage() -> String{
+        return image
+    }
 }
 
-struct VideoData{
+struct VideoData : Hashable{
     var vid : Int
     var nameJA : String
     var nameZH : String
@@ -204,6 +220,22 @@ struct VideoData{
         self.nameJA = nameJA
         self.nameZH = nameZH
         self.image = image
+    }
+    
+    func getVid() -> Int{
+        return vid
+    }
+    
+    func getNameJA() -> String{
+        return nameJA
+    }
+    
+    func getNameZH() -> String{
+        return nameZH
+    }
+    
+    func getImage() -> String{
+        return image
     }
 }
 
