@@ -19,6 +19,7 @@ struct ContentView: View {
         0 -> MainView
         1 -> NewPostView
         2 -> ManagePostView
+        3 -> NewPageView
      */
     
     var body: some View {
@@ -30,6 +31,8 @@ struct ContentView: View {
                 NewPostView()
             }else if self.showView.showView == 2{
                 ManagePostView()
+            }else if self.showView.showView == 3{
+                NewPageView()
             }
         }
     }
@@ -78,7 +81,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 3
                     }){
                         HStack{
                             Image("newPage").resizable().frame(width:32,height: 32)
@@ -245,7 +248,7 @@ struct MainView : View{
 }
 
 struct NewPostView : View{
-     @EnvironmentObject var showView : ViewNavigation
+    @EnvironmentObject var showView : ViewNavigation
     
     @State var title : String = ""
     @State var text : String = ""
@@ -375,5 +378,56 @@ struct ManagePostView : View{
                 Spacer()
             }
         }
+    }
+}
+
+struct NewPageView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var title : String = ""
+    @State var text : String = ""
+    @State var image : String = ""
+    @State var summary : String = ""
+    @State var category : String = ""
+    @State var tag : String = ""
+    var body : some View {
+        VStack{
+            HStack{
+                VStack{
+                    TextField("Add title",text: $title)
+                    TextField("Start writing or type",text: $text)
+                }
+                VStack{
+                    Text("Category(split by ','): ")
+                    TextField("",text: $category)
+                    Text("Tag(split by ','): ")
+                    TextField("",text: $tag)
+                }
+            }
+            HStack{
+                Text("Thumb Url: ")
+                TextField("",text: $image)
+            }
+            HStack{
+                Text("Summary: ")
+                TextField("",text: $summary)
+            }
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    self.showView.showView = 0
+                }){
+                    Text("Publish")
+                }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
+            }
+        }
+        .padding()
     }
 }
