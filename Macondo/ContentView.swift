@@ -21,6 +21,7 @@ struct ContentView: View {
         2 -> ManagePostView
         3 -> NewPageView
         4 -> ManagePageView
+        5 -> NewCategoryView
      */
     
     var body: some View {
@@ -36,6 +37,8 @@ struct ContentView: View {
                 NewPageView()
             }else if self.showView.showView == 4{
                 ManagePageView()
+            }else if self.showView.showView == 5{
+                NewCategoryView()
             }
         }
     }
@@ -94,7 +97,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 5
                     }){
                         HStack{
                             Image("newCategory").resizable().frame(width:32,height: 32)
@@ -512,6 +515,32 @@ struct EditPageView : View{
                 }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
             }
             Spacer()
+        }
+        .padding()
+    }
+}
+
+struct NewCategoryView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var text : String = ""
+    var body : some View {
+        VStack{
+            TextField("Name",text: $text)
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.newCategory(name: self.text)
+                    self.showView.showView = 0
+                }){
+                    Text("Publish")
+                }.disabled(text.isEmpty)
+            }
         }
         .padding()
     }

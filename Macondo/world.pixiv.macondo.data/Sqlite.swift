@@ -58,7 +58,7 @@ struct Sqlite {
             //metaDatas columns settings
             let mid = Expression<Int64>("mid")
             let mdCnt = Expression<Int64>("cnt")
-            let mdType = Expression<String>("type")
+            let mdType = Expression<Int64>("type")
             let mdSlug = Expression<String>("slug")
             let mdName = Expression<String>("name")
             
@@ -494,6 +494,41 @@ struct Sqlite {
                 pdSummary <- Base64.toBase64(s: summary),
                 pdCategory <- Base64.toBase64(s: category),
                 pdTag <- Base64.toBase64(s: tag)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
+    static func newCategory(name : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //metaDatas table
+            let md = Table("metaDatas")
+                       
+            //metaDatas columns settings
+            let mid = Expression<Int64>("mid")
+            let mdCnt = Expression<Int64>("cnt")
+            let mdType = Expression<Int64>("type")
+            let mdSlug = Expression<String>("slug")
+            let mdName = Expression<String>("name")
+            
+            let maxMid : Int64 = Int64(try database.scalar(md.count))
+            
+            try database.run(md.insert(
+                mid <- (maxMid + 1),
+                mdType <- Int64(1),
+                mdCnt <- 0,
+                mdName <- Base64.toBase64(s: name),
+                mdSlug <- Base64.toBase64(s: name)
             ))
         }catch{
             print(error)
