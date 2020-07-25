@@ -23,6 +23,8 @@ struct ContentView: View {
         4 -> ManagePageView
         5 -> NewCategoryView
         6 -> ManageCategoryView
+        7 -> NewTagView
+        8 -> ManageTagView
      */
     
     var body: some View {
@@ -42,6 +44,10 @@ struct ContentView: View {
                 NewCategoryView()
             }else if self.showView.showView == 6{
                 ManageCategoryView()
+            }else if self.showView.showView == 7{
+                NewTagView()
+            }else if self.showView.showView == 8{
+                ManageTagView()
             }
         }
     }
@@ -110,7 +116,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 7
                     }){
                         HStack{
                             Image("newTag").resizable().frame(width:32,height: 32)
@@ -198,7 +204,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 8
                     }){
                         HStack{
                             Image("newTag").resizable().frame(width:32,height: 32)
@@ -592,6 +598,86 @@ struct EditCategoryView : View{
                 
                 Button(action:{
                     Sqlite.editCategory(midd: self.mid,name: self.text)
+                    self.showView.showView = 0
+                }){
+                    Text("Update")
+                }.disabled(text.isEmpty)
+            }
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+struct NewTagView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var text : String = ""
+    var body : some View {
+        VStack{
+            TextField("Name",text: $text)
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.newTag(name: self.text)
+                    self.showView.showView = 0
+                }){
+                    Text("Publish")
+                }.disabled(text.isEmpty)
+            }
+        }
+        .padding()
+    }
+}
+
+struct ManageTagView : View{
+    var mds = Sqlite.getTagList()
+    var body: some View {
+        NavigationView{
+            HStack{
+                List(mds, id: \.self) { (md)  in
+                    NavigationLink(destination: EditTagView(mid: md.getMid())){
+                        Text(md.getName())
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+struct EditTagView : View{
+    @EnvironmentObject var showView : ViewNavigation
+    
+    @State var text : String
+    
+    var mid : Int = 0;
+    
+    init(mid : Int){
+        let md : MetaData = Sqlite.getMetaData(midd: mid)
+        self.mid = mid
+        _text = State(initialValue: md.getName())
+    }
+    
+    var body : some View {
+        VStack{
+            TextField("Name",text: $text)
+
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.editTag(midd: self.mid,name: self.text)
                     self.showView.showView = 0
                 }){
                     Text("Update")

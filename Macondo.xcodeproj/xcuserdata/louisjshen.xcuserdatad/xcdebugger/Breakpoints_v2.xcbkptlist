@@ -20,53 +20,5 @@
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "769F1332-F15F-4292-88B3-65E2CF9BAB4C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Macondo/ContentView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "769F1332-F15F-4292-88B3-65E2CF9BAB4C - 8420b69c02fa2252"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Macondo.ContentView.body.getter : some"
-                  moduleName = "Macondo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/louisjshen/xcode-workspace/Macondo/Macondo/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "30">
-               </Location>
-               <Location
-                  uuid = "769F1332-F15F-4292-88B3-65E2CF9BAB4C - 5e03019df6eedea2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.EmptyView, Macondo.NewPostView&gt; in Macondo.ContentView.body.getter : some"
-                  moduleName = "Macondo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/louisjshen/xcode-workspace/Macondo/Macondo/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "93">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
