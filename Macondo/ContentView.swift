@@ -20,6 +20,7 @@ struct ContentView: View {
         1 -> NewPostView
         2 -> ManagePostView
         3 -> NewPageView
+        4 -> ManagePageView
      */
     
     var body: some View {
@@ -33,6 +34,8 @@ struct ContentView: View {
                 ManagePostView()
             }else if self.showView.showView == 3{
                 NewPageView()
+            }else if self.showView.showView == 4{
+                ManagePageView()
             }
         }
     }
@@ -169,7 +172,7 @@ struct MainView : View{
                     }
                     .buttonStyle(PlainButtonStyle())
                     Button(action: {
-                        
+                        self.showView.showView = 4
                     }){
                         HStack{
                             Image("newPage").resizable().frame(width:32,height: 32)
@@ -421,12 +424,94 @@ struct NewPageView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    Sqlite.newPage(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
                 }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
             }
+        }
+        .padding()
+    }
+}
+
+struct ManagePageView : View{
+    var pds = Sqlite.getPageList()
+    var body: some View {
+        NavigationView{
+            HStack{
+                List(pds, id: \.self) { (pd)  in
+                    NavigationLink(destination: EditPageView(cid: pd.getCid())){
+                        Text(pd.getTitle())
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+struct EditPageView : View{
+     @EnvironmentObject var showView : ViewNavigation
+    
+    @State var title : String
+    @State var text : String
+    @State var image : String
+    @State var summary : String
+    @State var category : String
+    @State var tag : String
+    
+    var cid : Int = 0;
+    
+    init(cid : Int){
+        let pd : PostData = Sqlite.getPost(cidd: cid)
+        self.cid = cid
+        _title = State(initialValue: pd.getTitle())
+        _text = State(initialValue: pd.getText())
+        _image = State(initialValue: pd.getThumbUrl())
+        _summary = State(initialValue: pd.getSummary())
+        _category = State(initialValue: pd.getCategory())
+        _tag = State(initialValue: pd.getTag())
+    }
+    
+    var body : some View {
+        VStack{
+            HStack{
+                VStack{
+                    TextField("Add title",text: $title)
+                    TextField("Start writing or type",text: $text)
+                }
+                VStack{
+                    Text("Category(split by ','): ")
+                    TextField("",text: $category)
+                    Text("Tag(split by ','): ")
+                    TextField("",text: $tag)
+                }
+            }
+            HStack{
+                Text("Thumb Url: ")
+                TextField("",text: $image)
+            }
+            HStack{
+                Text("Summary: ")
+                TextField("",text: $summary)
+            }
+            Spacer()
+            HStack{
+                Button(action: {
+                    self.showView.showView = 0
+                }){
+                    Text("Cancel")
+                }
+                
+                Button(action:{
+                    Sqlite.editPage(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    self.showView.showView = 0
+                }){
+                    Text("Update")
+                }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
+            }
+            Spacer()
         }
         .padding()
     }
