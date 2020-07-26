@@ -1376,6 +1376,37 @@ struct Sqlite {
             print(error)
         }
     }
+    
+    static func getSetting(sidd : Int) -> String{
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //settingDatas table
+            let sd = Table("settingDatas")
+            
+            //settingDatas columns settings
+            let sid = Expression<Int64>("sid")
+            let sdField = Expression<String>("field")
+            
+            let curSid = sidd
+            let curSd = sd.filter(sid == Int64(curSid))
+            
+            for sds in try database.prepare(curSd){
+                return Base64.toString(s: sds[sdField])
+            }
+            
+        }catch{
+            print(error)
+        }
+        return ""
+    }
 }
 
 /*

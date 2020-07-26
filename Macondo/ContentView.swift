@@ -1110,12 +1110,19 @@ let AccountsPreferenceViewController: () -> PreferencePane = {
 }
 
 struct AccountsView: View {
-    @State var siteURL : String = ""
     @State var siteTitle : String = ""
+    @State var siteURL : String = ""
     @State var topPosts : String = ""
     @State var user : String = ""
     private let contentWidth: Double = 450.0
 
+    init(){
+        _siteTitle = State(initialValue: Sqlite.getSetting(sidd: 1))
+        _siteURL = State(initialValue: Sqlite.getSetting(sidd: 2))
+        _topPosts = State(initialValue: Sqlite.getSetting(sidd: 3))
+        _user = State(initialValue: Sqlite.getSetting(sidd: 4))
+    }
+    
     var body: some View {
         Preferences.Container(contentWidth: contentWidth) {
             Preferences.Section(title: "Site title:") {
