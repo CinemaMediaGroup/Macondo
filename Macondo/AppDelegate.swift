@@ -11,7 +11,6 @@ import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
     var window: NSWindow!
     //view menu item declaration
     @IBOutlet weak var darkModeItem: NSMenuItem!

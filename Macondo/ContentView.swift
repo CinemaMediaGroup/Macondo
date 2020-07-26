@@ -10,6 +10,7 @@ import SwiftUI
 
 class ViewNavigation: ObservableObject {
     @Published var showView = 0
+    @State var setting : Bool = false
 }
 
 struct ContentView: View {
@@ -72,6 +73,8 @@ struct ContentView: View {
                 NewVideoView()
             }else if self.showView.showView == 16{
                 ManageVideoView()
+            }else if self.showView.showView == 17{
+                
             }
         }
     }
