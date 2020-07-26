@@ -75,7 +75,7 @@ struct ContentView: View {
             }else if self.showView.showView == 16{
                 ManageVideoView()
             }else if self.showView.showView == 17{
-                AccountsView()
+                PreferencesView()
             }
         }
     }
@@ -1096,20 +1096,19 @@ struct EditVideoView : View{
     }
 }
 
-let AccountsPreferenceViewController: () -> PreferencePane = {
-    /// Wrap your custom view into `Preferences.Pane`, while providing necessary toolbar info.
+let PreferencesPreferenceViewController: () -> PreferencePane = {
     let paneView = Preferences.Pane(
-        identifier: .accounts,
-        title: "Accounts",
-        toolbarIcon: NSImage(named: NSImage.userAccountsName)!
+        identifier: .preferences,
+        title: "Preferences",
+        toolbarIcon: NSImage()
     ) {
-        AccountsView()
+        PreferencesView()
     }
 
     return Preferences.PaneHostingController(pane: paneView)
 }
 
-struct AccountsView: View {
+struct PreferencesView: View {
     @State var siteTitle : String = ""
     @State var siteURL : String = ""
     @State var topPosts : String = ""
