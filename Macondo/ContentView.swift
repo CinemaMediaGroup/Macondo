@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Preferences
 
 class ViewNavigation: ObservableObject {
     @Published var showView = 0
@@ -74,7 +75,7 @@ struct ContentView: View {
             }else if self.showView.showView == 16{
                 ManageVideoView()
             }else if self.showView.showView == 17{
-                
+                AccountsView()
             }
         }
     }
@@ -1090,6 +1091,55 @@ struct EditVideoView : View{
                 }.disabled(nameJA.isEmpty || nameZH.isEmpty || image.isEmpty)
             }
             Spacer()
+        }
+        .padding()
+    }
+}
+
+let AccountsPreferenceViewController: () -> PreferencePane = {
+    /// Wrap your custom view into `Preferences.Pane`, while providing necessary toolbar info.
+    let paneView = Preferences.Pane(
+        identifier: .accounts,
+        title: "Accounts",
+        toolbarIcon: NSImage(named: NSImage.userAccountsName)!
+    ) {
+        AccountsView()
+    }
+
+    return Preferences.PaneHostingController(pane: paneView)
+}
+
+struct AccountsView: View {
+    @State var siteURL : String = ""
+    @State var siteTitle : String = ""
+    @State var topPosts : String = ""
+    @State var user : String = ""
+    private let contentWidth: Double = 450.0
+
+    var body: some View {
+        Preferences.Container(contentWidth: contentWidth) {
+            Preferences.Section(title: "Site title:") {
+                TextField("", text: self.$siteTitle)
+            }
+            Preferences.Section(title: "Site URL:") {
+                TextField("", text: self.$siteURL)
+            }
+            Preferences.Section(title: "Top posts:") {
+                TextField("", text: self.$topPosts)
+            }
+            Preferences.Section(title: "User:") {
+                TextField("", text: self.$user)
+            }
+            Preferences.Section(title: "") {
+                Button(action:{
+                    Sqlite.editSetting(sidd: 1,field: self.siteTitle)
+                    Sqlite.editSetting(sidd: 2, field: self.siteURL)
+                    Sqlite.editSetting(sidd: 3, field: self.topPosts)
+                    Sqlite.editSetting(sidd: 4, field: self.user)
+                }){
+                    Text("Save")
+                }
+            }
         }
         .padding()
     }

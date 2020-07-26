@@ -162,6 +162,24 @@ struct Sqlite {
                 t.column(sdField)
             })
             
+            //insert default raws
+            try database.run(sd.insert(
+                sid <- 1,
+                sdName <- Base64.toBase64(s: "SiteTitle"),
+                sdField <- Base64.toBase64(s: "Macondo")))
+            try database.run(sd.insert(
+                sid <- 2,
+                sdName <- Base64.toBase64(s: "SiteURL"),
+                sdField <- Base64.toBase64(s: "https://")))
+            try database.run(sd.insert(
+                sid <- 3,
+                sdName <- Base64.toBase64(s: "TopPosts"),
+                sdField <- Base64.toBase64(s: "1,2")))
+            try database.run(sd.insert(
+                sid <- 4,
+                sdName <- Base64.toBase64(s: "User"),
+                sdField <- Base64.toBase64(s: "root")))
+            
         }catch{
             print(error)
         }
@@ -1324,6 +1342,36 @@ struct Sqlite {
                 vdNameZH <- Base64.toBase64(s: nameZH),
                 vdImage <- Base64.toBase64(s: image)
             ))
+        }catch{
+            print(error)
+        }
+    }
+    
+    static func editSetting(sidd : Int,field : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //settingDatas table
+            let sd = Table("settingDatas")
+            
+            //settingDatas columns settings
+            let sid = Expression<Int64>("sid")
+            let sdField = Expression<String>("field")
+            
+            let curSid = sidd
+            let curSd = sd.filter(sid == Int64(curSid))
+            
+            try database.run(curSd.update(
+                sdField <- Base64.toBase64(s: field)
+            ))
+            
         }catch{
             print(error)
         }

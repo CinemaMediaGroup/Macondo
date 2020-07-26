@@ -8,6 +8,13 @@
 
 import Cocoa
 import SwiftUI
+import Preferences
+
+extension Preferences.PaneIdentifier {
+    static let general = Self("general")
+    static let advanced = Self("advanced")
+    static let accounts = Self("accounts")
+}
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,6 +23,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var darkModeItem: NSMenuItem!
     @IBOutlet weak var lightModeItem: NSMenuItem!
     @IBOutlet weak var systemModeItem: NSMenuItem!
+
+    lazy var preferences: [PreferencePane] = [
+        AccountsPreferenceViewController()
+    ]
+    
+    lazy var preferencesWindowController = PreferencesWindowController(
+        preferencePanes: preferences,
+        style: .segmentedControl,
+        animated: true,
+        hidesToolbarForSingleItem: true
+    )
     
     //view menu item action
     @IBAction func setDarkMode(_ sender: Any) {
@@ -30,6 +48,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func createTables(_ sender: Any) {
         Sqlite.createTables()
+    }
+    @IBAction func setPreferences(_ sender: Any) {
+        preferencesWindowController.show()
     }
     
     var viewNavi = ViewNavigation()
