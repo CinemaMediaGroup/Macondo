@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B418FBC424CE815800BAC9D6 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418FBC324CE815800BAC9D6 /* Node.swift */; };
+		B418FBC624CE84C700BAC9D6 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418FBC524CE84C700BAC9D6 /* Content.swift */; };
 		B41B2EA824CD2AB500AB47E2 /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = B41B2EA724CD2AB500AB47E2 /* Preferences */; };
 		B42F0AB224C540A3009BF79C /* Sqlite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F0AB124C540A3009BF79C /* Sqlite.swift */; };
 		B43DD4D924C4648000B9FA21 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43DD4CF24C4646200B9FA21 /* SQLite.framework */; };
@@ -104,6 +106,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B418FBC324CE815800BAC9D6 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		B418FBC524CE84C700BAC9D6 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		B42F0AB124C540A3009BF79C /* Sqlite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite.swift; sourceTree = "<group>"; };
 		B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		B49339DB24BB0D940084C73E /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B40BA74424CD9DB300857ACD /* world.pixiv.macondo.layout */ = {
+			isa = PBXGroup;
+			children = (
+				B418FBC324CE815800BAC9D6 /* Node.swift */,
+				B418FBC524CE84C700BAC9D6 /* Content.swift */,
+			);
+			path = world.pixiv.macondo.layout;
+			sourceTree = "<group>";
+		};
 		B43DD4C124C4646200B9FA21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +213,7 @@
 		B49339DD24BB0D940084C73E /* Macondo */ = {
 			isa = PBXGroup;
 			children = (
+				B40BA74424CD9DB300857ACD /* world.pixiv.macondo.layout */,
 				B4E4920F24C7CEEA008F6902 /* world.pixiv.macondo.util */,
 				B4E4920E24C7CEDA008F6902 /* world.pixiv.macondo.data */,
 				B49339DE24BB0D940084C73E /* AppDelegate.swift */,
@@ -472,9 +486,11 @@
 				B4E4921F24C7DCE6008F6902 /* Time.swift in Sources */,
 				B49339E124BB0D940084C73E /* ContentView.swift in Sources */,
 				B42F0AB224C540A3009BF79C /* Sqlite.swift in Sources */,
+				B418FBC624CE84C700BAC9D6 /* Content.swift in Sources */,
 				B4E46DEA24C45153004E6299 /* Data.swift in Sources */,
 				B4E4921224C7CF41008F6902 /* Base64.swift in Sources */,
 				B49339DF24BB0D940084C73E /* AppDelegate.swift in Sources */,
+				B418FBC424CE815800BAC9D6 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

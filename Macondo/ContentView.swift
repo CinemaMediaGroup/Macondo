@@ -1113,6 +1113,8 @@ struct PreferencesView: View {
     @State var siteURL : String = ""
     @State var topPosts : String = ""
     @State var user : String = ""
+    @State var favicon : String = ""
+    @State var icon : String = ""
     private let contentWidth: Double = 450.0
 
     init(){
@@ -1120,6 +1122,8 @@ struct PreferencesView: View {
         _siteURL = State(initialValue: Sqlite.getSetting(sidd: 2))
         _topPosts = State(initialValue: Sqlite.getSetting(sidd: 3))
         _user = State(initialValue: Sqlite.getSetting(sidd: 4))
+        _favicon = State(initialValue: Sqlite.getSetting(sidd: 5))
+        _icon = State(initialValue: Sqlite.getSetting(sidd: 6))
     }
     
     var body: some View {
@@ -1136,12 +1140,20 @@ struct PreferencesView: View {
             Preferences.Section(title: "User:") {
                 TextField("", text: self.$user)
             }
+            Preferences.Section(title: "Favicon:") {
+                TextField("", text: self.$favicon)
+            }
+            Preferences.Section(title: "Favicon:") {
+                TextField("", text: self.$icon)
+            }
             Preferences.Section(title: "") {
                 Button(action:{
                     Sqlite.editSetting(sidd: 1,field: self.siteTitle)
                     Sqlite.editSetting(sidd: 2, field: self.siteURL)
                     Sqlite.editSetting(sidd: 3, field: self.topPosts)
                     Sqlite.editSetting(sidd: 4, field: self.user)
+                    Sqlite.editSetting(sidd: 5, field: self.favicon)
+                    Sqlite.editSetting(sidd: 6, field: self.icon)
                 }){
                     Text("Save")
                 }
