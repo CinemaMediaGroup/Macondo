@@ -31,12 +31,32 @@ struct Generator{
         layout.add(node: head)
         
         var body : Node = Node()
-        var nav : Node = Node()
+        let nav : Node = Node()
         //nav-container
-        var navContainer : Node = Node()
+        let navContainer : Node = Node(beginTag: "<div class=\"navbar-container\">", content: "", endTag: "</div>")
         //nav-brand
-        var navBrand : Node = Node(beginTag: "<div class=\"navbar-brand\">",content: "<a href=\"/\" class=\"navbar-item\"><img src=\"\(Sqlite.getSetting(sidd:  6))\" width=\"64\" height=\"64\"><span>\(Sqlite.getSetting(sidd:  1))</span></a>",endTag: "</div>")
-        
+        let navBrand : Node = Node(beginTag: "<div class=\"navbar-brand\">",content: "<a href=\"/\" class=\"navbar-item\"><img src=\"\(Sqlite.getSetting(sidd:  6))\" width=\"64\" height=\"64\"><span>\(Sqlite.getSetting(sidd:  1))</span></a>",endTag: "</div>")
+        //nav-menu
+        let navMenu : Node = Node(beginTag: "<div class=\"navbar-menu\">", content: "", endTag: "</div>")
+        //nav-leftMenu
+        let navMenuStart : Node = Node(beginTag: "<div class=\"navbar-start\">", content: "", endTag: "</div>")
+        var navStarts : [Node] = [Node]()
+        navStarts.append(Node(beginTag: "<a class=\"navbar-item\" href=\"/anime.html\">", content: "<span class=\"feather-icon\"><i data-feather=\"youtube\"></i></span>アニメ番組", endTag: "</a>"))
+        for i in navStarts{
+            navMenuStart.add(node: i)
+        }
+        //nav-rightMenu
+        let navMenuEnd : Node = Node(beginTag: "<div class=\"navbar-end\">", content: "", endTag: "</div>")
+        var navEnds : [Node] = [Node]()
+        navEnds.append(Node(beginTag: "<a class=\"navbar-item\" aria-label=\"drak\" id=\"dark-mode-btn\">", content: "<i data-feather=\"moon\"></i>", endTag: "</a>"))
+        for i in navEnds{
+            navMenuEnd.add(node: i)
+        }
+        navMenu.add(node: navMenuStart)
+        navMenu.add(node: navMenuEnd)
+        navContainer.add(node: navBrand)
+        navContainer.add(node: navMenu)
+        nav.add(node: navContainer)
         
         return layout.toString()
     }
