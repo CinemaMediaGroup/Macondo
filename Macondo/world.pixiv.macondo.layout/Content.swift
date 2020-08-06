@@ -10,9 +10,9 @@ import Foundation
 
 struct Generator{
     static func generate() -> String{
-        var layout : Node = Node(beginTag: "<!DOCTYPE html><html lang=\"zh-CN\">",content: "",endTag: "</html>")
+        let layout : Node = Node(beginTag: "<!DOCTYPE html><html lang=\"zh-CN\">",content: "",endTag: "</html>")
         
-        var head : Node = Node()
+        let head : Node = Node(beginTag: "<head>", content: "", endTag: "</head>")
         var heads : [Node] = [Node]()
         //charset
         heads.append(Node(beginTag: "<meta charset=\"utf-8\">",content: "",endTag: ""))
@@ -30,8 +30,10 @@ struct Generator{
         }
         layout.add(node: head)
         
-        var body : Node = Node()
-        let nav : Node = Node()
+        var _ : Node = Node(beginTag: "<body>", content: "", endTag: "</body>")
+        
+        //navigation
+        let nav : Node = Node(beginTag: "<nav class=\"navbar navbar-main\" role=\"navigation\">", content: "", endTag: "</nav>")
         //nav-container
         let navContainer : Node = Node(beginTag: "<div class=\"navbar-container\">", content: "", endTag: "</div>")
         //nav-brand
@@ -57,6 +59,36 @@ struct Generator{
         navContainer.add(node: navBrand)
         navContainer.add(node: navMenu)
         nav.add(node: navContainer)
+        
+        //section
+        var section = Node(beginTag: "<div class=\"section\">", content: "", endTag: "</div>")
+        //section-container
+        var sectionContainer = Node(beginTag: "<div class=\"container\">", content: "", endTag: "</div>")
+        //column
+        var column = Node(beginTag: "<div class=\"columns\">", content: "", endTag: "</div>")
+        //main
+        var main = Node(beginTag: "<main class=\"main-column\">", content: "", endTag: "</main>")
+        //left-column
+        var leftColumn = Node(beginTag: "<aside class=\"left-column\">", content: "", endTag: "</aside>")
+        var leftCard1 = Node(beginTag: "<div class=\"card spacer widget-author\">", content: "", endTag: "</div>")
+        var leftCard1Avatar = Node(beginTag: "<div class=\"author-image\"><picture>", content: "<img class=\"author-avatar\" src=\"\(Sqlite.getSetting(sidd: 7))\">", endTag: "</picture></div>")
+        var leftCard1User = Node(beginTag: "<p class=\"author-name\">", content: Sqlite.getSetting(sidd: 4), endTag: "</p>")
+        var leftCard1Description = Node(beginTag: "<p class=\"author-text\">", content: Sqlite.getSetting(sidd: 8), endTag: "</p>")
+        var leftCard1Level = Node(beginTag: "<div class=\"author-level\">", content: "", endTag: "</div>")
+        var leftCard1LevelItem : [Node] = [Node]()
+        leftCard1LevelItem.append(Node(beginTag: "<div class=\"author-level-item\">", content: "<p class=\"author-count\">80</p><p class=\"size-small\">文章</p>", endTag: "</div>"))
+        leftCard1LevelItem.append(Node(beginTag: "<div class=\"author-level-item\">", content: "<p class=\"author-count\">80</p><p class=\"size-small\">看番</p>", endTag: "</div>"))
+        leftCard1LevelItem.append(Node(beginTag: "<div class=\"author-level-item\">", content: "<p class=\"author-count\">80</p><p class=\"size-small\">看剧</p>", endTag: "</div>"))
+        leftCard1LevelItem.append(Node(beginTag: "<div class=\"author-level-item\">", content: "<p class=\"author-count\">80</p><p class=\"size-small\">读书</p>", endTag: "</div>"))
+        for i in leftCard1LevelItem{
+            leftCard1Level.add(node: i)
+        }
+        leftCard1.add(node: leftCard1Avatar)
+        leftCard1.add(node: leftCard1User)
+        leftCard1.add(node: leftCard1Description)
+        leftCard1.add(node: leftCard1Level)
+        //right-column
+        var rightColumn = Node(beginTag: "<aside class=\"right-column\">", content: "", endTag: "</aside>")
         
         return layout.toString()
     }
