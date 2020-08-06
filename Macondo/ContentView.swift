@@ -1115,6 +1115,8 @@ struct PreferencesView: View {
     @State var user : String = ""
     @State var favicon : String = ""
     @State var icon : String = ""
+    @State var avatar : String = ""
+    @State var description : String = ""
     private let contentWidth: Double = 450.0
 
     init(){
@@ -1124,6 +1126,8 @@ struct PreferencesView: View {
         _user = State(initialValue: Sqlite.getSetting(sidd: 4))
         _favicon = State(initialValue: Sqlite.getSetting(sidd: 5))
         _icon = State(initialValue: Sqlite.getSetting(sidd: 6))
+        _avatar = State(initialValue: Sqlite.getSetting(sidd: 7))
+        _description = State(initialValue: Sqlite.getSetting(sidd: 8))
     }
     
     var body: some View {
@@ -1143,8 +1147,14 @@ struct PreferencesView: View {
             Preferences.Section(title: "Favicon:") {
                 TextField("", text: self.$favicon)
             }
-            Preferences.Section(title: "Favicon:") {
+            Preferences.Section(title: "Icon:") {
                 TextField("", text: self.$icon)
+            }
+            Preferences.Section(title: "Avatar:") {
+                TextField("", text: self.$avatar)
+            }
+            Preferences.Section(title: "Description:") {
+                TextField("", text: self.$description)
             }
             Preferences.Section(title: "") {
                 Button(action:{
@@ -1154,6 +1164,8 @@ struct PreferencesView: View {
                     Sqlite.editSetting(sidd: 4, field: self.user)
                     Sqlite.editSetting(sidd: 5, field: self.favicon)
                     Sqlite.editSetting(sidd: 6, field: self.icon)
+                    Sqlite.editSetting(sidd: 7, field: self.avatar)
+                    Sqlite.editSetting(sidd: 8, field: self.description)
                 }){
                     Text("Save")
                 }
