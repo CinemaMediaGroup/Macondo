@@ -47,8 +47,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func createTables(_ sender: Any) {
         Sqlite.createTables()
     }
-    @IBAction func setPreferences(_ sender: Any) {
+    /*@IBAction func setPreferences(_ sender: Any) {
         preferencesWindowController.show()
+    }*/
+    @IBAction func export(_ sender: Any) {
+        let dialog = NSOpenPanel();
+
+        dialog.title = "Choose a directory";
+        dialog.showsResizeIndicator = true;
+        dialog.showsHiddenFiles = false;
+        dialog.canChooseFiles = false;
+        dialog.canChooseDirectories = true;
+
+        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+            let result = dialog.url
+            if (result != nil) {
+                Generator.generate(directory: result!)
+                print(result!.path)
+            }
+        } else {
+            return
+        }
     }
     
     var viewNavi = ViewNavigation()

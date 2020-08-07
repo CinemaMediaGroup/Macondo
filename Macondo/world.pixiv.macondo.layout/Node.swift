@@ -5,7 +5,7 @@
 //  Created by Louis Joe Shen on 2020/7/27.
 //  Copyright © 2020 Louise Joe Shen. All rights reserved.
 //
-
+/*
 import Foundation
 
 class Node{
@@ -57,3 +57,4 @@ class Node{
         return traverse(node: self)
     }
 }
+*/

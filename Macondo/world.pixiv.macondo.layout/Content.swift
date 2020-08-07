@@ -5,7 +5,7 @@
 //  Created by Louis Joe Shen on 2020/7/27.
 //  Copyright © 2020 Louise Joe Shen. All rights reserved.
 //
-
+/*
 import Foundation
 
 struct Generator{
@@ -30,7 +30,7 @@ struct Generator{
         }
         layout.add(node: head)
         
-        var _ : Node = Node(beginTag: "<body>", content: "", endTag: "</body>")
+        var body : Node = Node(beginTag: "<body>", content: "", endTag: "</body>")
         
         //navigation
         let nav : Node = Node(beginTag: "<nav class=\"navbar navbar-main\" role=\"navigation\">", content: "", endTag: "</nav>")
@@ -87,9 +87,24 @@ struct Generator{
         leftCard1.add(node: leftCard1User)
         leftCard1.add(node: leftCard1Description)
         leftCard1.add(node: leftCard1Level)
+        leftColumn.add(node: leftCard1)
         //right-column
         var rightColumn = Node(beginTag: "<aside class=\"right-column\">", content: "", endTag: "</aside>")
+        var rightCardContainer = Node(beginTag: "<div class=\"sticky-widescreen\">", content: "", endTag: "</div>")
+        column.add(node: main)
+        column.add(node: leftColumn)
+        //column.add(node: rightColumn)
+        sectionContainer.add(node: column)
+        section.add(node: sectionContainer)
+        
+        var fab = Node(beginTag: "<div class=\"fab\"><a href=\"#\" class=\"fab-btn\" aria-label=\"回到顶部\" title=\"top\">", content: "<i class=\"ski\" id=\"ski-up\"></i>", endTag: "</a></div>")
+        
+        body.add(node: nav)
+        body.add(node: section)
+        body.add(node: fab)
+        layout.add(node: body)
         
         return layout.toString()
     }
 }
+*/

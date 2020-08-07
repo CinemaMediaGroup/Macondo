@@ -98,7 +98,7 @@ struct MainView : View{
                 Text("Welcome to Macondo")
                     .font(.largeTitle)
                     .fontWeight(.thin)
-                Text("Version 1.0")
+                Text("Version 1.1")
                     .font(.headline)
                     .fontWeight(.thin)
                     .foregroundColor(Color.gray)
