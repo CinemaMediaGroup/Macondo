@@ -83,6 +83,10 @@ struct PostData : Hashable{
     func getCreated() -> String{
         return created
     }
+    
+    func getModified() -> String{
+        return modified
+    }
 }
 
 struct MetaData : Hashable{
