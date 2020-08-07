@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B40C025A24DCF808006F5725 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C025924DCF808006F5725 /* Generator.swift */; };
 		B418FBC424CE815800BAC9D6 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418FBC324CE815800BAC9D6 /* Node.swift */; };
 		B418FBC624CE84C700BAC9D6 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418FBC524CE84C700BAC9D6 /* Content.swift */; };
 		B41B2EA824CD2AB500AB47E2 /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = B41B2EA724CD2AB500AB47E2 /* Preferences */; };
@@ -106,6 +107,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B40C025924DCF808006F5725 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		B418FBC324CE815800BAC9D6 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		B418FBC524CE84C700BAC9D6 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		B42F0AB124C540A3009BF79C /* Sqlite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 			path = world.pixiv.macondo.layout;
 			sourceTree = "<group>";
 		};
+		B40C025124DCF7E7006F5725 /* world.pixiv.macondo.generator */ = {
+			isa = PBXGroup;
+			children = (
+				B40C025924DCF808006F5725 /* Generator.swift */,
+			);
+			path = world.pixiv.macondo.generator;
+			sourceTree = "<group>";
+		};
 		B43DD4C124C4646200B9FA21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +223,7 @@
 		B49339DD24BB0D940084C73E /* Macondo */ = {
 			isa = PBXGroup;
 			children = (
+				B40C025124DCF7E7006F5725 /* world.pixiv.macondo.generator */,
 				B40BA74424CD9DB300857ACD /* world.pixiv.macondo.layout */,
 				B4E4920F24C7CEEA008F6902 /* world.pixiv.macondo.util */,
 				B4E4920E24C7CEDA008F6902 /* world.pixiv.macondo.data */,
@@ -489,6 +500,7 @@
 				B418FBC624CE84C700BAC9D6 /* Content.swift in Sources */,
 				B4E46DEA24C45153004E6299 /* Data.swift in Sources */,
 				B4E4921224C7CF41008F6902 /* Base64.swift in Sources */,
+				B40C025A24DCF808006F5725 /* Generator.swift in Sources */,
 				B49339DF24BB0D940084C73E /* AppDelegate.swift in Sources */,
 				B418FBC424CE815800BAC9D6 /* Node.swift in Sources */,
 			);
