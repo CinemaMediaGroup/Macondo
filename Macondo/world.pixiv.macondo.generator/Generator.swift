@@ -129,4 +129,30 @@ struct Generator{
             print(error)
         }
     }
+    
+    static private func generateVideo(video : VideoData) -> String{
+        return "<div class=\"bgm-item\"><div class=\"bgm-item-thumb\" style=\"background-image:url(\(video.getImage())\"></div><div class=\"bgm-item-info\"><span class=\"bgm-item-title main\">\(video.getNameJA())</span><span class=\"bgm-item-title\">\(video.getNameZH())</span></div></div>"
+    }
+    
+    static func generateVideos(directory : URL){
+        let videos = Sqlite.getVideoList()
+        let videoDir = directory.appendingPathComponent("film.md")
+        var videoContents = ""
+        for i in videos{
+            videoContents += generateVideo(video: i)
+        }
+        let frontMatter = """
+        ---
+        layout: page
+        title: 追剧
+        ---
+
+        """
+        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/CinemaMediaGroup/static-file@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + videoContents + "</div>"
+        do{
+            try md.write(to: videoDir, atomically: false, encoding: .utf8)
+        } catch{
+            print(error)
+        }
+    }
 }
