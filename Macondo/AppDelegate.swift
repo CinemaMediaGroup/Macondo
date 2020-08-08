@@ -63,6 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let result = dialog.url
             if (result != nil) {
                 Generator.generate(directory: result!)
+                Generator.generateLinks(directory: result!)
                 print(result!.path)
             }
         } else {

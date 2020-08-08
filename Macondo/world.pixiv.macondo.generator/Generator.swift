@@ -29,14 +29,52 @@ struct Generator{
     
     static func generate(directory : URL){
         let posts = Sqlite.getPostList()
+        let postDir = directory.appendingPathComponent("_posts")
         for i in posts{
             let delta = generateMarkdownFile(post: i)
-            let fileURL = directory.appendingPathComponent(String(i.getCid()) + ".md")
+            let fileURL = postDir.appendingPathComponent(String(i.getCid()) + ".md")
             do {
                 try delta.write(to: fileURL,atomically: false,encoding: .utf8)
             }catch{
                 print(error)
             }
+        }
+    }
+    
+    static private func generateLink(link : LinksData) -> String{
+        return """
+            - name: \(link.getName())
+              avatar: \(link.getImage())
+              url: \(link.getUrl())
+              desc: \(link.getDescription())
+        
+        """
+    }
+    
+    static func generateLinks(directory : URL){
+        let links = Sqlite.getLinkList()
+        let linkDir = directory.appendingPathComponent("friends")
+        var linkContents = ""
+        for i in links{
+            linkContents += generateLink(link: i)
+        }
+        let frontMatter = """
+        ---
+        layout: links
+        title: 我的朋友们
+        links:
+          - group: hxdm
+            icon: fas fa-user-tie
+            desc:
+            items:
+        \(linkContents)
+        ---
+
+        """
+        do{
+            try frontMatter.write(to: linkDir.appendingPathComponent("index.md"), atomically: false, encoding: .utf8)
+        }catch{
+            print(error)
         }
     }
 }
