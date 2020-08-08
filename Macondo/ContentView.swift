@@ -369,7 +369,9 @@ struct EditPostView : View{
             HStack{
                 VStack{
                     TextField("Add title",text: $title)
-                    TextField("Start writing or type",text: $text)
+                    ScrollView{
+                        TextField("Start writing or type",text: $text)
+                    }
                 }
                 VStack{
                     Text("Category(split by ','): ")
