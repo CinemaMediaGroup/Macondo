@@ -64,6 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if (result != nil) {
                 Generator.generate(directory: result!)
                 Generator.generateLinks(directory: result!)
+                Generator.generateBooks(directory: result!)
                 print(result!.path)
             }
         } else {

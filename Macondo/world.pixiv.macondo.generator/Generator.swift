@@ -77,4 +77,30 @@ struct Generator{
             print(error)
         }
     }
+    
+    static private func generateBook(book : BookData) -> String{
+        return "<div class=\"bgm-item\"><div class=\"bgm-item-thumb\" style=\"background-image:url(\(book.getImage())\"></div><div class=\"bgm-item-info\"><span class=\"bgm-item-title main\">\(book.getName())</span><span class=\"bgm-item-title\">\(book.getISBN())</span><span class=\"bgm-item-title\">\(book.getLSBN())</span></div></div>"
+    }
+    
+    static func generateBooks(directory : URL){
+        let books = Sqlite.getBookList()
+        let bookDir = directory.appendingPathComponent("moon.md")
+        var bookContents = ""
+        for i in books{
+            bookContents += generateBook(book: i)
+        }
+        let frontMatter = """
+        ---
+        layout: page
+        title: 月盈阁
+        ---
+
+        """
+        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/CinemaMediaGroup/static-file@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + bookContents + "</div>"
+        do{
+            try md.write(to: bookDir, atomically: false, encoding: .utf8)
+        } catch{
+            print(error)
+        }
+    }
 }
