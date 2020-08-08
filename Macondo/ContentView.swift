@@ -123,7 +123,7 @@ struct MainView : View{
                         }
                     }
                     .buttonStyle(PlainButtonStyle())
-                    Button(action: {
+                    /*Button(action: {
                         self.showView.showView = 3
                     }){
                         HStack{
@@ -152,7 +152,7 @@ struct MainView : View{
                                 .fontWeight(.bold)
                         }
                     }
-                    .buttonStyle(PlainButtonStyle())
+                    .buttonStyle(PlainButtonStyle())*/
                     Button(action: {
                         self.showView.showView = 9
                     }){
@@ -211,7 +211,7 @@ struct MainView : View{
                         }
                     }
                     .buttonStyle(PlainButtonStyle())
-                    Button(action: {
+                    /*Button(action: {
                         self.showView.showView = 4
                     }){
                         HStack{
@@ -240,7 +240,7 @@ struct MainView : View{
                                 .fontWeight(.bold)
                         }
                     }
-                    .buttonStyle(PlainButtonStyle())
+                    .buttonStyle(PlainButtonStyle())*/
                     Button(action: {
                         self.showView.showView = 10
                     }){
