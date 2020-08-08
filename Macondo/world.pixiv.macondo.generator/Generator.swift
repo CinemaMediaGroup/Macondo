@@ -20,6 +20,7 @@ struct Generator{
         description: \(post.getSummary())
         thumbnail: \(post.getThumbUrl())
         urlname: \(post.getCid())
+        mathjax: true
         ---
         
         """
