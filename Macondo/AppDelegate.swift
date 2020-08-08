@@ -65,6 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 Generator.generate(directory: result!)
                 Generator.generateLinks(directory: result!)
                 Generator.generateBooks(directory: result!)
+                Generator.generateAnimes(directory: result!)
                 print(result!.path)
             }
         } else {

@@ -103,4 +103,30 @@ struct Generator{
             print(error)
         }
     }
+    
+    static private func generateAnime(anime : AnimeData) -> String{
+        return "<div class=\"bgm-item\"><div class=\"bgm-item-thumb\" style=\"background-image:url(\(anime.getImage())\"></div><div class=\"bgm-item-info\"><span class=\"bgm-item-title main\">\(anime.getNameJA())</span><span class=\"bgm-item-title\">\(anime.getNameZH())</span></div></div>"
+    }
+    
+    static func generateAnimes(directory : URL){
+        let animes = Sqlite.getAnimeList()
+        let animeDir = directory.appendingPathComponent("anime.md")
+        var animeContents = ""
+        for i in animes{
+            animeContents += generateAnime(anime: i)
+        }
+        let frontMatter = """
+        ---
+        layout: page
+        title: 看番
+        ---
+
+        """
+        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/CinemaMediaGroup/static-file@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + animeContents + "</div>"
+        do{
+            try md.write(to: animeDir, atomically: false, encoding: .utf8)
+        } catch{
+            print(error)
+        }
+    }
 }
