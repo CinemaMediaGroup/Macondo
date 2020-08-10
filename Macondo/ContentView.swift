@@ -395,7 +395,14 @@ struct EditPostView : View{
                 }){
                     Text("Cancel")
                 }
-                
+                Button(action: {
+                    Sqlite.deletePost(cidd: self.cid)
+                    self.showView.showView = 0
+                }){
+                    Text("Delete")
+                    .foregroundColor(Color.red)
+                    .bold()
+                }
                 Button(action:{
                     Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
                     self.showView.showView = 0

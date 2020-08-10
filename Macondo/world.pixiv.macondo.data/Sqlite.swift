@@ -1404,59 +1404,26 @@ struct Sqlite {
         }
         return ""
     }
+    
+    static func deletePost(cidd : Int){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/blog.db")
+            
+            //postDatas table
+            let pd = Table("postDatas")
+            let cid = Expression<Int64>("cid")
+            
+            let post = pd.filter(cid == Int64(cidd))
+            try database.run(post.delete())
+        } catch{
+            print(error)
+        }
+    }
 }
-
-/*
- //
- //  File.swift
- //  Macondo
- //
- //  Created by Louis Joe Shen on 2020/7/20.
- //  Copyright © 2020 Louise Joe Shen. All rights reserved.
- //
-
- import Foundation
-
- struct File{
-     static func createDatabaseFile() -> String{
-         let dbName = "blog.db"
-         let fileManager = FileManager.default
-         var path = ""
-         do{
-             let url = try fileManager.url(for:.documentDirectory,in: .userDomainMask, appropriateFor: nil, create: false)
-             path = url.appendingPathComponent(dbName).relativePath
-             
-             if !fileManager.fileExists(atPath: path){
-                 fileManager.createFile(atPath: path, contents: nil, attributes: nil)
-             }
-         }catch{
-             print(error)
-         }
-         return path
-     }
-     
-     static func printPath(){
-         let fileManager = FileManager.default
-         do {
-             let url = try fileManager.url(for:.documentDirectory,in: .userDomainMask, appropriateFor: nil, create: false)
-             print(url)
-         }catch{
-             print(error)
-         }
-
-     }
-     
-     static func createDir(dirName : String){
-         let foldername = dirName
-          let fileManager = FileManager.default
-          do {
-              let url = try fileManager.url(for:.documentDirectory,in: .userDomainMask, appropriateFor: nil, create: false)
-              let folder = url.appendingPathComponent(foldername)
-              try fileManager.createDirectory(at:folder, withIntermediateDirectories: true)
-          } catch {
-             print(error)
-          }
-     }
- }
-
- */
