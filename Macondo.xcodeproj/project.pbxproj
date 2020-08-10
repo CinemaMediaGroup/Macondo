@@ -11,9 +11,8 @@
 		B418FBC424CE815800BAC9D6 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418FBC324CE815800BAC9D6 /* Node.swift */; };
 		B418FBC624CE84C700BAC9D6 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418FBC524CE84C700BAC9D6 /* Content.swift */; };
 		B41B2EA824CD2AB500AB47E2 /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = B41B2EA724CD2AB500AB47E2 /* Preferences */; };
+		B4246B5C24E0D12B00414A0F /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B4246B5B24E0D12B00414A0F /* SQLite */; };
 		B42F0AB224C540A3009BF79C /* Sqlite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F0AB124C540A3009BF79C /* Sqlite.swift */; };
-		B43DD4D924C4648000B9FA21 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43DD4CF24C4646200B9FA21 /* SQLite.framework */; };
-		B43DD4DA24C4648000B9FA21 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B43DD4CF24C4646200B9FA21 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B49339DF24BB0D940084C73E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49339DE24BB0D940084C73E /* AppDelegate.swift */; };
 		B49339E124BB0D940084C73E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49339E024BB0D940084C73E /* ContentView.swift */; };
 		B49339E324BB0D960084C73E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B49339E224BB0D960084C73E /* Assets.xcassets */; };
@@ -27,55 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B43DD4CA24C4646200B9FA21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247AD31C3F04ED00AE3E12;
-			remoteInfo = "SQLite iOS";
-		};
-		B43DD4CC24C4646200B9FA21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247ADD1C3F04ED00AE3E12;
-			remoteInfo = "SQLiteTests iOS";
-		};
-		B43DD4CE24C4646200B9FA21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247B3C1C3F3ED000AE3E12;
-			remoteInfo = "SQLite Mac";
-		};
-		B43DD4D024C4646200B9FA21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247B451C3F3ED000AE3E12;
-			remoteInfo = "SQLiteTests Mac";
-		};
-		B43DD4D224C4646200B9FA21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 03A65E5A1C6BB0F50062603F;
-			remoteInfo = "SQLite tvOS";
-		};
-		B43DD4D424C4646200B9FA21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 03A65E631C6BB0F60062603F;
-			remoteInfo = "SQLiteTests tvOS";
-		};
-		B43DD4D624C4646200B9FA21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A121AC451CA35C79005A31D1;
-			remoteInfo = "SQLite watchOS";
-		};
 		B49339F124BB0D960084C73E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B49339D324BB0D940084C73E /* Project object */;
@@ -99,7 +49,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B43DD4DA24C4648000B9FA21 /* SQLite.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,7 +60,6 @@
 		B418FBC324CE815800BAC9D6 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		B418FBC524CE84C700BAC9D6 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		B42F0AB124C540A3009BF79C /* Sqlite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite.swift; sourceTree = "<group>"; };
-		B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		B49339DB24BB0D940084C73E /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49339DE24BB0D940084C73E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B49339E024BB0D940084C73E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B43DD4D924C4648000B9FA21 /* SQLite.framework in Frameworks */,
+				B4246B5C24E0D12B00414A0F /* SQLite in Frameworks */,
 				B41B2EA824CD2AB500AB47E2 /* Preferences in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,20 +124,6 @@
 			path = world.pixiv.macondo.generator;
 			sourceTree = "<group>";
 		};
-		B43DD4C124C4646200B9FA21 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B43DD4CB24C4646200B9FA21 /* SQLite.framework */,
-				B43DD4CD24C4646200B9FA21 /* SQLiteTests iOS.xctest */,
-				B43DD4CF24C4646200B9FA21 /* SQLite.framework */,
-				B43DD4D124C4646200B9FA21 /* SQLiteTests Mac.xctest */,
-				B43DD4D324C4646200B9FA21 /* SQLite.framework */,
-				B43DD4D524C4646200B9FA21 /* SQLiteTests tvOS.xctest */,
-				B43DD4D724C4646200B9FA21 /* SQLite.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		B43DD4D824C4648000B9FA21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +139,6 @@
 				B49339F324BB0D960084C73E /* MacondoTests */,
 				B49339FE24BB0D960084C73E /* MacondoUITests */,
 				B49339DC24BB0D940084C73E /* Products */,
-				B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */,
 				B43DD4D824C4648000B9FA21 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -317,6 +250,7 @@
 			name = Macondo;
 			packageProductDependencies = (
 				B41B2EA724CD2AB500AB47E2 /* Preferences */,
+				B4246B5B24E0D12B00414A0F /* SQLite */,
 			);
 			productName = Macondo;
 			productReference = B49339DB24BB0D940084C73E /* Macondo.app */;
@@ -392,15 +326,10 @@
 			mainGroup = B49339D224BB0D940084C73E;
 			packageReferences = (
 				B41B2EA624CD2AB500AB47E2 /* XCRemoteSwiftPackageReference "Preferences" */,
+				B4246B5A24E0D12B00414A0F /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			productRefGroup = B49339DC24BB0D940084C73E /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = B43DD4C124C4646200B9FA21 /* Products */;
-					ProjectRef = B43DD4C024C4646200B9FA21 /* SQLite.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B49339DA24BB0D940084C73E /* Macondo */,
@@ -409,58 +338,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		B43DD4CB24C4646200B9FA21 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = B43DD4CA24C4646200B9FA21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B43DD4CD24C4646200B9FA21 /* SQLiteTests iOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests iOS.xctest";
-			remoteRef = B43DD4CC24C4646200B9FA21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B43DD4CF24C4646200B9FA21 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = B43DD4CE24C4646200B9FA21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B43DD4D124C4646200B9FA21 /* SQLiteTests Mac.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests Mac.xctest";
-			remoteRef = B43DD4D024C4646200B9FA21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B43DD4D324C4646200B9FA21 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = B43DD4D224C4646200B9FA21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B43DD4D524C4646200B9FA21 /* SQLiteTests tvOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests tvOS.xctest";
-			remoteRef = B43DD4D424C4646200B9FA21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B43DD4D724C4646200B9FA21 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = B43DD4D624C4646200B9FA21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B49339D924BB0D940084C73E /* Resources */ = {
@@ -829,6 +706,14 @@
 				minimumVersion = 2.0.1;
 			};
 		};
+		B4246B5A24E0D12B00414A0F /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -836,6 +721,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B41B2EA624CD2AB500AB47E2 /* XCRemoteSwiftPackageReference "Preferences" */;
 			productName = Preferences;
+		};
+		B4246B5B24E0D12B00414A0F /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4246B5A24E0D12B00414A0F /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
