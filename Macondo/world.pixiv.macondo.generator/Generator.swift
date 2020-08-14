@@ -18,12 +18,13 @@ struct Generator{
         categories: [\(post.getCategory())]
         tags: [\(post.getTag())]
         description: \(post.getSummary())
-        thumbnail: \(post.getThumbUrl())
         urlname: \(post.getCid())
         mathjax: true
         ---
         
         """
+        
+        //thumbnail: \(post.getThumbUrl())
         return frontMatter + post.getText()
     }
     
