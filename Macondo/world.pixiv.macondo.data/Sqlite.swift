@@ -10,7 +10,8 @@ import Foundation
 import SQLite
 
 struct Sqlite {
-    static func createTables(){
+    
+    static func createTables(language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -19,7 +20,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
         
             //postDatas table
             let pd = Table("postDatas")
@@ -185,7 +186,7 @@ struct Sqlite {
         }
     }
     
-    static func newPost(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String){
+    static func newPost(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -194,7 +195,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -232,7 +233,7 @@ struct Sqlite {
         }
     }
     
-    static func editPost(cidd : Int,title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String){
+    static func editPost(cidd : Int,title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -241,7 +242,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -275,7 +276,7 @@ struct Sqlite {
         }
     }
     
-    static func getPostList() -> [PostData]{
+    static func getPostList(language : String) -> [PostData]{
         var res : [PostData] = [PostData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -285,7 +286,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -325,7 +326,7 @@ struct Sqlite {
         return res
     }
     
-    static func getPostData(cidd : Int) -> PostData{
+    static func getPostData(cidd : Int,language : String) -> PostData{
         var res : PostData = PostData()
         
         var database : Connection
@@ -336,7 +337,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -375,7 +376,7 @@ struct Sqlite {
         return res
     }
     
-    static func newPage(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String){
+    static func newPage(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -384,7 +385,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -422,7 +423,7 @@ struct Sqlite {
         }
     }
     
-    static func getPageList() -> [PostData]{
+    static func getPageList(language : String) -> [PostData]{
         var res : [PostData] = [PostData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -432,7 +433,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -472,7 +473,7 @@ struct Sqlite {
         return res
     }
     
-    static func editPage(cidd : Int,title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String){
+    static func editPage(cidd : Int,title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -481,7 +482,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -515,7 +516,7 @@ struct Sqlite {
         }
     }
     
-    static func newCategory(name : String){
+    static func newCategory(name : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -524,7 +525,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -550,7 +551,7 @@ struct Sqlite {
         }
     }
     
-    static func getCategoryList() -> [MetaData]{
+    static func getCategoryList(language : String) -> [MetaData]{
         var res : [MetaData] = [MetaData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -560,7 +561,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -588,7 +589,7 @@ struct Sqlite {
         return res
     }
     
-    static func editCategory(midd : Int,name : String){
+    static func editCategory(midd : Int,name : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -597,7 +598,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -619,7 +620,7 @@ struct Sqlite {
         }
     }
     
-    static func getMetaData(midd : Int) -> MetaData{
+    static func getMetaData(midd : Int,language : String) -> MetaData{
         var res : MetaData = MetaData()
         
         var database : Connection
@@ -630,7 +631,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -658,7 +659,7 @@ struct Sqlite {
         return res
     }
     
-    static func newTag(name : String){
+    static func newTag(name : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -667,7 +668,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -693,7 +694,7 @@ struct Sqlite {
         }
     }
     
-    static func getTagList() -> [MetaData]{
+    static func getTagList(language : String) -> [MetaData]{
         var res : [MetaData] = [MetaData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -703,7 +704,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -731,7 +732,7 @@ struct Sqlite {
         return res
     }
     
-    static func editTag(midd : Int,name : String){
+    static func editTag(midd : Int,name : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -740,7 +741,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -762,7 +763,7 @@ struct Sqlite {
         }
     }
     
-    static func getLinkData(lidd : Int) -> LinksData{
+    static func getLinkData(lidd : Int,language : String) -> LinksData{
         var res : LinksData = LinksData()
         
         var database : Connection
@@ -773,7 +774,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //linksDatas table
             let ld = Table("linksDatas")
@@ -805,7 +806,7 @@ struct Sqlite {
         return res
     }
     
-    static func newLink(name : String,url : String,image : String,description : String){
+    static func newLink(name : String,url : String,image : String,description : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -814,7 +815,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //linksDatas table
             let ld = Table("linksDatas")
@@ -844,7 +845,7 @@ struct Sqlite {
         }
     }
     
-    static func getLinkList() -> [LinksData]{
+    static func getLinkList(language : String) -> [LinksData]{
         var res : [LinksData] = [LinksData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -854,7 +855,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //linksDatas table
             let ld = Table("linksDatas")
@@ -884,7 +885,7 @@ struct Sqlite {
         return res
     }
     
-    static func editLink(lidd : Int,name : String,url : String,image : String,description : String){
+    static func editLink(lidd : Int,name : String,url : String,image : String,description : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -893,7 +894,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //linksDatas table
             let ld = Table("linksDatas")
@@ -919,7 +920,7 @@ struct Sqlite {
         }
     }
     
-    static func getBookData(bidd : Int) -> BookData{
+    static func getBookData(bidd : Int,language : String) -> BookData{
         var res : BookData = BookData()
         
         var database : Connection
@@ -930,7 +931,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //bookDatas table
             let bd = Table("bookDatas")
@@ -959,7 +960,7 @@ struct Sqlite {
         return res
     }
     
-    static func newBook(name : String,isbn : String,lsbn : String,image : String){
+    static func newBook(name : String,isbn : String,lsbn : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -968,7 +969,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //bookDatas table
             let bd = Table("bookDatas")
@@ -994,7 +995,7 @@ struct Sqlite {
         }
     }
     
-    static func getBookList() -> [BookData]{
+    static func getBookList(language : String) -> [BookData]{
         var res : [BookData] = [BookData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -1004,7 +1005,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //bookDatas table
             let bd = Table("bookDatas")
@@ -1031,7 +1032,7 @@ struct Sqlite {
         return res
     }
     
-    static func editBook(bidd : Int,name : String,isbn : String,lsbn : String,image : String){
+    static func editBook(bidd : Int,name : String,isbn : String,lsbn : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -1040,7 +1041,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //bookDatas table
             let bd = Table("bookDatas")
@@ -1066,7 +1067,7 @@ struct Sqlite {
         }
     }
     
-    static func getAnimeData(aidd : Int) -> AnimeData{
+    static func getAnimeData(aidd : Int,language : String) -> AnimeData{
         var res : AnimeData = AnimeData()
         
         var database : Connection
@@ -1077,7 +1078,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //animeDatas table
             let ad = Table("animeDatas")
@@ -1104,7 +1105,7 @@ struct Sqlite {
         return res
     }
     
-    static func newAnime(nameJA : String,nameZH : String,image : String){
+    static func newAnime(nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -1113,7 +1114,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //animeDatas table
             let ad = Table("animeDatas")
@@ -1137,7 +1138,7 @@ struct Sqlite {
         }
     }
     
-    static func getAnimeList() -> [AnimeData]{
+    static func getAnimeList(language : String) -> [AnimeData]{
         var res : [AnimeData] = [AnimeData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -1147,7 +1148,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //animeDatas table
             let ad = Table("animeDatas")
@@ -1172,7 +1173,7 @@ struct Sqlite {
         return res
     }
     
-    static func editAnime(aidd : Int,nameJA : String,nameZH : String,image : String){
+    static func editAnime(aidd : Int,nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -1181,7 +1182,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //animeDatas table
             let ad = Table("animeDatas")
@@ -1205,7 +1206,7 @@ struct Sqlite {
         }
     }
     
-    static func getVideoData(vidd : Int) -> VideoData{
+    static func getVideoData(vidd : Int,language : String) -> VideoData{
         var res : VideoData = VideoData()
         
         var database : Connection
@@ -1216,7 +1217,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //VideoDatas table
             let vd = Table("videoDatas")
@@ -1243,7 +1244,7 @@ struct Sqlite {
         return res
     }
     
-    static func newVideo(nameJA : String,nameZH : String,image : String){
+    static func newVideo(nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -1252,7 +1253,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //VideoDatas table
             let vd = Table("videoDatas")
@@ -1276,7 +1277,7 @@ struct Sqlite {
         }
     }
     
-    static func getVideoList() -> [VideoData]{
+    static func getVideoList(language : String) -> [VideoData]{
         var res : [VideoData] = [VideoData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -1286,7 +1287,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //VideoDatas table
             let vd = Table("videoDatas")
@@ -1311,7 +1312,7 @@ struct Sqlite {
         return res
     }
     
-    static func editVideo(vidd : Int,nameJA : String,nameZH : String,image : String){
+    static func editVideo(vidd : Int,nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -1320,7 +1321,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //VideoDatas table
             let vd = Table("VideoDatas")
@@ -1344,7 +1345,7 @@ struct Sqlite {
         }
     }
     
-    static func editSetting(sidd : Int,field : String){
+    static func editSetting(sidd : Int,field : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -1353,7 +1354,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //settingDatas table
             let sd = Table("settingDatas")
@@ -1374,7 +1375,7 @@ struct Sqlite {
         }
     }
     
-    static func getSetting(sidd : Int) -> String{
+    static func getSetting(sidd : Int,language : String) -> String{
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -1383,7 +1384,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //settingDatas table
             let sd = Table("settingDatas")
@@ -1405,7 +1406,7 @@ struct Sqlite {
         return ""
     }
     
-    static func deletePost(cidd : Int){
+    static func deletePost(cidd : Int,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
@@ -1414,7 +1415,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/blog.db")
+            database = try Connection("\(path)/ + blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")

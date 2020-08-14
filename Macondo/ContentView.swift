@@ -11,7 +11,7 @@ import Preferences
 
 class ViewNavigation: ObservableObject {
     @Published var showView = 0
-    @State var setting : Bool = false
+    @Published var lang = "zh-CN"
 }
 
 struct ContentView: View {
@@ -99,6 +99,10 @@ struct MainView : View{
                     .font(.largeTitle)
                     .fontWeight(.thin)
                 Text("Version \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)")
+                    .font(.headline)
+                    .fontWeight(.thin)
+                    .foregroundColor(Color.gray)
+                Text("Current language: " + lang.lang)
                     .font(.headline)
                     .fontWeight(.thin)
                     .foregroundColor(Color.gray)
@@ -332,7 +336,7 @@ struct NewPostView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    Sqlite.newPost(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag, language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
@@ -344,7 +348,7 @@ struct NewPostView : View{
 }
 
 struct EditPostView : View{
-     @EnvironmentObject var showView : ViewNavigation
+    @EnvironmentObject var showView : ViewNavigation
     
     @State var title : String
     @State var text : String
@@ -356,7 +360,7 @@ struct EditPostView : View{
     var cid : Int = 0;
     
     init(cid : Int){
-        let pd : PostData = Sqlite.getPostData(cidd: cid)
+        let pd : PostData = Sqlite.getPostData(cidd: cid,language: self.showView.lang)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
         _text = State(initialValue: pd.getText())
@@ -398,7 +402,7 @@ struct EditPostView : View{
                     Text("Cancel")
                 }
                 Button(action: {
-                    Sqlite.deletePost(cidd: self.cid)
+                    Sqlite.deletePost(cidd: self.cid,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Delete")
@@ -406,7 +410,7 @@ struct EditPostView : View{
                     .bold()
                 }
                 Button(action:{
-                    Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -419,8 +423,9 @@ struct EditPostView : View{
 }
 
 struct ManagePostView : View{
+    @EnvironmentObject var showView : ViewNavigation
     
-    var pds = Sqlite.getPostList()
+    var pds = Sqlite.getPostList(language: self.showView.lang)
     var body: some View {
         NavigationView{
             HStack{
@@ -475,7 +480,7 @@ struct NewPageView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newPage(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    Sqlite.newPage(title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
@@ -487,7 +492,9 @@ struct NewPageView : View{
 }
 
 struct ManagePageView : View{
-    var pds = Sqlite.getPageList()
+    @EnvironmentObject var showView : ViewNavigation
+
+    var pds = Sqlite.getPageList(language: self.showView.lang)
     var body: some View {
         NavigationView{
             HStack{
@@ -515,7 +522,7 @@ struct EditPageView : View{
     var cid : Int = 0;
     
     init(cid : Int){
-        let pd : PostData = Sqlite.getPostData(cidd: cid)
+        let pd : PostData = Sqlite.getPostData(cidd: cid,language: self.showView.lang)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
         _text = State(initialValue: pd.getText())
@@ -556,7 +563,7 @@ struct EditPageView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.editPage(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag)
+                    Sqlite.editPage(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -583,7 +590,7 @@ struct NewCategoryView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newCategory(name: self.text)
+                    Sqlite.newCategory(name: self.text,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
@@ -595,7 +602,9 @@ struct NewCategoryView : View{
 }
 
 struct ManageCategoryView : View{
-    var mds = Sqlite.getCategoryList()
+    @EnvironmentObject var showView : ViewNavigation
+    
+    var mds = Sqlite.getCategoryList(language: self.showView.lang)
     var body: some View {
         NavigationView{
             HStack{
@@ -618,7 +627,7 @@ struct EditCategoryView : View{
     var mid : Int = 0;
     
     init(mid : Int){
-        let md : MetaData = Sqlite.getMetaData(midd: mid)
+        let md : MetaData = Sqlite.getMetaData(midd: mid,language: self.showView.lang)
         self.mid = mid
         _text = State(initialValue: md.getName())
     }
@@ -636,7 +645,7 @@ struct EditCategoryView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.editCategory(midd: self.mid,name: self.text)
+                    Sqlite.editCategory(midd: self.mid,name: self.text,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -663,7 +672,7 @@ struct NewTagView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newTag(name: self.text)
+                    Sqlite.newTag(name: self.text,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
@@ -675,7 +684,9 @@ struct NewTagView : View{
 }
 
 struct ManageTagView : View{
-    var mds = Sqlite.getTagList()
+    @EnvironmentObject var showView : ViewNavigation
+    
+    var mds = Sqlite.getTagList(language: self.showView.lang)
     var body: some View {
         NavigationView{
             HStack{
@@ -698,7 +709,7 @@ struct EditTagView : View{
     var mid : Int = 0;
     
     init(mid : Int){
-        let md : MetaData = Sqlite.getMetaData(midd: mid)
+        let md : MetaData = Sqlite.getMetaData(midd: mid,language: self.showView.lang)
         self.mid = mid
         _text = State(initialValue: md.getName())
     }
@@ -716,7 +727,7 @@ struct EditTagView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.editTag(midd: self.mid,name: self.text)
+                    Sqlite.editTag(midd: self.mid,name: self.text,language: self.showView.showView)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -752,7 +763,7 @@ struct NewLinkView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newLink(name: self.name,url: self.url,image: self.image,description: self.description)
+                    Sqlite.newLink(name: self.name,url: self.url,image: self.image,description: self.description,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
@@ -764,7 +775,9 @@ struct NewLinkView : View{
 }
 
 struct ManageLinkView : View{
-    var lds = Sqlite.getLinkList()
+    @EnvironmentObject var showView : ViewNavigation
+    
+    var lds = Sqlite.getLinkList(language: self.showView.lang)
     var body: some View {
         NavigationView{
             HStack{
@@ -790,7 +803,7 @@ struct EditLinkView : View{
     var lid : Int = 0;
     
     init(lid : Int){
-        let ld : LinksData = Sqlite.getLinkData(lidd: lid)
+        let ld : LinksData = Sqlite.getLinkData(lidd: lid,language: self.showView.lang)
         self.lid = lid
         _name = State(initialValue: ld.getName())
         _url = State(initialValue: ld.getUrl())
@@ -814,7 +827,7 @@ struct EditLinkView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.editLink(lidd: self.lid,name: self.name,url: self.url,image: self.image,description: self.description)
+                    Sqlite.editLink(lidd: self.lid,name: self.name,url: self.url,image: self.image,description: self.description,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -849,7 +862,7 @@ struct NewBookView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newBook(name: self.name,isbn: self.isbn,lsbn: self.lsbn,image: self.image)
+                    Sqlite.newBook(name: self.name,isbn: self.isbn,lsbn: self.lsbn,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
@@ -861,7 +874,9 @@ struct NewBookView : View{
 }
 
 struct ManageBookView : View{
-    var bds = Sqlite.getBookList()
+    @EnvironmentObject var showView : ViewNavigation
+    
+    var bds = Sqlite.getBookList(language: self.showView.lang)
     var body: some View {
         NavigationView{
             HStack{
@@ -887,7 +902,7 @@ struct EditBookView : View{
     var bid : Int = 0;
     
     init(bid : Int){
-        let bd : BookData = Sqlite.getBookData(bidd: bid)
+        let bd : BookData = Sqlite.getBookData(bidd: bid,language: self.showView.lang)
         self.bid = bid
         _name = State(initialValue: bd.getName())
         _isbn = State(initialValue: bd.getISBN())
@@ -911,7 +926,7 @@ struct EditBookView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.editBook(bidd: self.bid,name: self.name,isbn: self.isbn,lsbn: self.lsbn,image: self.image)
+                    Sqlite.editBook(bidd: self.bid,name: self.name,isbn: self.isbn,lsbn: self.lsbn,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -944,7 +959,7 @@ struct NewAnimeView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newAnime(nameJA: self.nameJA,nameZH: self.nameZH,image: self.image)
+                    Sqlite.newAnime(nameJA: self.nameJA,nameZH: self.nameZH,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
