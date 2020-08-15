@@ -16,12 +16,14 @@ extension Preferences.PaneIdentifier {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    var lang : String = ""
+    
     var window: NSWindow!
     //view menu item declaration
     @IBOutlet weak var darkModeItem: NSMenuItem!
     @IBOutlet weak var lightModeItem: NSMenuItem!
     @IBOutlet weak var systemModeItem: NSMenuItem!
-
+    
     lazy var preferences: [PreferencePane] = [
         PreferencesPreferenceViewController()
     ]
@@ -44,8 +46,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.appearance = nil
     }
     
+    @IBAction func setLanguageZhCN(_ sender: Any) {
+        lang = "zh-CN"
+        NotificationCenter.default.post(name: .setLanguageZhCN, object: nil)
+    }
+    @IBAction func setLanguageZhTW(_ sender: Any) {
+        lang = "zh-TW"
+        NotificationCenter.default.post(name: .setLanguageZhTW, object: nil)
+    }
+    @IBAction func setLanguageEn(_ sender: Any) {
+        lang = "en"
+        NotificationCenter.default.post(name: .setLanguageEn, object: nil)
+    }
+    
     @IBAction func createTables(_ sender: Any) {
-        Sqlite.createTables()
+        Sqlite.createTables(language: "zh-CN")
+        Sqlite.createTables(language: "zh-TW")
+        Sqlite.createTables(language: "en")
     }
     /*@IBAction func setPreferences(_ sender: Any) {
         preferencesWindowController.show()
@@ -62,11 +79,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
             let result = dialog.url
             if (result != nil) {
-                Generator.generate(directory: result!)
-                Generator.generateLinks(directory: result!)
-                Generator.generateBooks(directory: result!)
-                Generator.generateAnimes(directory: result!)
-                Generator.generateVideos(directory: result!)
+                Generator.generate(directory: result!,language: lang)
+                Generator.generateLinks(directory: result!,language: lang)
+                Generator.generateBooks(directory: result!,language: lang)
+                Generator.generateAnimes(directory: result!,language: lang)
+                Generator.generateVideos(directory: result!,language: lang)
                 print(result!.path)
             }
         } else {
@@ -77,6 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var viewNavi = ViewNavigation()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
 
@@ -96,3 +114,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
+extension Notification.Name {
+    static let setLanguageEn = Notification.Name("en")
+    static let setLanguageZhTW = Notification.Name("zh-TW")
+    static let setLanguageZhCN = Notification.Name("zh-CN")
+}

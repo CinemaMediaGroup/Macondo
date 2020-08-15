@@ -69,6 +69,32 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
+                                        <menuItem title="Language" id="gzq-Th-swL">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Language" id="OtZ-Zp-VWe">
+                                                <items>
+                                                    <menuItem title="zh-CN" id="wF5-Dd-lNX">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="setLanguageZhCN:" target="Voe-Tx-rLC" id="Uzx-jq-0mc"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="zh-TW" id="MLM-gD-5HS">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="setLanguageZhTW:" target="Voe-Tx-rLC" id="nv5-Iu-0t2"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="en" id="zCl-yb-Zbc">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="setLanguageEn:" target="Voe-Tx-rLC" id="4wC-Bm-WK6"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="2dh-t1-ySb"/>
                                         <menuItem title="Export" id="jEr-bb-8Tt">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -655,10 +681,13 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Macondo" customModuleProvider="target">
                     <connections>
+                        <outlet property="enItem" destination="OtZ-Zp-VWe" id="KlP-Kf-xnA"/>
                         <outlet property="lightModeItem" destination="E7P-4F-7Sh" id="Wrj-DZ-Buu"/>
                         <outlet property="lightModelSelected" destination="E7P-4F-7Sh" id="ZZ0-H5-gjl"/>
                         <outlet property="systemModeItem" destination="DjR-9t-eav" id="Bld-FR-LoL"/>
                         <outlet property="systemModelSelected" destination="DjR-9t-eav" id="M4B-MM-NIs"/>
+                        <outlet property="zhCNItem" destination="OtZ-Zp-VWe" id="hr4-yQ-Awu"/>
+                        <outlet property="zhTWItem" destination="OtZ-Zp-VWe" id="DpJ-TC-0Bh"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>

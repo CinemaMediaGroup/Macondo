@@ -20,7 +20,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
         
             //postDatas table
             let pd = Table("postDatas")
@@ -195,7 +195,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -242,7 +242,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -286,7 +286,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -337,7 +337,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -385,7 +385,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -433,7 +433,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -482,7 +482,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")
@@ -525,7 +525,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -561,7 +561,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -598,7 +598,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -631,7 +631,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -668,7 +668,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -704,7 +704,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -741,7 +741,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //metaDatas table
             let md = Table("metaDatas")
@@ -774,7 +774,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //linksDatas table
             let ld = Table("linksDatas")
@@ -815,7 +815,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //linksDatas table
             let ld = Table("linksDatas")
@@ -855,7 +855,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //linksDatas table
             let ld = Table("linksDatas")
@@ -894,7 +894,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //linksDatas table
             let ld = Table("linksDatas")
@@ -931,7 +931,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //bookDatas table
             let bd = Table("bookDatas")
@@ -969,7 +969,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //bookDatas table
             let bd = Table("bookDatas")
@@ -1005,7 +1005,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //bookDatas table
             let bd = Table("bookDatas")
@@ -1041,7 +1041,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //bookDatas table
             let bd = Table("bookDatas")
@@ -1078,7 +1078,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //animeDatas table
             let ad = Table("animeDatas")
@@ -1114,7 +1114,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //animeDatas table
             let ad = Table("animeDatas")
@@ -1148,7 +1148,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //animeDatas table
             let ad = Table("animeDatas")
@@ -1182,7 +1182,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //animeDatas table
             let ad = Table("animeDatas")
@@ -1217,7 +1217,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //VideoDatas table
             let vd = Table("videoDatas")
@@ -1253,7 +1253,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //VideoDatas table
             let vd = Table("videoDatas")
@@ -1287,7 +1287,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //VideoDatas table
             let vd = Table("videoDatas")
@@ -1321,7 +1321,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //VideoDatas table
             let vd = Table("VideoDatas")
@@ -1354,7 +1354,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //settingDatas table
             let sd = Table("settingDatas")
@@ -1384,7 +1384,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //settingDatas table
             let sd = Table("settingDatas")
@@ -1415,7 +1415,7 @@ struct Sqlite {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //open database
-            database = try Connection("\(path)/ + blog." + language + ".db")
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             //postDatas table
             let pd = Table("postDatas")

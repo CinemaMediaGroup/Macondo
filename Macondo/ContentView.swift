@@ -17,6 +17,11 @@ class ViewNavigation: ObservableObject {
 struct ContentView: View {
     @EnvironmentObject var showView : ViewNavigation
     
+    var setLanguageEnSelected = NotificationCenter.default.publisher(for: .setLanguageEn)
+    var setLanguageZhCNSelected = NotificationCenter.default.publisher(for: .setLanguageZhCN)
+    var setLanguageZhTWSelected = NotificationCenter.default.publisher(for: .setLanguageZhTW)
+    
+    
     /*
         0 -> MainView
         1 -> NewPostView
@@ -45,37 +50,52 @@ struct ContentView: View {
             }else if self.showView.showView == 1{
                 NewPostView()
             }else if self.showView.showView == 2{
-                ManagePostView()
+                ManagePostView(language: self.showView.lang)
             }else if self.showView.showView == 3{
-                NewPageView()
+                //NewPageView()
             }else if self.showView.showView == 4{
-                ManagePageView()
+                //ManagePageView()
             }else if self.showView.showView == 5{
-                NewCategoryView()
+                //NewCategoryView()
             }else if self.showView.showView == 6{
-                ManageCategoryView()
+                //ManageCategoryView()
             }else if self.showView.showView == 7{
-                NewTagView()
+                //NewTagView()
             }else if self.showView.showView == 8{
-                ManageTagView()
+                //ManageTagView()
             }else if self.showView.showView == 9{
                 NewLinkView()
             }else if self.showView.showView == 10{
-                ManageLinkView()
+                ManageLinkView(language: self.showView.lang)
             }else if self.showView.showView == 11{
                 NewBookView()
             }else if self.showView.showView == 12{
-                ManageBookView()
+                ManageBookView(language: self.showView.lang)
             }else if self.showView.showView == 13{
                 NewAnimeView()
             }else if self.showView.showView == 14{
-                ManageAnimeView()
+                ManageAnimeView(language: self.showView.lang)
             }else if self.showView.showView == 15{
                 NewVideoView()
             }else if self.showView.showView == 16{
-                ManageVideoView()
+                ManageVideoView(language: self.showView.lang)
             }else if self.showView.showView == 17{
                 PreferencesView()
+            }
+        }
+        .onReceive(setLanguageEnSelected){ _ in
+            DispatchQueue.main.async {
+                self.showView.lang = "en"
+            }
+        }
+        .onReceive(setLanguageZhCNSelected){ _ in
+            DispatchQueue.main.async {
+                self.showView.lang = "zh-CN"
+            }
+        }
+        .onReceive(setLanguageZhTWSelected){ _ in
+            DispatchQueue.main.async {
+                self.showView.lang = "zh-TW"
             }
         }
     }
@@ -102,7 +122,7 @@ struct MainView : View{
                     .font(.headline)
                     .fontWeight(.thin)
                     .foregroundColor(Color.gray)
-                Text("Current language: " + lang.lang)
+                Text("Current language: " + self.showView.lang)
                     .font(.headline)
                     .fontWeight(.thin)
                     .foregroundColor(Color.gray)
@@ -350,17 +370,17 @@ struct NewPostView : View{
 struct EditPostView : View{
     @EnvironmentObject var showView : ViewNavigation
     
-    @State var title : String
-    @State var text : String
-    @State var image : String
-    @State var summary : String
-    @State var category : String
-    @State var tag : String
+    @State var title : String = ""
+    @State var text : String = ""
+    @State var image : String = ""
+    @State var summary : String = ""
+    @State var category : String = ""
+    @State var tag : String = ""
     
     var cid : Int = 0;
     
-    init(cid : Int){
-        let pd : PostData = Sqlite.getPostData(cidd: cid,language: self.showView.lang)
+    init(cid : Int,language : String){
+        let pd : PostData = Sqlite.getPostData(cidd: cid,language: language)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
         _text = State(initialValue: pd.getText())
@@ -425,12 +445,20 @@ struct EditPostView : View{
 struct ManagePostView : View{
     @EnvironmentObject var showView : ViewNavigation
     
-    var pds = Sqlite.getPostList(language: self.showView.lang)
+    var pds : [PostData] = [PostData]()
+    var lang : String
+    
+    init(language : String) {
+        pds = Sqlite.getPostList(language: language)
+        lang = language
+    }
+    
     var body: some View {
+        
         NavigationView{
             HStack{
                 List(pds, id: \.self) { (pd)  in
-                    NavigationLink(destination: EditPostView(cid: pd.getCid())){
+                    NavigationLink(destination: EditPostView(cid: pd.getCid(),language: self.lang)){
                         Text(pd.getTitle())
                     }
                 }
@@ -494,7 +522,12 @@ struct NewPageView : View{
 struct ManagePageView : View{
     @EnvironmentObject var showView : ViewNavigation
 
-    var pds = Sqlite.getPageList(language: self.showView.lang)
+    var pds : [PostData] = [PostData]()
+    
+    init(){
+        pds = Sqlite.getPageList(language: self.showView.lang)
+    }
+    
     var body: some View {
         NavigationView{
             HStack{
@@ -512,18 +545,20 @@ struct ManagePageView : View{
 struct EditPageView : View{
     @EnvironmentObject var showView : ViewNavigation
     
-    @State var title : String
-    @State var text : String
-    @State var image : String
-    @State var summary : String
-    @State var category : String
-    @State var tag : String
+    @State var title : String = ""
+    @State var text : String = ""
+    @State var image : String = ""
+    @State var summary : String = ""
+    @State var category : String = ""
+    @State var tag : String = ""
     
     var cid : Int = 0;
+    var pd : PostData = PostData()
     
     init(cid : Int){
-        let pd : PostData = Sqlite.getPostData(cidd: cid,language: self.showView.lang)
         self.cid = cid
+        pd = Sqlite.getPostData(cidd: cid,language: self.showView.lang)
+        
         _title = State(initialValue: pd.getTitle())
         _text = State(initialValue: pd.getText())
         _image = State(initialValue: pd.getThumbUrl())
@@ -604,7 +639,12 @@ struct NewCategoryView : View{
 struct ManageCategoryView : View{
     @EnvironmentObject var showView : ViewNavigation
     
-    var mds = Sqlite.getCategoryList(language: self.showView.lang)
+    var mds : [MetaData] = [MetaData]()
+    
+    init(){
+        mds = Sqlite.getCategoryList(language: self.showView.lang)
+    }
+    
     var body: some View {
         NavigationView{
             HStack{
@@ -622,7 +662,7 @@ struct ManageCategoryView : View{
 struct EditCategoryView : View{
     @EnvironmentObject var showView : ViewNavigation
     
-    @State var text : String
+    @State var text : String = ""
     
     var mid : Int = 0;
     
@@ -686,7 +726,12 @@ struct NewTagView : View{
 struct ManageTagView : View{
     @EnvironmentObject var showView : ViewNavigation
     
-    var mds = Sqlite.getTagList(language: self.showView.lang)
+    var mds : [MetaData] = [MetaData]()
+    
+    init(){
+        mds = Sqlite.getCategoryList(language: self.showView.lang)
+    }
+    
     var body: some View {
         NavigationView{
             HStack{
@@ -704,7 +749,7 @@ struct ManageTagView : View{
 struct EditTagView : View{
     @EnvironmentObject var showView : ViewNavigation
     
-    @State var text : String
+    @State var text : String = ""
     
     var mid : Int = 0;
     
@@ -727,7 +772,7 @@ struct EditTagView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.editTag(midd: self.mid,name: self.text,language: self.showView.showView)
+                    Sqlite.editTag(midd: self.mid,name: self.text,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -775,14 +820,19 @@ struct NewLinkView : View{
 }
 
 struct ManageLinkView : View{
-    @EnvironmentObject var showView : ViewNavigation
+    var lds : [LinksData] = [LinksData]()
+    var lang : String
     
-    var lds = Sqlite.getLinkList(language: self.showView.lang)
+    init(language : String){
+        lds = Sqlite.getLinkList(language: language)
+        lang = language
+    }
+    
     var body: some View {
         NavigationView{
             HStack{
                 List(lds, id: \.self) { (ld)  in
-                    NavigationLink(destination: EditLinkView(lid: ld.getLid())){
+                    NavigationLink(destination: EditLinkView(lid: ld.getLid(),language: self.lang)){
                         Text(ld.getName())
                     }
                 }
@@ -802,8 +852,8 @@ struct EditLinkView : View{
     
     var lid : Int = 0;
     
-    init(lid : Int){
-        let ld : LinksData = Sqlite.getLinkData(lidd: lid,language: self.showView.lang)
+    init(lid : Int,language : String){
+        let ld : LinksData = Sqlite.getLinkData(lidd: lid,language: language)
         self.lid = lid
         _name = State(initialValue: ld.getName())
         _url = State(initialValue: ld.getUrl())
@@ -874,14 +924,19 @@ struct NewBookView : View{
 }
 
 struct ManageBookView : View{
-    @EnvironmentObject var showView : ViewNavigation
+    var bds : [BookData] = [BookData]()
+    var lang : String
     
-    var bds = Sqlite.getBookList(language: self.showView.lang)
+    init(language : String){
+        bds = Sqlite.getBookList(language: language)
+        lang = language
+    }
+
     var body: some View {
         NavigationView{
             HStack{
                 List(bds, id: \.self) { (bd)  in
-                    NavigationLink(destination: EditBookView(bid: bd.getBid())){
+                    NavigationLink(destination: EditBookView(bid: bd.getBid(),language: self.lang)){
                         Text(bd.getName())
                     }
                 }
@@ -899,10 +954,10 @@ struct EditBookView : View{
     @State var lsbn : String = ""
     @State var image : String = ""
     
-    var bid : Int = 0;
+    var bid : Int = 0
     
-    init(bid : Int){
-        let bd : BookData = Sqlite.getBookData(bidd: bid,language: self.showView.lang)
+    init(bid : Int,language : String){
+        let bd : BookData = Sqlite.getBookData(bidd: bid,language: language)
         self.bid = bid
         _name = State(initialValue: bd.getName())
         _isbn = State(initialValue: bd.getISBN())
@@ -971,12 +1026,19 @@ struct NewAnimeView : View{
 }
 
 struct ManageAnimeView : View{
-    var ads = Sqlite.getAnimeList()
+    var ads : [AnimeData] = [AnimeData]()
+    var lang : String
+    
+    init(language : String){
+        ads = Sqlite.getAnimeList(language: language)
+        lang = language
+    }
+    
     var body: some View {
         NavigationView{
             HStack{
                 List(ads, id: \.self) { (ad)  in
-                    NavigationLink(destination: EditAnimeView(aid: ad.getAid())){
+                    NavigationLink(destination: EditAnimeView(aid: ad.getAid(),language: self.lang)){
                         Text(ad.getNameZH())
                     }
                 }
@@ -993,10 +1055,10 @@ struct EditAnimeView : View{
     @State var nameZH : String = ""
     @State var image : String = ""
     
-    var aid : Int = 0;
+    var aid : Int = 0
     
-    init(aid : Int){
-        let ad : AnimeData = Sqlite.getAnimeData(aidd: aid)
+    init(aid : Int,language : String){
+        let ad : AnimeData = Sqlite.getAnimeData(aidd: aid,language: language)
         self.aid = aid
         _nameJA = State(initialValue: ad.getNameJA())
         _nameZH = State(initialValue: ad.getNameZH())
@@ -1018,7 +1080,7 @@ struct EditAnimeView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.editAnime(aidd: self.aid,nameJA: self.nameJA,nameZH: self.nameZH,image: self.image)
+                    Sqlite.editAnime(aidd: self.aid,nameJA: self.nameJA,nameZH: self.nameZH,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -1051,7 +1113,7 @@ struct NewVideoView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.newVideo(nameJA: self.nameJA,nameZH: self.nameZH,image: self.image)
+                    Sqlite.newVideo(nameJA: self.nameJA,nameZH: self.nameZH,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Publish")
@@ -1063,12 +1125,21 @@ struct NewVideoView : View{
 }
 
 struct ManageVideoView : View{
-    var vds = Sqlite.getVideoList()
+    @EnvironmentObject var showView : ViewNavigation
+    
+    var vds : [VideoData] = [VideoData]()
+    var lang : String
+    
+    init(language : String){
+        vds = Sqlite.getVideoList(language: language)
+        lang = language
+    }
+    
     var body: some View {
         NavigationView{
             HStack{
                 List(vds, id: \.self) { (vd)  in
-                    NavigationLink(destination: EditVideoView(vid: vd.getVid())){
+                    NavigationLink(destination: EditVideoView(vid: vd.getVid(),language: self.lang)){
                         Text(vd.getNameZH())
                     }
                 }
@@ -1087,8 +1158,8 @@ struct EditVideoView : View{
     
     var vid : Int = 0;
     
-    init(vid : Int){
-        let vd : VideoData = Sqlite.getVideoData(vidd: vid)
+    init(vid : Int,language : String){
+        let vd : VideoData = Sqlite.getVideoData(vidd: vid,language: language)
         self.vid = vid
         _nameJA = State(initialValue: vd.getNameJA())
         _nameZH = State(initialValue: vd.getNameZH())
@@ -1110,7 +1181,7 @@ struct EditVideoView : View{
                 }
                 
                 Button(action:{
-                    Sqlite.editVideo(vidd: self.vid,nameJA: self.nameJA,nameZH: self.nameZH,image: self.image)
+                    Sqlite.editVideo(vidd: self.vid,nameJA: self.nameJA,nameZH: self.nameZH,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
                     Text("Update")
@@ -1145,7 +1216,7 @@ struct PreferencesView: View {
     @State var description : String = ""
     private let contentWidth: Double = 450.0
 
-    init(){
+    /*init(){
         _siteTitle = State(initialValue: Sqlite.getSetting(sidd: 1))
         _siteURL = State(initialValue: Sqlite.getSetting(sidd: 2))
         _topPosts = State(initialValue: Sqlite.getSetting(sidd: 3))
@@ -1154,7 +1225,7 @@ struct PreferencesView: View {
         _icon = State(initialValue: Sqlite.getSetting(sidd: 6))
         _avatar = State(initialValue: Sqlite.getSetting(sidd: 7))
         _description = State(initialValue: Sqlite.getSetting(sidd: 8))
-    }
+    }*/
     
     var body: some View {
         Preferences.Container(contentWidth: contentWidth) {
@@ -1182,7 +1253,7 @@ struct PreferencesView: View {
             Preferences.Section(title: "Description:") {
                 TextField("", text: self.$description)
             }
-            Preferences.Section(title: "") {
+            /*Preferences.Section(title: "") {
                 Button(action:{
                     Sqlite.editSetting(sidd: 1,field: self.siteTitle)
                     Sqlite.editSetting(sidd: 2, field: self.siteURL)
@@ -1195,7 +1266,7 @@ struct PreferencesView: View {
                 }){
                     Text("Save")
                 }
-            }
+            }*/
         }
         .padding()
     }

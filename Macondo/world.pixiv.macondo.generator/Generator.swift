@@ -28,8 +28,8 @@ struct Generator{
         return frontMatter + post.getText()
     }
     
-    static func generate(directory : URL){
-        let posts = Sqlite.getPostList()
+    static func generate(directory : URL,language : String){
+        let posts = Sqlite.getPostList(language: language)
         let postDir = directory.appendingPathComponent("_posts")
         for i in posts{
             let delta = generateMarkdownFile(post: i)
@@ -52,8 +52,8 @@ struct Generator{
         """
     }
     
-    static func generateLinks(directory : URL){
-        let links = Sqlite.getLinkList()
+    static func generateLinks(directory : URL,language : String){
+        let links = Sqlite.getLinkList(language: language)
         let linkDir = directory.appendingPathComponent("friends")
         var linkContents = ""
         for i in links{
@@ -83,8 +83,8 @@ struct Generator{
         return "<div class=\"bgm-item\"><div class=\"bgm-item-thumb\" style=\"background-image:url(\(book.getImage())\"></div><div class=\"bgm-item-info\"><span class=\"bgm-item-title main\">\(book.getName())</span><span class=\"bgm-item-title\">\(book.getISBN())</span><span class=\"bgm-item-title\">\(book.getLSBN())</span></div></div>"
     }
     
-    static func generateBooks(directory : URL){
-        let books = Sqlite.getBookList()
+    static func generateBooks(directory : URL,language : String){
+        let books = Sqlite.getBookList(language: language)
         let bookDir = directory.appendingPathComponent("moon.md")
         var bookContents = ""
         for i in books{
@@ -109,8 +109,8 @@ struct Generator{
         return "<div class=\"bgm-item\"><div class=\"bgm-item-thumb\" style=\"background-image:url(\(anime.getImage())\"></div><div class=\"bgm-item-info\"><span class=\"bgm-item-title main\">\(anime.getNameJA())</span><span class=\"bgm-item-title\">\(anime.getNameZH())</span></div></div>"
     }
     
-    static func generateAnimes(directory : URL){
-        let animes = Sqlite.getAnimeList()
+    static func generateAnimes(directory : URL,language : String){
+        let animes = Sqlite.getAnimeList(language: language)
         let animeDir = directory.appendingPathComponent("anime.md")
         var animeContents = ""
         for i in animes{
@@ -135,8 +135,8 @@ struct Generator{
         return "<div class=\"bgm-item\"><div class=\"bgm-item-thumb\" style=\"background-image:url(\(video.getImage())\"></div><div class=\"bgm-item-info\"><span class=\"bgm-item-title main\">\(video.getNameJA())</span><span class=\"bgm-item-title\">\(video.getNameZH())</span></div></div>"
     }
     
-    static func generateVideos(directory : URL){
-        let videos = Sqlite.getVideoList()
+    static func generateVideos(directory : URL,language : String){
+        let videos = Sqlite.getVideoList(language: language)
         let videoDir = directory.appendingPathComponent("film.md")
         var videoContents = ""
         for i in videos{
