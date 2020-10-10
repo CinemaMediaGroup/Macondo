@@ -2,8 +2,7 @@
 //  MacondoUITests.swift
 //  MacondoUITests
 //
-//  Created by Louis Joe Shen on 2020/7/12.
-//  Copyright © 2020 Louise Joe Shen. All rights reserved.
+//  Created by Louis Joe Shen on 2020/10/7.
 //
 
 import XCTest
@@ -35,7 +34,7 @@ class MacondoUITests: XCTestCase {
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
+            measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
         }

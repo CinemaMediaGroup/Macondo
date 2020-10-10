@@ -2,8 +2,7 @@
 //  MacondoTests.swift
 //  MacondoTests
 //
-//  Created by Louis Joe Shen on 2020/7/12.
-//  Copyright © 2020 Louise Joe Shen. All rights reserved.
+//  Created by Louis Joe Shen on 2020/10/7.
 //
 
 import XCTest

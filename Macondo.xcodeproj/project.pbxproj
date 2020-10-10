@@ -7,97 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B40C025A24DCF808006F5725 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C025924DCF808006F5725 /* Generator.swift */; };
-		B418FBC424CE815800BAC9D6 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418FBC324CE815800BAC9D6 /* Node.swift */; };
-		B418FBC624CE84C700BAC9D6 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418FBC524CE84C700BAC9D6 /* Content.swift */; };
-		B41B2EA824CD2AB500AB47E2 /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = B41B2EA724CD2AB500AB47E2 /* Preferences */; };
-		B4246B5C24E0D12B00414A0F /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B4246B5B24E0D12B00414A0F /* SQLite */; };
-		B42F0AB224C540A3009BF79C /* Sqlite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F0AB124C540A3009BF79C /* Sqlite.swift */; };
-		B49339DF24BB0D940084C73E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49339DE24BB0D940084C73E /* AppDelegate.swift */; };
-		B49339E124BB0D940084C73E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49339E024BB0D940084C73E /* ContentView.swift */; };
-		B49339E324BB0D960084C73E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B49339E224BB0D960084C73E /* Assets.xcassets */; };
-		B49339E624BB0D960084C73E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B49339E524BB0D960084C73E /* Preview Assets.xcassets */; };
-		B49339F524BB0D960084C73E /* MacondoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49339F424BB0D960084C73E /* MacondoTests.swift */; };
-		B4933A0024BB0D960084C73E /* MacondoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49339FF24BB0D960084C73E /* MacondoUITests.swift */; };
-		B4E46DEA24C45153004E6299 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E46DE924C45153004E6299 /* Data.swift */; };
-		B4E4920D24C7C956008F6902 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4E4920C24C7C956008F6902 /* Main.storyboard */; };
-		B4E4921224C7CF41008F6902 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4921124C7CF41008F6902 /* Base64.swift */; };
-		B4E4921F24C7DCE6008F6902 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4921E24C7DCE6008F6902 /* Time.swift */; };
+		B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271982252DE97500B81CD7 /* MacondoApp.swift */; };
+		B4271985252DE97500B81CD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271984252DE97500B81CD7 /* ContentView.swift */; };
+		B4271987252DE97700B81CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4271986252DE97700B81CD7 /* Assets.xcassets */; };
+		B427198A252DE97700B81CD7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4271989252DE97700B81CD7 /* Preview Assets.xcassets */; };
+		B4271996252DE97700B81CD7 /* MacondoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271995252DE97700B81CD7 /* MacondoTests.swift */; };
+		B42719A1252DE97700B81CD7 /* MacondoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42719A0252DE97700B81CD7 /* MacondoUITests.swift */; };
+		B42719B9252DEADF00B81CD7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B42719B8252DEADF00B81CD7 /* SQLite */; };
+		B42719C1252DEF2900B81CD7 /* Sqlite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42719C0252DEF2900B81CD7 /* Sqlite.swift */; };
+		B42719CA252DEF6A00B81CD7 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42719C9252DEF6A00B81CD7 /* Base64.swift */; };
+		B42719CF252DEFBD00B81CD7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42719CE252DEFBD00B81CD7 /* Data.swift */; };
+		B42719D4252DEFDD00B81CD7 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42719D3252DEFDD00B81CD7 /* Time.swift */; };
+		B4BCC6A9252EE55100F8FA20 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCC6A8252EE55100F8FA20 /* Generator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B49339F124BB0D960084C73E /* PBXContainerItemProxy */ = {
+		B4271992252DE97700B81CD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B49339D324BB0D940084C73E /* Project object */;
+			containerPortal = B4271977252DE97500B81CD7 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B49339DA24BB0D940084C73E;
+			remoteGlobalIDString = B427197E252DE97500B81CD7;
 			remoteInfo = Macondo;
 		};
-		B49339FC24BB0D960084C73E /* PBXContainerItemProxy */ = {
+		B427199D252DE97700B81CD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B49339D324BB0D940084C73E /* Project object */;
+			containerPortal = B4271977252DE97500B81CD7 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B49339DA24BB0D940084C73E;
+			remoteGlobalIDString = B427197E252DE97500B81CD7;
 			remoteInfo = Macondo;
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		B43DD4DB24C4648000B9FA21 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		B40C025924DCF808006F5725 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
-		B418FBC324CE815800BAC9D6 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		B418FBC524CE84C700BAC9D6 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
-		B42F0AB124C540A3009BF79C /* Sqlite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite.swift; sourceTree = "<group>"; };
-		B49339DB24BB0D940084C73E /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B49339DE24BB0D940084C73E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B49339E024BB0D940084C73E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B49339E224BB0D960084C73E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B49339E524BB0D960084C73E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B49339EA24BB0D960084C73E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B49339EB24BB0D960084C73E /* Macondo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macondo.entitlements; sourceTree = "<group>"; };
-		B49339F024BB0D960084C73E /* MacondoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacondoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B49339F424BB0D960084C73E /* MacondoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoTests.swift; sourceTree = "<group>"; };
-		B49339F624BB0D960084C73E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B49339FB24BB0D960084C73E /* MacondoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacondoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B49339FF24BB0D960084C73E /* MacondoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoUITests.swift; sourceTree = "<group>"; };
-		B4933A0124BB0D960084C73E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4D7EEFF24C54DE00046D7D9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B4E46DE924C45153004E6299 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		B4E4920C24C7C956008F6902 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		B4E4921124C7CF41008F6902 /* Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
-		B4E4921E24C7DCE6008F6902 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		B427197F252DE97500B81CD7 /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4271982252DE97500B81CD7 /* MacondoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoApp.swift; sourceTree = "<group>"; };
+		B4271984252DE97500B81CD7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B4271986252DE97700B81CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B4271989252DE97700B81CD7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B427198B252DE97700B81CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B427198C252DE97700B81CD7 /* Macondo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macondo.entitlements; sourceTree = "<group>"; };
+		B4271991252DE97700B81CD7 /* MacondoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacondoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4271995252DE97700B81CD7 /* MacondoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoTests.swift; sourceTree = "<group>"; };
+		B4271997252DE97700B81CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B427199C252DE97700B81CD7 /* MacondoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacondoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B42719A0252DE97700B81CD7 /* MacondoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoUITests.swift; sourceTree = "<group>"; };
+		B42719A2252DE97700B81CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B42719C0252DEF2900B81CD7 /* Sqlite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite.swift; sourceTree = "<group>"; };
+		B42719C9252DEF6A00B81CD7 /* Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
+		B42719CE252DEFBD00B81CD7 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		B42719D3252DEFDD00B81CD7 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		B4BCC6A8252EE55100F8FA20 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B49339D824BB0D940084C73E /* Frameworks */ = {
+		B427197C252DE97500B81CD7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4246B5C24E0D12B00414A0F /* SQLite in Frameworks */,
-				B41B2EA824CD2AB500AB47E2 /* Preferences in Frameworks */,
+				B42719B9252DEADF00B81CD7 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B49339ED24BB0D960084C73E /* Frameworks */ = {
+		B427198E252DE97700B81CD7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B49339F824BB0D960084C73E /* Frameworks */ = {
+		B4271999252DE97700B81CD7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -107,141 +85,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B40BA74424CD9DB300857ACD /* world.pixiv.macondo.layout */ = {
+		B4271976252DE97500B81CD7 = {
 			isa = PBXGroup;
 			children = (
-				B418FBC324CE815800BAC9D6 /* Node.swift */,
-				B418FBC524CE84C700BAC9D6 /* Content.swift */,
-			);
-			path = world.pixiv.macondo.layout;
-			sourceTree = "<group>";
-		};
-		B40C025124DCF7E7006F5725 /* world.pixiv.macondo.generator */ = {
-			isa = PBXGroup;
-			children = (
-				B40C025924DCF808006F5725 /* Generator.swift */,
-			);
-			path = world.pixiv.macondo.generator;
-			sourceTree = "<group>";
-		};
-		B43DD4D824C4648000B9FA21 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B49339D224BB0D940084C73E = {
-			isa = PBXGroup;
-			children = (
-				B4D7EEFF24C54DE00046D7D9 /* README.md */,
-				B49339DD24BB0D940084C73E /* Macondo */,
-				B49339F324BB0D960084C73E /* MacondoTests */,
-				B49339FE24BB0D960084C73E /* MacondoUITests */,
-				B49339DC24BB0D940084C73E /* Products */,
-				B43DD4D824C4648000B9FA21 /* Frameworks */,
+				B4271981252DE97500B81CD7 /* Macondo */,
+				B4271994252DE97700B81CD7 /* MacondoTests */,
+				B427199F252DE97700B81CD7 /* MacondoUITests */,
+				B4271980252DE97500B81CD7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B49339DC24BB0D940084C73E /* Products */ = {
+		B4271980252DE97500B81CD7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B49339DB24BB0D940084C73E /* Macondo.app */,
-				B49339F024BB0D960084C73E /* MacondoTests.xctest */,
-				B49339FB24BB0D960084C73E /* MacondoUITests.xctest */,
+				B427197F252DE97500B81CD7 /* Macondo.app */,
+				B4271991252DE97700B81CD7 /* MacondoTests.xctest */,
+				B427199C252DE97700B81CD7 /* MacondoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B49339DD24BB0D940084C73E /* Macondo */ = {
+		B4271981252DE97500B81CD7 /* Macondo */ = {
 			isa = PBXGroup;
 			children = (
-				B40C025124DCF7E7006F5725 /* world.pixiv.macondo.generator */,
-				B40BA74424CD9DB300857ACD /* world.pixiv.macondo.layout */,
-				B4E4920F24C7CEEA008F6902 /* world.pixiv.macondo.util */,
-				B4E4920E24C7CEDA008F6902 /* world.pixiv.macondo.data */,
-				B49339DE24BB0D940084C73E /* AppDelegate.swift */,
-				B49339E024BB0D940084C73E /* ContentView.swift */,
-				B4E4920C24C7C956008F6902 /* Main.storyboard */,
-				B49339E224BB0D960084C73E /* Assets.xcassets */,
-				B49339EA24BB0D960084C73E /* Info.plist */,
-				B49339EB24BB0D960084C73E /* Macondo.entitlements */,
-				B49339E424BB0D960084C73E /* Preview Content */,
+				B42719C8252DEF5B00B81CD7 /* Util */,
+				B42719BF252DEF0800B81CD7 /* Data */,
+				B4271982252DE97500B81CD7 /* MacondoApp.swift */,
+				B4271984252DE97500B81CD7 /* ContentView.swift */,
+				B4271986252DE97700B81CD7 /* Assets.xcassets */,
+				B427198B252DE97700B81CD7 /* Info.plist */,
+				B427198C252DE97700B81CD7 /* Macondo.entitlements */,
+				B4271988252DE97700B81CD7 /* Preview Content */,
 			);
 			path = Macondo;
 			sourceTree = "<group>";
 		};
-		B49339E424BB0D960084C73E /* Preview Content */ = {
+		B4271988252DE97700B81CD7 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				B49339E524BB0D960084C73E /* Preview Assets.xcassets */,
+				B4271989252DE97700B81CD7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B49339F324BB0D960084C73E /* MacondoTests */ = {
+		B4271994252DE97700B81CD7 /* MacondoTests */ = {
 			isa = PBXGroup;
 			children = (
-				B49339F424BB0D960084C73E /* MacondoTests.swift */,
-				B49339F624BB0D960084C73E /* Info.plist */,
+				B4271995252DE97700B81CD7 /* MacondoTests.swift */,
+				B4271997252DE97700B81CD7 /* Info.plist */,
 			);
 			path = MacondoTests;
 			sourceTree = "<group>";
 		};
-		B49339FE24BB0D960084C73E /* MacondoUITests */ = {
+		B427199F252DE97700B81CD7 /* MacondoUITests */ = {
 			isa = PBXGroup;
 			children = (
-				B49339FF24BB0D960084C73E /* MacondoUITests.swift */,
-				B4933A0124BB0D960084C73E /* Info.plist */,
+				B42719A0252DE97700B81CD7 /* MacondoUITests.swift */,
+				B42719A2252DE97700B81CD7 /* Info.plist */,
 			);
 			path = MacondoUITests;
 			sourceTree = "<group>";
 		};
-		B4E4920E24C7CEDA008F6902 /* world.pixiv.macondo.data */ = {
+		B42719BF252DEF0800B81CD7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B42F0AB124C540A3009BF79C /* Sqlite.swift */,
-				B4E46DE924C45153004E6299 /* Data.swift */,
+				B42719C0252DEF2900B81CD7 /* Sqlite.swift */,
+				B42719CE252DEFBD00B81CD7 /* Data.swift */,
 			);
-			path = world.pixiv.macondo.data;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		B4E4920F24C7CEEA008F6902 /* world.pixiv.macondo.util */ = {
+		B42719C8252DEF5B00B81CD7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				B4E4921624C7DCCF008F6902 /* world.pixiv.macondo.time */,
-				B4E4921024C7CEF8008F6902 /* world.pixiv.macondo.base64 */,
+				B42719C9252DEF6A00B81CD7 /* Base64.swift */,
+				B42719D3252DEFDD00B81CD7 /* Time.swift */,
+				B4BCC6A8252EE55100F8FA20 /* Generator.swift */,
 			);
-			path = world.pixiv.macondo.util;
-			sourceTree = "<group>";
-		};
-		B4E4921024C7CEF8008F6902 /* world.pixiv.macondo.base64 */ = {
-			isa = PBXGroup;
-			children = (
-				B4E4921124C7CF41008F6902 /* Base64.swift */,
-			);
-			path = world.pixiv.macondo.base64;
-			sourceTree = "<group>";
-		};
-		B4E4921624C7DCCF008F6902 /* world.pixiv.macondo.time */ = {
-			isa = PBXGroup;
-			children = (
-				B4E4921E24C7DCE6008F6902 /* Time.swift */,
-			);
-			path = world.pixiv.macondo.time;
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B49339DA24BB0D940084C73E /* Macondo */ = {
+		B427197E252DE97500B81CD7 /* Macondo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4933A0424BB0D960084C73E /* Build configuration list for PBXNativeTarget "Macondo" */;
+			buildConfigurationList = B42719A5252DE97700B81CD7 /* Build configuration list for PBXNativeTarget "Macondo" */;
 			buildPhases = (
-				B49339D724BB0D940084C73E /* Sources */,
-				B49339D824BB0D940084C73E /* Frameworks */,
-				B49339D924BB0D940084C73E /* Resources */,
-				B43DD4DB24C4648000B9FA21 /* Embed Frameworks */,
+				B427197B252DE97500B81CD7 /* Sources */,
+				B427197C252DE97500B81CD7 /* Frameworks */,
+				B427197D252DE97500B81CD7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -249,73 +182,71 @@
 			);
 			name = Macondo;
 			packageProductDependencies = (
-				B41B2EA724CD2AB500AB47E2 /* Preferences */,
-				B4246B5B24E0D12B00414A0F /* SQLite */,
+				B42719B8252DEADF00B81CD7 /* SQLite */,
 			);
 			productName = Macondo;
-			productReference = B49339DB24BB0D940084C73E /* Macondo.app */;
+			productReference = B427197F252DE97500B81CD7 /* Macondo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B49339EF24BB0D960084C73E /* MacondoTests */ = {
+		B4271990252DE97700B81CD7 /* MacondoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4933A0724BB0D960084C73E /* Build configuration list for PBXNativeTarget "MacondoTests" */;
+			buildConfigurationList = B42719A8252DE97700B81CD7 /* Build configuration list for PBXNativeTarget "MacondoTests" */;
 			buildPhases = (
-				B49339EC24BB0D960084C73E /* Sources */,
-				B49339ED24BB0D960084C73E /* Frameworks */,
-				B49339EE24BB0D960084C73E /* Resources */,
+				B427198D252DE97700B81CD7 /* Sources */,
+				B427198E252DE97700B81CD7 /* Frameworks */,
+				B427198F252DE97700B81CD7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B49339F224BB0D960084C73E /* PBXTargetDependency */,
+				B4271993252DE97700B81CD7 /* PBXTargetDependency */,
 			);
 			name = MacondoTests;
 			productName = MacondoTests;
-			productReference = B49339F024BB0D960084C73E /* MacondoTests.xctest */;
+			productReference = B4271991252DE97700B81CD7 /* MacondoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B49339FA24BB0D960084C73E /* MacondoUITests */ = {
+		B427199B252DE97700B81CD7 /* MacondoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4933A0A24BB0D960084C73E /* Build configuration list for PBXNativeTarget "MacondoUITests" */;
+			buildConfigurationList = B42719AB252DE97700B81CD7 /* Build configuration list for PBXNativeTarget "MacondoUITests" */;
 			buildPhases = (
-				B49339F724BB0D960084C73E /* Sources */,
-				B49339F824BB0D960084C73E /* Frameworks */,
-				B49339F924BB0D960084C73E /* Resources */,
+				B4271998252DE97700B81CD7 /* Sources */,
+				B4271999252DE97700B81CD7 /* Frameworks */,
+				B427199A252DE97700B81CD7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B49339FD24BB0D960084C73E /* PBXTargetDependency */,
+				B427199E252DE97700B81CD7 /* PBXTargetDependency */,
 			);
 			name = MacondoUITests;
 			productName = MacondoUITests;
-			productReference = B49339FB24BB0D960084C73E /* MacondoUITests.xctest */;
+			productReference = B427199C252DE97700B81CD7 /* MacondoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B49339D324BB0D940084C73E /* Project object */ = {
+		B4271977252DE97500B81CD7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
-				ORGANIZATIONNAME = "Louise Joe Shen";
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
 				TargetAttributes = {
-					B49339DA24BB0D940084C73E = {
-						CreatedOnToolsVersion = 11.5;
+					B427197E252DE97500B81CD7 = {
+						CreatedOnToolsVersion = 12.2;
 					};
-					B49339EF24BB0D960084C73E = {
-						CreatedOnToolsVersion = 11.5;
-						TestTargetID = B49339DA24BB0D940084C73E;
+					B4271990252DE97700B81CD7 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B427197E252DE97500B81CD7;
 					};
-					B49339FA24BB0D960084C73E = {
-						CreatedOnToolsVersion = 11.5;
-						TestTargetID = B49339DA24BB0D940084C73E;
+					B427199B252DE97700B81CD7 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B427197E252DE97500B81CD7;
 					};
 				};
 			};
-			buildConfigurationList = B49339D624BB0D940084C73E /* Build configuration list for PBXProject "Macondo" */;
+			buildConfigurationList = B427197A252DE97500B81CD7 /* Build configuration list for PBXProject "Macondo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -323,41 +254,39 @@
 				en,
 				Base,
 			);
-			mainGroup = B49339D224BB0D940084C73E;
+			mainGroup = B4271976252DE97500B81CD7;
 			packageReferences = (
-				B41B2EA624CD2AB500AB47E2 /* XCRemoteSwiftPackageReference "Preferences" */,
-				B4246B5A24E0D12B00414A0F /* XCRemoteSwiftPackageReference "SQLite" */,
+				B42719B7252DEADF00B81CD7 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
-			productRefGroup = B49339DC24BB0D940084C73E /* Products */;
+			productRefGroup = B4271980252DE97500B81CD7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B49339DA24BB0D940084C73E /* Macondo */,
-				B49339EF24BB0D960084C73E /* MacondoTests */,
-				B49339FA24BB0D960084C73E /* MacondoUITests */,
+				B427197E252DE97500B81CD7 /* Macondo */,
+				B4271990252DE97700B81CD7 /* MacondoTests */,
+				B427199B252DE97700B81CD7 /* MacondoUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B49339D924BB0D940084C73E /* Resources */ = {
+		B427197D252DE97500B81CD7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4E4920D24C7C956008F6902 /* Main.storyboard in Resources */,
-				B49339E624BB0D960084C73E /* Preview Assets.xcassets in Resources */,
-				B49339E324BB0D960084C73E /* Assets.xcassets in Resources */,
+				B427198A252DE97700B81CD7 /* Preview Assets.xcassets in Resources */,
+				B4271987252DE97700B81CD7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B49339EE24BB0D960084C73E /* Resources */ = {
+		B427198F252DE97700B81CD7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B49339F924BB0D960084C73E /* Resources */ = {
+		B427199A252DE97700B81CD7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -367,55 +296,53 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B49339D724BB0D940084C73E /* Sources */ = {
+		B427197B252DE97500B81CD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4E4921F24C7DCE6008F6902 /* Time.swift in Sources */,
-				B49339E124BB0D940084C73E /* ContentView.swift in Sources */,
-				B42F0AB224C540A3009BF79C /* Sqlite.swift in Sources */,
-				B418FBC624CE84C700BAC9D6 /* Content.swift in Sources */,
-				B4E46DEA24C45153004E6299 /* Data.swift in Sources */,
-				B4E4921224C7CF41008F6902 /* Base64.swift in Sources */,
-				B40C025A24DCF808006F5725 /* Generator.swift in Sources */,
-				B49339DF24BB0D940084C73E /* AppDelegate.swift in Sources */,
-				B418FBC424CE815800BAC9D6 /* Node.swift in Sources */,
+				B42719D4252DEFDD00B81CD7 /* Time.swift in Sources */,
+				B42719CA252DEF6A00B81CD7 /* Base64.swift in Sources */,
+				B42719CF252DEFBD00B81CD7 /* Data.swift in Sources */,
+				B4271985252DE97500B81CD7 /* ContentView.swift in Sources */,
+				B4BCC6A9252EE55100F8FA20 /* Generator.swift in Sources */,
+				B42719C1252DEF2900B81CD7 /* Sqlite.swift in Sources */,
+				B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B49339EC24BB0D960084C73E /* Sources */ = {
+		B427198D252DE97700B81CD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B49339F524BB0D960084C73E /* MacondoTests.swift in Sources */,
+				B4271996252DE97700B81CD7 /* MacondoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B49339F724BB0D960084C73E /* Sources */ = {
+		B4271998252DE97700B81CD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4933A0024BB0D960084C73E /* MacondoUITests.swift in Sources */,
+				B42719A1252DE97700B81CD7 /* MacondoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B49339F224BB0D960084C73E /* PBXTargetDependency */ = {
+		B4271993252DE97700B81CD7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B49339DA24BB0D940084C73E /* Macondo */;
-			targetProxy = B49339F124BB0D960084C73E /* PBXContainerItemProxy */;
+			target = B427197E252DE97500B81CD7 /* Macondo */;
+			targetProxy = B4271992252DE97700B81CD7 /* PBXContainerItemProxy */;
 		};
-		B49339FD24BB0D960084C73E /* PBXTargetDependency */ = {
+		B427199E252DE97700B81CD7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B49339DA24BB0D940084C73E /* Macondo */;
-			targetProxy = B49339FC24BB0D960084C73E /* PBXContainerItemProxy */;
+			target = B427197E252DE97500B81CD7 /* Macondo */;
+			targetProxy = B427199D252DE97700B81CD7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		B4933A0224BB0D960084C73E /* Debug */ = {
+		B42719A3252DE97700B81CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -441,6 +368,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -465,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -475,7 +403,7 @@
 			};
 			name = Debug;
 		};
-		B4933A0324BB0D960084C73E /* Release */ = {
+		B42719A4252DE97700B81CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -501,6 +429,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -519,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -528,128 +457,134 @@
 			};
 			name = Release;
 		};
-		B4933A0524BB0D960084C73E /* Debug */ = {
+		B42719A6252DE97700B81CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Macondo/Macondo.entitlements;
-				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Macondo/Preview Content\"";
+				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Macondo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = world.pixiv.world.Macondo;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.Macondo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		B4933A0624BB0D960084C73E /* Release */ = {
+		B42719A7252DE97700B81CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Macondo/Macondo.entitlements;
-				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Macondo/Preview Content\"";
+				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Macondo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = world.pixiv.world.Macondo;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.Macondo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		B4933A0824BB0D960084C73E /* Debug */ = {
+		B42719A9252DE97700B81CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
 				INFOPLIST_FILE = MacondoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = world.pixiv.world.MacondoTests;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.world.MacondoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Macondo.app/Contents/MacOS/Macondo";
 			};
 			name = Debug;
 		};
-		B4933A0924BB0D960084C73E /* Release */ = {
+		B42719AA252DE97700B81CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
 				INFOPLIST_FILE = MacondoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = world.pixiv.world.MacondoTests;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.world.MacondoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Macondo.app/Contents/MacOS/Macondo";
 			};
 			name = Release;
 		};
-		B4933A0B24BB0D960084C73E /* Debug */ = {
+		B42719AC252DE97700B81CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
 				INFOPLIST_FILE = MacondoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = world.pixiv.world.MacondoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.world.MacondoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Macondo;
 			};
 			name = Debug;
 		};
-		B4933A0C24BB0D960084C73E /* Release */ = {
+		B42719AD252DE97700B81CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
 				INFOPLIST_FILE = MacondoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = world.pixiv.world.MacondoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.world.MacondoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Macondo;
@@ -659,38 +594,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B49339D624BB0D940084C73E /* Build configuration list for PBXProject "Macondo" */ = {
+		B427197A252DE97500B81CD7 /* Build configuration list for PBXProject "Macondo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4933A0224BB0D960084C73E /* Debug */,
-				B4933A0324BB0D960084C73E /* Release */,
+				B42719A3252DE97700B81CD7 /* Debug */,
+				B42719A4252DE97700B81CD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4933A0424BB0D960084C73E /* Build configuration list for PBXNativeTarget "Macondo" */ = {
+		B42719A5252DE97700B81CD7 /* Build configuration list for PBXNativeTarget "Macondo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4933A0524BB0D960084C73E /* Debug */,
-				B4933A0624BB0D960084C73E /* Release */,
+				B42719A6252DE97700B81CD7 /* Debug */,
+				B42719A7252DE97700B81CD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4933A0724BB0D960084C73E /* Build configuration list for PBXNativeTarget "MacondoTests" */ = {
+		B42719A8252DE97700B81CD7 /* Build configuration list for PBXNativeTarget "MacondoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4933A0824BB0D960084C73E /* Debug */,
-				B4933A0924BB0D960084C73E /* Release */,
+				B42719A9252DE97700B81CD7 /* Debug */,
+				B42719AA252DE97700B81CD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4933A0A24BB0D960084C73E /* Build configuration list for PBXNativeTarget "MacondoUITests" */ = {
+		B42719AB252DE97700B81CD7 /* Build configuration list for PBXNativeTarget "MacondoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4933A0B24BB0D960084C73E /* Debug */,
-				B4933A0C24BB0D960084C73E /* Release */,
+				B42719AC252DE97700B81CD7 /* Debug */,
+				B42719AD252DE97700B81CD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -698,17 +633,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B41B2EA624CD2AB500AB47E2 /* XCRemoteSwiftPackageReference "Preferences" */ = {
+		B42719B7252DEADF00B81CD7 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/Preferences";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.1;
-			};
-		};
-		B4246B5A24E0D12B00414A0F /* XCRemoteSwiftPackageReference "SQLite" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.12.2;
@@ -717,17 +644,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B41B2EA724CD2AB500AB47E2 /* Preferences */ = {
+		B42719B8252DEADF00B81CD7 /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B41B2EA624CD2AB500AB47E2 /* XCRemoteSwiftPackageReference "Preferences" */;
-			productName = Preferences;
-		};
-		B4246B5B24E0D12B00414A0F /* SQLite */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B4246B5A24E0D12B00414A0F /* XCRemoteSwiftPackageReference "SQLite" */;
+			package = B42719B7252DEADF00B81CD7 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
 			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = B49339D324BB0D940084C73E /* Project object */;
+	rootObject = B4271977252DE97500B81CD7 /* Project object */;
 }
