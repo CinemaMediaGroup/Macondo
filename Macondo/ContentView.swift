@@ -147,15 +147,17 @@ struct EditPostView : View{
                     TextEditor(text: $text)
                 }
                 VStack{
-                    Text("Category(split by ','): ")
-                    TextEditor(text: $category)
-                    Text("Tag(split by ','): ")
-                    TextEditor(text: $tag)
+                    HStack{
+                        Text("Category: ")
+                        TextField("", text: $category)
+                    }
+                    HStack{
+                        Text("Tag: ")
+                        TextField("", text: $tag)
+                    }
+                    Text("Custom YAML")
+                    TextEditor(text: $image)
                 }
-            }
-            HStack{
-                Text("Thumb Url: ")
-                TextField("",text: $image)
             }
             HStack{
                 Text("Summary: ")
