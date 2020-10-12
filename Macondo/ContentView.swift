@@ -185,7 +185,7 @@ struct EditPostView : View{
                     self.showView.showView = 0
                 }){
                     Text("Update")
-                }.disabled(title.isEmpty || text.isEmpty || image.isEmpty || summary.isEmpty)
+                }.disabled(title.isEmpty || text.isEmpty || summary.isEmpty)
             }
             Spacer()
         }
