@@ -1487,4 +1487,42 @@ struct Sqlite {
             print(error)
         }
     }
+    
+    static func deleteAnime(aidd : Int,language : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " + path + ", printed by deleteAnime()")
+        do{
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            
+            database = try Connection("\(path)/blog." + language + ".db")
+            
+            let ad = Table("AnimeDatas")
+            let aid = Expression<Int64>("aid")
+            
+            let anime = ad.filter(aid == Int64(aidd))
+            try database.run(anime.delete())
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func deleteVideo(vidd : Int,language : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " + path + ", printed by deleteVideo()")
+        do{
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            
+            database = try Connection("\(path)/blog." + language + ".db")
+            
+            let vd = Table("VideoDatas")
+            let vid = Expression<Int64>("vid")
+            
+            let video = vd.filter(vid == Int64(vidd))
+            try database.run(video.delete())
+        } catch {
+            print(error)
+        }
+    }
 }
