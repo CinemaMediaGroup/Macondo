@@ -236,6 +236,15 @@ struct EditLinkView : View{
                     Text("Cancel")
                 }
                 
+                Button(action: {
+                    Sqlite.deleteLink(lidd: self.lid,language: self.showView.lang)
+                    self.showView.showView = 0
+                }){
+                    Text("Delete")
+                    .foregroundColor(Color.red)
+                    .bold()
+                }
+                
                 Button(action:{
                     Sqlite.editLink(lidd: self.lid,name: self.name,url: self.url,image: self.image,description: self.description,language: self.showView.lang)
                     self.showView.showView = 0
@@ -306,6 +315,15 @@ struct EditBookView : View{
                     Text("Cancel")
                 }
                 
+                Button(action: {
+                    Sqlite.deleteBook(bidd: self.bid,language: self.showView.lang)
+                    self.showView.showView = 0
+                }){
+                    Text("Delete")
+                    .foregroundColor(Color.red)
+                    .bold()
+                }
+                
                 Button(action:{
                     Sqlite.editBook(bidd: self.bid,name: self.name,isbn: self.isbn,lsbn: self.lsbn,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
@@ -371,6 +389,15 @@ struct EditAnimeView : View{
                     self.showView.showView = 0
                 }){
                     Text("Cancel")
+                }
+                
+                Button(action: {
+                    Sqlite.deleteAnime(aidd: self.aid,language: self.showView.lang)
+                    self.showView.showView = 0
+                }){
+                    Text("Delete")
+                    .foregroundColor(Color.red)
+                    .bold()
                 }
                 
                 Button(action:{
@@ -440,6 +467,15 @@ struct EditVideoView : View{
                     self.showView.showView = 0
                 }){
                     Text("Cancel")
+                }
+                
+                Button(action: {
+                    Sqlite.deleteVideo(vidd: self.vid,language: self.showView.lang)
+                    self.showView.showView = 0
+                }){
+                    Text("Delete")
+                    .foregroundColor(Color.red)
+                    .bold()
                 }
                 
                 Button(action:{
