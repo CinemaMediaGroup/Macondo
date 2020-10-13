@@ -839,6 +839,7 @@ struct Sqlite {
             let ldDescription = Expression<String>("description")
             
             let maxLid : Int64 = Int64(try database.scalar(ld.count))
+            print(maxLid)
             
             try database.run(ld.insert(
                 lid <- (maxLid + 1),
@@ -1445,6 +1446,44 @@ struct Sqlite {
             let post = pd.filter(cid == Int64(cidd))
             try database.run(post.delete())
         } catch{
+            print(error)
+        }
+    }
+    
+    static func deleteLink(lidd : Int,language : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " + path + ", printed by deletaLink()")
+        do{
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+            
+            let ld = Table("LinksDatas")
+            let lid = Expression<Int64>("lid")
+            
+            let link = ld.filter(lid == Int64(lidd))
+            try database.run(link.delete())
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func deleteBook(bidd : Int,language : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " + path + ", printed by deleteBook()")
+        do{
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            
+            database = try Connection("\(path)/blog." + language + ".db")
+            
+            let bd = Table("BookDatas")
+            let bid = Expression<Int64>("bid")
+            
+            let book = bd.filter(bid == Int64(bidd))
+            try database.run(book.delete())
+        } catch {
             print(error)
         }
     }

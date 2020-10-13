@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-/*
- ContentView
-    PostView
-        EditPostView + NewPostButton
-    LinkView
-        etc...
-    BookView
-        etc...
-    AnimeView
-        etc...
-    FilmView
-        etc...
- */
-
 class ViewNavigation: ObservableObject {
     @Published var showView : Int? = 0
     @Published var lang = "zh-CN"
