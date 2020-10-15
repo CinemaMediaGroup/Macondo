@@ -89,13 +89,13 @@ struct PostView : View {
     
     var body: some View {
         NavigationView{
-            HStack{
-                List(pds, id: \.self) { (pd)  in
-                    NavigationLink(destination: EditPostView(cid: pd.getCid(),language: self.showView.lang)){
-                        Text(pd.getTitle())
-                    }
+            List(pds, id: \.self) { (pd)  in
+                NavigationLink(destination: EditPostView(cid: pd.getCid(),language: self.showView.lang)){
+                    Text(pd.getTitle())
                 }
             }
+            .listStyle(SidebarListStyle())
+            .frame(minWidth: 160, idealWidth: 160, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
@@ -121,6 +121,13 @@ struct EditPostView : View{
         _summary = State(initialValue: pd.getSummary())
         _category = State(initialValue: pd.getCategory())
         _tag = State(initialValue: pd.getTag())
+        
+
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
     
     var body : some View {
@@ -188,13 +195,13 @@ struct LinkView : View{
     
     var body: some View {
         NavigationView{
-            HStack{
-                List(lds, id: \.self) { (ld)  in
-                    NavigationLink(destination: EditLinkView(lid: ld.getLid(),language: self.lang)){
-                        Text(ld.getName())
-                    }
+            List(lds, id: \.self) { (ld)  in
+                NavigationLink(destination: EditLinkView(lid: ld.getLid(),language: self.lang)){
+                    Text(ld.getName())
                 }
             }
+            .listStyle(SidebarListStyle())
+            .frame(minWidth: 160, idealWidth: 160, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
@@ -266,13 +273,13 @@ struct BookView : View{
 
     var body: some View {
         NavigationView{
-            HStack{
-                List(bds, id: \.self) { (bd)  in
-                    NavigationLink(destination: EditBookView(bid: bd.getBid(),language: self.lang)){
-                        Text(bd.getName())
-                    }
+            List(bds, id: \.self) { (bd)  in
+                NavigationLink(destination: EditBookView(bid: bd.getBid(),language: self.lang)){
+                    Text(bd.getName())
                 }
             }
+            .listStyle(SidebarListStyle())
+            .frame(minWidth: 160, idealWidth: 160, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
@@ -344,13 +351,13 @@ struct AnimeView : View{
     
     var body: some View {
         NavigationView{
-            HStack{
-                List(ads, id: \.self) { (ad)  in
-                    NavigationLink(destination: EditAnimeView(aid: ad.getAid(),language: self.lang)){
-                        Text(ad.getNameZH())
-                    }
+            List(ads, id: \.self) { (ad)  in
+                NavigationLink(destination: EditAnimeView(aid: ad.getAid(),language: self.lang)){
+                    Text(ad.getNameZH())
                 }
             }
+            .listStyle(SidebarListStyle())
+            .frame(minWidth: 160, idealWidth: 160, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
@@ -421,13 +428,13 @@ struct VideoView : View{
     
     var body: some View {
         NavigationView{
-            HStack{
-                List(vds, id: \.self) { (vd)  in
-                    NavigationLink(destination: EditVideoView(vid: vd.getVid(),language: self.lang)){
-                        Text(vd.getNameZH())
-                    }
+            List(vds, id: \.self) { (vd)  in
+                NavigationLink(destination: EditVideoView(vid: vd.getVid(),language: self.lang)){
+                    Text(vd.getNameZH())
                 }
             }
+            .listStyle(SidebarListStyle())
+            .frame(minWidth: 160, idealWidth: 160, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
