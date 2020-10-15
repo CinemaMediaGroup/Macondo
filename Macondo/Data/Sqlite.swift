@@ -327,7 +327,6 @@ struct Sqlite {
         }catch{
             print(error)
         }
-        
         return res
     }
     

@@ -52,7 +52,7 @@ struct ContentView: View {
         }
         .toolbar {
             ToolbarItem(placement: .status){
-                VStack{
+                VStack(alignment: .leading){
                     Text("Version \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)")
                     Text("Current language: " + self.showView.lang)
                 }
@@ -88,7 +88,6 @@ struct PostView : View {
     }
     
     var body: some View {
-        
         NavigationView{
             HStack{
                 List(pds, id: \.self) { (pd)  in
@@ -96,7 +95,6 @@ struct PostView : View {
                         Text(pd.getTitle())
                     }
                 }
-                Spacer()
             }
         }
     }
@@ -196,7 +194,6 @@ struct LinkView : View{
                         Text(ld.getName())
                     }
                 }
-                Spacer()
             }
         }
     }
@@ -275,7 +272,6 @@ struct BookView : View{
                         Text(bd.getName())
                     }
                 }
-                Spacer()
             }
         }
     }
@@ -354,7 +350,6 @@ struct AnimeView : View{
                         Text(ad.getNameZH())
                     }
                 }
-                Spacer()
             }
         }
     }
@@ -432,7 +427,6 @@ struct VideoView : View{
                         Text(vd.getNameZH())
                     }
                 }
-                Spacer()
             }
         }
     }
