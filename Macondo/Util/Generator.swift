@@ -43,32 +43,49 @@ struct Generator{
     
     static private func generateLink(link : LinksData) -> String{
         return """
-            - name: \(link.getName())
+            - title: \(link.getName())
               avatar: \(link.getImage())
               url: \(link.getUrl())
-              desc: \(link.getDescription())
+              description: \(link.getDescription())
         
         """
     }
     
-    static func generateLinks(directory : URL,language : String){
+    static func generateLinkDatas(directory : URL,language : String){
         let links = Sqlite.getLinkList(language: language)
-        let linkDir = directory.appendingPathComponent("friends")
-        var linkContents = ""
-        for i in links{
-            linkContents += generateLink(link: i)
+        let linkDataDir = directory.appendingPathComponent("_data")
+        
+        let frontMatter = """
+        - group:
+          description:
+          items:
+
+        """
+        
+        var linkDataContents = ""
+        for i in links {
+            linkDataContents += generateLink(link: i)
         }
+        
+        let md = frontMatter + linkDataContents
+        
+        do{
+            try md.write(to: linkDataDir.appendingPathComponent("friends.yml"), atomically: false, encoding: .utf8)
+        } catch{
+            print(error)
+        }
+    }
+    
+    static func generateLinks(directory : URL,language : String){
+        let linkDir = directory.appendingPathComponent("friends")
+        
         let frontMatter = """
         ---
-        layout: links
+        layout: friends
         title: 我的朋友们
-        links:
-          - group: hxdm
-            icon: fas fa-user-tie
-            desc:
-            items:
-        \(linkContents)
         ---
+
+        <!-- more -->
 
         """
         do{

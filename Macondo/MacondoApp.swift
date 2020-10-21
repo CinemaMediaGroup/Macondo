@@ -65,6 +65,7 @@ struct MacondoApp: App {
                         if (result != nil) {
                             Generator.generate(directory: result!,language: lang)
                             Generator.generateLinks(directory: result!,language: lang)
+                            Generator.generateLinkDatas(directory: result!, language: lang)
                             Generator.generateBooks(directory: result!,language: lang)
                             Generator.generateAnimes(directory: result!,language: lang)
                             Generator.generateVideos(directory: result!,language: lang)
