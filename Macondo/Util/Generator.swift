@@ -113,7 +113,7 @@ struct Generator{
         ---
 
         """
-        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/CinemaMediaGroup/static-file@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + bookContents + "</div>"
+        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/LouiseDevTeam/ImagePack2@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + bookContents + "</div>"
         do{
             try md.write(to: bookDir, atomically: false, encoding: .utf8)
         } catch{
@@ -139,7 +139,7 @@ struct Generator{
         ---
 
         """
-        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/CinemaMediaGroup/static-file@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + animeContents + "</div>"
+        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/LouiseDevTeam/ImagePack2@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + animeContents + "</div>"
         do{
             try md.write(to: animeDir, atomically: false, encoding: .utf8)
         } catch{
@@ -165,7 +165,7 @@ struct Generator{
         ---
 
         """
-        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/CinemaMediaGroup/static-file@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + videoContents + "</div>"
+        let md = frontMatter + "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/LouiseDevTeam/ImagePack2@latest/css/bgm.min.css\" type=\"text/css\"><div class=\"bgm-collection\">" + videoContents + "</div>"
         do{
             try md.write(to: videoDir, atomically: false, encoding: .utf8)
         } catch{
