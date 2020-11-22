@@ -23,27 +23,27 @@ struct MacondoApp: App {
                     Button(action: {
                         Sqlite.newTempPost(language: self.lang)
                     }){
-                        Text("New Post")
+                        Text("Post")
                     }
                     Button(action: {
                         Sqlite.newTempLink(language: self.lang)
                     }){
-                        Text("New Link")
+                        Text("Link")
                     }
                     Button(action: {
                         Sqlite.newTempBook(language: self.lang)
                     }){
-                        Text("New Book")
+                        Text("Book")
                     }
                     Button(action: {
                         Sqlite.newTempAnime(language: self.lang)
                     }){
-                        Text("New Anime")
+                        Text("Anime")
                     }
                     Button(action: {
                         Sqlite.newTempVideo(language: self.lang)
                     }){
-                        Text("New Video")
+                        Text("Video")
                     }
                 }
                 
@@ -59,28 +59,53 @@ struct MacondoApp: App {
                 
                 Divider()
                 
-                Button(action: {
-                    let dialog = NSOpenPanel();
+                Menu("Import"){
+                    Button(action: {
+                        let dialog = NSOpenPanel();
 
-                    dialog.title = "Choose a directory";
-                    dialog.showsResizeIndicator = true;
-                    dialog.showsHiddenFiles = false;
-                    dialog.canChooseFiles = true;
-                    dialog.canChooseDirectories = false;
-                    dialog.allowedFileTypes = ["md","markdown","mac"];
+                        dialog.title = "Choose a directory";
+                        dialog.showsResizeIndicator = true;
+                        dialog.showsHiddenFiles = false;
+                        dialog.canChooseFiles = true;
+                        dialog.canChooseDirectories = false;
+                        dialog.allowedFileTypes = ["md","markdown"];
 
-                    if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
-                        let result = dialog.url
-                        if (result != nil) {
-                            Receiver.importPost(filePath: result!, language: lang)
-                            print(result!.path)
+                        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+                            let result = dialog.url
+                            if (result != nil) {
+                                Receiver.importPost(filePath: result!, language: lang)
+                                print(result!.path)
+                            }
+                        } else {
+                            return
                         }
-                    } else {
-                        return
+                    }){
+                        Text("Post")
+                    }.keyboardShortcut("i", modifiers: .command)
+                    
+                    Button(action: {
+                        let dialog = NSOpenPanel();
+
+                        dialog.title = "Choose a directory";
+                        dialog.showsResizeIndicator = true;
+                        dialog.showsHiddenFiles = false;
+                        dialog.canChooseFiles = true;
+                        dialog.canChooseDirectories = false;
+                        dialog.allowedFileTypes = ["mac"];
+
+                        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+                            let result = dialog.url
+                            if (result != nil) {
+                                Receiver.importLinks(filePath: result!, language: lang)
+                                print(result!.path)
+                            }
+                        } else {
+                            return
+                        }
+                    }){
+                        Text("Links")
                     }
-                }){
-                    Text("Import")
-                }.keyboardShortcut("i", modifiers: .command)
+                }
                 
                 Button(action: {
                     let dialog = NSOpenPanel();

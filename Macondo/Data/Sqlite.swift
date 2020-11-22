@@ -859,6 +859,45 @@ struct Sqlite {
         newLink(name: "New Link", url: "placeholder", image: "placeholder", description: "placeholder", language: language)
     }
     
+    static func addLink(lidd : Int64,name : String,url : String,image : String,description : String,language : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+            
+            //linksDatas table
+            let ld = Table("linksDatas")
+            
+            //linksDatas columns settings
+            let lid = Expression<Int64>("lid")
+            let ldOrders = Expression<Int64>("orders")
+            let ldName = Expression<String>("name")
+            let ldUrl = Expression<String>("url")
+            let ldSort = Expression<String>("sort")
+            let ldImage = Expression<String>("image")
+            let ldDescription = Expression<String>("description")
+            
+            let maxLid = lidd
+            
+            try database.run(ld.insert(
+                lid <- maxLid,
+                ldOrders <- (maxLid + 100),
+                ldName <- Base64.toBase64(s: name),
+                ldUrl <- Base64.toBase64(s: url),
+                ldSort <- Base64.toBase64(s: "ten"),
+                ldImage <- Base64.toBase64(s: image),
+                ldDescription <- Base64.toBase64(s: description)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
     static func newLink(name : String,url : String,image : String,description : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -882,7 +921,7 @@ struct Sqlite {
             let ldImage = Expression<String>("image")
             let ldDescription = Expression<String>("description")
             
-            let maxLid : Int64 = Int64(try database.scalar(ld.select(lid.max))!)
+            let maxLid : Int64 = Int64(try (database.scalar(ld.select(lid.max))!))
             print(maxLid)
             
             try database.run(ld.insert(

@@ -96,5 +96,20 @@ struct Receiver{
         }
     }
     
-    //private static func import
+    static func importLinks(filePath : URL,language : String){
+        do {
+            let delta = try String(contentsOf: filePath, encoding: .utf8)
+            let links = delta.components(separatedBy: .newlines)
+            
+            var j : Int64  = 0
+            for i in links {
+                let link = i.components(separatedBy: "|")
+                Sqlite.addLink(lidd : j,name: link[0], url: link[1], image: link[2], description: link[3], language: language)
+                j += 1
+            }
+            
+        } catch {
+            print(error)
+        }
+    }
 }
