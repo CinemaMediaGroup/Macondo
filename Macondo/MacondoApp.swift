@@ -19,31 +19,36 @@ struct MacondoApp: App {
         }
         .commands {
             CommandGroup(before: .saveItem) {
-                Button(action: {
-                    Sqlite.newTempPost(language: self.lang)
-                }){
-                    Text("New Post")
+                Menu("New"){
+                    Button(action: {
+                        Sqlite.newTempPost(language: self.lang)
+                    }){
+                        Text("New Post")
+                    }
+                    Button(action: {
+                        Sqlite.newTempLink(language: self.lang)
+                    }){
+                        Text("New Link")
+                    }
+                    Button(action: {
+                        Sqlite.newTempBook(language: self.lang)
+                    }){
+                        Text("New Book")
+                    }
+                    Button(action: {
+                        Sqlite.newTempAnime(language: self.lang)
+                    }){
+                        Text("New Anime")
+                    }
+                    Button(action: {
+                        Sqlite.newTempVideo(language: self.lang)
+                    }){
+                        Text("New Video")
+                    }
                 }
-                Button(action: {
-                    Sqlite.newTempLink(language: self.lang)
-                }){
-                    Text("New Link")
-                }
-                Button(action: {
-                    Sqlite.newTempBook(language: self.lang)
-                }){
-                    Text("New Book")
-                }
-                Button(action: {
-                    Sqlite.newTempAnime(language: self.lang)
-                }){
-                    Text("New Anime")
-                }
-                Button(action: {
-                    Sqlite.newTempVideo(language: self.lang)
-                }){
-                    Text("New Video")
-                }
+                
+                Divider()
+                
                 Button(action: {
                     Sqlite.createTables(language: "zh-CN")
                     Sqlite.createTables(language: "zh-TW")
@@ -51,6 +56,32 @@ struct MacondoApp: App {
                 }){
                     Text("Create Tables")
                 }
+                
+                Divider()
+                
+                Button(action: {
+                    let dialog = NSOpenPanel();
+
+                    dialog.title = "Choose a directory";
+                    dialog.showsResizeIndicator = true;
+                    dialog.showsHiddenFiles = false;
+                    dialog.canChooseFiles = true;
+                    dialog.canChooseDirectories = false;
+                    dialog.allowedFileTypes = ["md","markdown","mac"];
+
+                    if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+                        let result = dialog.url
+                        if (result != nil) {
+                            Receiver.importPost(filePath: result!, language: lang)
+                            print(result!.path)
+                        }
+                    } else {
+                        return
+                    }
+                }){
+                    Text("Import")
+                }.keyboardShortcut("i", modifiers: .command)
+                
                 Button(action: {
                     let dialog = NSOpenPanel();
 
@@ -77,6 +108,8 @@ struct MacondoApp: App {
                 }){
                     Text("Export")
                 }
+                
+                Divider()
             }
             
             CommandMenu("Language"){
