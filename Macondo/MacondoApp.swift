@@ -117,20 +117,20 @@ struct MacondoApp: App {
                     self.lang = "zh-CN"
                     NotificationCenter.default.post(name: .setLanguageZhCN, object: nil)
                 }){
-                    Text("zh-CN")
+                    Text("简体中文 (zh-CN)")
                 }
                 Button(action: {
                     self.lang = "zh-TW"
                     NotificationCenter.default.post(name: .setLanguageZhTW, object: nil)
                 }){
-                    Text("zh-TW")
+                    Text("正體中文 (zh-TW)")
                 }
                 Button(action: {
                     self.lang = "en"
                     NotificationCenter.default.post(name: .setLanguageEn, object: nil)
                     print(lang)
                 }){
-                    Text("en")
+                    Text("Englist (en)")
                 }
             }
         }

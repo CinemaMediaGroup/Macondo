@@ -95,4 +95,6 @@ struct Receiver{
             print(error)
         }
     }
+    
+    //private static func import
 }
