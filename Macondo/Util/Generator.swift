@@ -172,4 +172,56 @@ struct Generator{
             print(error)
         }
     }
+    
+    static func generateBackup(directory : URL,language : String){
+        let dataDir = directory.appendingPathComponent("_data")
+        var mac = [String]()
+        
+        let links = Sqlite.getLinkList(language: language)
+        var linkDataContents = ""
+        for i in links {
+            linkDataContents += i.getName() + "|"
+            linkDataContents += i.getUrl() + "|"
+            linkDataContents += i.getImage() + "|"
+            linkDataContents += i.getDescription() + "\n"
+        }
+        mac.append(linkDataContents)
+        
+        let books = Sqlite.getBookList(language: language)
+        var bookDataContents = ""
+        for i in books {
+            bookDataContents += i.getImage() + "|"
+            bookDataContents += i.getName() + "|"
+            bookDataContents += i.getISBN() + "|"
+            bookDataContents += i.getLSBN() + "\n"
+        }
+        mac.append(bookDataContents)
+        
+        let animes = Sqlite.getAnimeList(language: language)
+        var animeDataContents = ""
+        for i in animes {
+            animeDataContents += i.getImage() + "|"
+            animeDataContents += i.getNameJA() + "|"
+            animeDataContents += i.getNameZH() + "\n"
+        }
+        mac.append(animeDataContents)
+        
+        let videos = Sqlite.getVideoList(language: language)
+        var videoDataContents = ""
+        for i in videos {
+            videoDataContents += i.getImage() + "|"
+            videoDataContents += i.getNameJA() + "|"
+            videoDataContents += i.getNameZH() + "\n"
+        }
+        mac.append(videoDataContents)
+        
+        do{
+            try mac[0].write(to: dataDir.appendingPathComponent("links.mac"), atomically: false, encoding: .utf8)
+            try mac[1].write(to: dataDir.appendingPathComponent("books.mac"), atomically: false, encoding: .utf8)
+            try mac[2].write(to: dataDir.appendingPathComponent("animes.mac"), atomically: false, encoding: .utf8)
+            try mac[3].write(to: dataDir.appendingPathComponent("videos.mac"), atomically: false, encoding: .utf8)
+        } catch{
+            print(error)
+        }
+    }
 }

@@ -194,7 +194,7 @@ struct MacondoApp: App {
                             Generator.generateBooks(directory: result!,language: lang)
                             Generator.generateAnimes(directory: result!,language: lang)
                             Generator.generateVideos(directory: result!,language: lang)
-                            print(result!.path)
+                            Generator.generateBackup(directory: result!, language: lang)
                         }
                     } else {
                         return
