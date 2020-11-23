@@ -105,6 +105,75 @@ struct MacondoApp: App {
                     }){
                         Text("Links")
                     }
+                    
+                    Button(action: {
+                        let dialog = NSOpenPanel();
+
+                        dialog.title = "Choose a directory";
+                        dialog.showsResizeIndicator = true;
+                        dialog.showsHiddenFiles = false;
+                        dialog.canChooseFiles = true;
+                        dialog.canChooseDirectories = false;
+                        dialog.allowedFileTypes = ["mac"];
+
+                        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+                            let result = dialog.url
+                            if (result != nil) {
+                                Receiver.importBooks(filePath: result!, language: lang)
+                                print(result!.path)
+                            }
+                        } else {
+                            return
+                        }
+                    }){
+                        Text("Books")
+                    }
+                    
+                    Button(action: {
+                        let dialog = NSOpenPanel();
+
+                        dialog.title = "Choose a directory";
+                        dialog.showsResizeIndicator = true;
+                        dialog.showsHiddenFiles = false;
+                        dialog.canChooseFiles = true;
+                        dialog.canChooseDirectories = false;
+                        dialog.allowedFileTypes = ["mac"];
+
+                        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+                            let result = dialog.url
+                            if (result != nil) {
+                                Receiver.importAnimes(filePath: result!, language: lang)
+                                print(result!.path)
+                            }
+                        } else {
+                            return
+                        }
+                    }){
+                        Text("Animes")
+                    }
+                    
+                    Button(action: {
+                        let dialog = NSOpenPanel();
+
+                        dialog.title = "Choose a directory";
+                        dialog.showsResizeIndicator = true;
+                        dialog.showsHiddenFiles = false;
+                        dialog.canChooseFiles = true;
+                        dialog.canChooseDirectories = false;
+                        dialog.allowedFileTypes = ["mac"];
+
+                        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+                            let result = dialog.url
+                            if (result != nil) {
+                                Receiver.importVideos(filePath: result!, language: lang)
+                                print(result!.path)
+                            }
+                        } else {
+                            return
+                        }
+                    }){
+                        Text("Videos")
+                    }
                 }
                 
                 Button(action: {

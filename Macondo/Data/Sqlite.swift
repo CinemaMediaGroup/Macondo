@@ -1057,6 +1057,39 @@ struct Sqlite {
         newBook(name: "New Book", isbn: "placeholder", lsbn: "placeholder", image: "placeholder", language: language)
     }
     
+    static func addBook(bidd : Int64,name : String,isbn : String,lsbn : String,image : String,language : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do{
+            //create parent directory iff it doesn’t exist
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            //open database
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+            
+            //bookDatas table
+            let bd = Table("bookDatas")
+            
+            //bookDatas columns settings
+            let bid = Expression<Int64>("bid")
+            let bdName = Expression<String>("name")
+            let bdIsbn = Expression<String>("isbn")
+            let bdLsbn = Expression<String>("lsbn")
+            let bdImage = Expression<String>("image")
+            
+            try database.run(bd.insert(
+                bid <- bidd,
+                bdName <- Base64.toBase64(s: name),
+                bdIsbn <- Base64.toBase64(s: isbn),
+                bdLsbn <- Base64.toBase64(s: lsbn),
+                bdImage <- Base64.toBase64(s: image)
+            ))
+        }catch{
+            print(error)
+        }
+    }
+    
     static func newBook(name : String,isbn : String,lsbn : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -1206,6 +1239,33 @@ struct Sqlite {
         newAnime(nameJA: "New Anime", nameZH: "placeholder", image: "placeholder", language: language)
     }
     
+    static func addAnime(aidd : Int64,nameJA : String,nameZH : String,image : String,language : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        print("Database folder: " +  path)
+        do {
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+            
+            let ad = Table("animeDatas")
+            
+            let aid = Expression<Int64>("aid")
+            let adNameJA = Expression<String>("nameJA")
+            let adNameZH = Expression<String>("nameZH")
+            let adImage = Expression<String>("image")
+            
+            try database.run(ad.insert(
+                aid <- aidd,
+                adNameJA <- Base64.toBase64(s: nameJA),
+                adNameZH <- Base64.toBase64(s: nameZH),
+                adImage <- Base64.toBase64(s: image)
+            ))
+        } catch {
+            print(error)
+        }
+    }
+    
     static func newAnime(nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
@@ -1347,6 +1407,32 @@ struct Sqlite {
     
     static func newTempVideo(language : String) {
         newVideo(nameJA: "New Video", nameZH: "placeholder", image: "placeholder", language: language)
+    }
+    
+    static func addVideo(vidd : Int64,nameJA : String,nameZH : String,image : String,language : String){
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        do {
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+            
+            let vd = Table("videoDatas")
+            
+            let vid = Expression<Int64>("vid")
+            let vdNameJA = Expression<String>("nameJA")
+            let vdNameZH = Expression<String>("nameZH")
+            let vdImage = Expression<String>("image")
+            
+            try database.run(vd.insert(
+                vid <- vidd,
+                vdNameJA <- Base64.toBase64(s: nameJA),
+                vdNameZH <- Base64.toBase64(s: nameZH),
+                vdImage <- Base64.toBase64(s: image)
+            ))
+        } catch {
+            print(error)
+        }
     }
     
     static func newVideo(nameJA : String,nameZH : String,image : String,language : String){

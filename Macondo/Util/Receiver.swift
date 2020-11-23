@@ -112,4 +112,55 @@ struct Receiver{
             print(error)
         }
     }
+    
+    static func importBooks(filePath : URL,language : String){
+        do {
+            let delta = try String(contentsOf: filePath, encoding: .utf8)
+            let books = delta.components(separatedBy: .newlines)
+            
+            var j : Int64  = 0
+            for i in books {
+                let book = i.components(separatedBy: "|")
+                Sqlite.addBook(bidd: j, name: book[1], isbn: book[2], lsbn: book[3], image: book[0], language: language)
+                j += 1
+            }
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func importAnimes(filePath : URL,language : String){
+        do {
+            let delta = try String(contentsOf: filePath, encoding: .utf8)
+            let animes = delta.components(separatedBy: .newlines)
+            
+            var j : Int64  = 0
+            for i in animes {
+                let anime = i.components(separatedBy: "|")
+                Sqlite.addAnime(aidd: j, nameJA: anime[1], nameZH: anime[2], image: anime[0], language: language)
+                j += 1
+            }
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func importVideos(filePath : URL,language : String){
+        do {
+            let delta = try String(contentsOf: filePath, encoding: .utf8)
+            let videos = delta.components(separatedBy: .newlines)
+            
+            var j : Int64  = 0
+            for i in videos {
+                let video = i.components(separatedBy: "|")
+                Sqlite.addVideo(vidd: j, nameJA: video[1], nameZH: video[2], image: video[0], language: language)
+                j += 1
+            }
+            
+        } catch {
+            print(error)
+        }
+    }
 }
