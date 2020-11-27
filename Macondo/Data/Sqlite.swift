@@ -194,16 +194,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             
-            //PostDatas columns settings
             let cid = Expression<Int64>("cid")
             let pdType = Expression<Int64>("type")
             let pdTitle = Expression<String>("title")
@@ -239,16 +235,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             
-            //PostDatas columns settings
             let cid = Expression<Int64>("cid")
             let pdType = Expression<Int64>("type")
             let pdTitle = Expression<String>("title")
@@ -284,18 +276,13 @@ struct Sqlite {
     static func editPost(cidd : Int,title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        //print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             
-            //PostDatas columns settings
             let cid = Expression<Int64>("cid")
             let pdTitle = Expression<String>("title")
             let pdSlug = Expression<String>("slug")
@@ -328,20 +315,16 @@ struct Sqlite {
         var res : [PostData] = [PostData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        //print("Database folder: " +  path)
+
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             print("\(path)/" + "blog." + language + ".db")
             
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             
-            //PostDatas columns settings
             let cid = Expression<Int64>("cid")
             let pdType = Expression<Int64>("type")
             let pdTitle = Expression<String>("title")
@@ -380,18 +363,14 @@ struct Sqlite {
         
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        //print("Database folder: " +  path)
+        
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             
-            //PostDatas columns settings
             let cid = Expression<Int64>("cid")
             let pdType = Expression<Int64>("type")
             let pdTitle = Expression<String>("title")
@@ -430,16 +409,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             
-            //PostDatas columns settings
             let cid = Expression<Int64>("cid")
             let pdType = Expression<Int64>("type")
             let pdTitle = Expression<String>("title")
@@ -478,16 +453,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             
-            //PostDatas columns settings
             let cid = Expression<Int64>("cid")
             let pdType = Expression<Int64>("type")
             let pdTitle = Expression<String>("title")
@@ -527,16 +498,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             
-            //PostDatas columns settings
             let cid = Expression<Int64>("cid")
             let pdTitle = Expression<String>("title")
             let pdSlug = Expression<String>("slug")
@@ -570,16 +537,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //metaDatas table
             let md = Table("metaDatas")
                        
-            //metaDatas columns settings
             let mid = Expression<Int64>("mid")
             let mdCnt = Expression<Int64>("cnt")
             let mdType = Expression<Int64>("type")
@@ -606,16 +569,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //metaDatas table
             let md = Table("metaDatas")
             
-            //metaDatas columns settings
             let mid = Expression<Int64>("mid")
             let mdCnt = Expression<Int64>("cnt")
             let mdType = Expression<Int64>("type")
@@ -643,16 +602,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //metaDatas table
             let md = Table("metaDatas")
             
-            //metaDatas columns settings
             let mid = Expression<Int64>("mid")
             let mdSlug = Expression<String>("slug")
             let mdName = Expression<String>("name")
@@ -676,16 +631,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //metaDatas table
             let md = Table("metaDatas")
                        
-            //metaDatas columns settings
             let mid = Expression<Int64>("mid")
             let mdCnt = Expression<Int64>("cnt")
             let mdType = Expression<Int64>("type")
@@ -713,16 +664,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //metaDatas table
             let md = Table("metaDatas")
-                       
-            //metaDatas columns settings
+            
             let mid = Expression<Int64>("mid")
             let mdCnt = Expression<Int64>("cnt")
             let mdType = Expression<Int64>("type")
@@ -749,16 +696,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //metaDatas table
             let md = Table("metaDatas")
             
-            //metaDatas columns settings
             let mid = Expression<Int64>("mid")
             let mdCnt = Expression<Int64>("cnt")
             let mdType = Expression<Int64>("type")
@@ -786,16 +729,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
-            
-            //metaDatas table
+
             let md = Table("metaDatas")
             
-            //metaDatas columns settings
             let mid = Expression<Int64>("mid")
             let mdSlug = Expression<String>("slug")
             let mdName = Expression<String>("name")
@@ -819,16 +758,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //linksDatas table
             let ld = Table("linksDatas")
             
-            //linksDatas columns settings
             let lid = Expression<Int64>("lid")
             let ldOrders = Expression<Int64>("orders")
             let ldName = Expression<String>("name")
@@ -864,16 +799,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //linksDatas table
             let ld = Table("linksDatas")
             
-            //linksDatas columns settings
             let lid = Expression<Int64>("lid")
             let ldOrders = Expression<Int64>("orders")
             let ldName = Expression<String>("name")
@@ -903,16 +834,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //linksDatas table
             let ld = Table("linksDatas")
             
-            //linksDatas columns settings
             let lid = Expression<Int64>("lid")
             let ldOrders = Expression<Int64>("orders")
             let ldName = Expression<String>("name")
@@ -944,16 +871,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //linksDatas table
             let ld = Table("linksDatas")
             
-            //linksDatas columns settings
             let lid = Expression<Int64>("lid")
             let ldOrders = Expression<Int64>("orders")
             let ldName = Expression<String>("name")
@@ -983,16 +906,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //linksDatas table
             let ld = Table("linksDatas")
             
-            //linksDatas columns settings
             let lid = Expression<Int64>("lid")
             let ldName = Expression<String>("name")
             let ldUrl = Expression<String>("url")
@@ -1020,16 +939,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //bookDatas table
             let bd = Table("bookDatas")
             
-            //bookDatas columns settings
             let bid = Expression<Int64>("bid")
             let bdName = Expression<String>("name")
             let bdIsbn = Expression<String>("isbn")
@@ -1062,16 +977,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //bookDatas table
             let bd = Table("bookDatas")
             
-            //bookDatas columns settings
             let bid = Expression<Int64>("bid")
             let bdName = Expression<String>("name")
             let bdIsbn = Expression<String>("isbn")
@@ -1095,16 +1006,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //bookDatas table
             let bd = Table("bookDatas")
             
-            //bookDatas columns settings
             let bid = Expression<Int64>("bid")
             let bdName = Expression<String>("name")
             let bdIsbn = Expression<String>("isbn")
@@ -1131,16 +1038,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //bookDatas table
             let bd = Table("bookDatas")
             
-            //bookDatas columns settings
             let bid = Expression<Int64>("bid")
             let bdName = Expression<String>("name")
             let bdIsbn = Expression<String>("isbn")
@@ -1167,16 +1070,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //bookDatas table
             let bd = Table("bookDatas")
             
-            //bookDatas columns settings
             let bid = Expression<Int64>("bid")
             let bdName = Expression<String>("name")
             let bdIsbn = Expression<String>("isbn")
@@ -1204,16 +1103,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //animeDatas table
             let ad = Table("animeDatas")
             
-            //animeDatas columns settings
             let aid = Expression<Int64>("aid")
             let adNameJA = Expression<String>("nameJA")
             let adNameZH = Expression<String>("nameZH")
@@ -1271,16 +1166,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //animeDatas table
             let ad = Table("animeDatas")
             
-            //animeDatas columns settings
             let aid = Expression<Int64>("aid")
             let adNameJA = Expression<String>("nameJA")
             let adNameZH = Expression<String>("nameZH")
@@ -1305,16 +1196,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //animeDatas table
             let ad = Table("animeDatas")
             
-            //animeDatas columns settings
             let aid = Expression<Int64>("aid")
             let adNameJA = Expression<String>("nameJA")
             let adNameZH = Expression<String>("nameZH")
@@ -1339,16 +1226,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //animeDatas table
             let ad = Table("animeDatas")
             
-            //animeDatas columns settings
             let aid = Expression<Int64>("aid")
             let adNameJA = Expression<String>("nameJA")
             let adNameZH = Expression<String>("nameZH")
@@ -1374,16 +1257,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //VideoDatas table
             let vd = Table("videoDatas")
             
-            //VideoDatas columns settings
             let vid = Expression<Int64>("vid")
             let vdNameJA = Expression<String>("nameJA")
             let vdNameZH = Expression<String>("nameZH")
@@ -1440,16 +1319,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //VideoDatas table
             let vd = Table("videoDatas")
             
-            //VideoDatas columns settings
             let vid = Expression<Int64>("vid")
             let vdNameJA = Expression<String>("nameJA")
             let vdNameZH = Expression<String>("nameZH")
@@ -1474,16 +1349,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //VideoDatas table
             let vd = Table("videoDatas")
             
-            //VideoDatas columns settings
             let vid = Expression<Int64>("vid")
             let vdNameJA = Expression<String>("nameJA")
             let vdNameZH = Expression<String>("nameZH")
@@ -1508,16 +1379,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //VideoDatas table
             let vd = Table("VideoDatas")
             
-            //VideoDatas columns settings
             let vid = Expression<Int64>("vid")
             let vdNameJA = Expression<String>("nameJA")
             let vdNameZH = Expression<String>("nameZH")
@@ -1541,16 +1408,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //settingDatas table
             let sd = Table("settingDatas")
             
-            //settingDatas columns settings
             let sid = Expression<Int64>("sid")
             let sdField = Expression<String>("field")
             
@@ -1571,16 +1434,12 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //settingDatas table
             let sd = Table("settingDatas")
             
-            //settingDatas columns settings
             let sid = Expression<Int64>("sid")
             let sdField = Expression<String>("field")
             
@@ -1602,13 +1461,10 @@ struct Sqlite {
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         print("Database folder: " +  path)
         do{
-            //create parent directory iff it doesn’t exist
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            //open database
             database = try Connection("\(path)/" + "blog." + language + ".db")
             
-            //PostDatas table
             let pd = Table("PostDatas")
             let cid = Expression<Int64>("cid")
             
