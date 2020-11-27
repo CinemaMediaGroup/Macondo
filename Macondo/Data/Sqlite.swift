@@ -192,7 +192,7 @@ struct Sqlite {
     static func addPost(cidd : Int64, title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -233,7 +233,7 @@ struct Sqlite {
     static func newPost(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -409,7 +409,7 @@ struct Sqlite {
         
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -450,7 +450,7 @@ struct Sqlite {
     static func addLink(lidd : Int64,name : String,url : String,image : String,description : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -485,7 +485,7 @@ struct Sqlite {
     static func newLink(name : String,url : String,image : String,description : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -522,7 +522,7 @@ struct Sqlite {
         var res : [LinksData] = [LinksData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -557,7 +557,7 @@ struct Sqlite {
     static func editLink(lidd : Int,name : String,url : String,image : String,description : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -590,7 +590,7 @@ struct Sqlite {
         
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -628,7 +628,7 @@ struct Sqlite {
     static func addBook(bidd : Int64,name : String,isbn : String,lsbn : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -657,7 +657,7 @@ struct Sqlite {
     static func newBook(name : String,isbn : String,lsbn : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -689,7 +689,7 @@ struct Sqlite {
         var res : [BookData] = [BookData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -721,7 +721,7 @@ struct Sqlite {
     static func editBook(bidd : Int,name : String,isbn : String,lsbn : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -754,7 +754,7 @@ struct Sqlite {
         
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -790,7 +790,7 @@ struct Sqlite {
     static func addAnime(aidd : Int64,nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -817,7 +817,7 @@ struct Sqlite {
     static func newAnime(nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -847,7 +847,7 @@ struct Sqlite {
         var res : [AnimeData] = [AnimeData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -877,7 +877,7 @@ struct Sqlite {
     static func editAnime(aidd : Int,nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -908,7 +908,7 @@ struct Sqlite {
         
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -970,7 +970,7 @@ struct Sqlite {
     static func newVideo(nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -1000,7 +1000,7 @@ struct Sqlite {
         var res : [VideoData] = [VideoData]()
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -1030,7 +1030,7 @@ struct Sqlite {
     static func editVideo(vidd : Int,nameJA : String,nameZH : String,image : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -1059,7 +1059,7 @@ struct Sqlite {
     static func editSetting(sidd : Int,field : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -1085,7 +1085,7 @@ struct Sqlite {
     static func getSetting(sidd : Int,language : String) -> String{
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -1112,7 +1112,7 @@ struct Sqlite {
     static func deletePost(cidd : Int,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " +  path)
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
@@ -1131,7 +1131,7 @@ struct Sqlite {
     static func deleteLink(lidd : Int,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " + path + ", printed by deletaLink()")
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             
@@ -1150,7 +1150,7 @@ struct Sqlite {
     static func deleteBook(bidd : Int,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " + path + ", printed by deleteBook()")
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             
@@ -1169,7 +1169,7 @@ struct Sqlite {
     static func deleteAnime(aidd : Int,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " + path + ", printed by deleteAnime()")
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             
@@ -1188,7 +1188,7 @@ struct Sqlite {
     static func deleteVideo(vidd : Int,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-        print("Database folder: " + path + ", printed by deleteVideo()")
+        
         do{
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             
