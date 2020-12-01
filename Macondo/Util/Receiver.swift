@@ -90,7 +90,7 @@ struct Receiver{
             delta = String(delta[delta.range(of: "---")!.upperBound...])
             YAMLs.append(delta)
             
-            Sqlite.addPost(cidd : Int64(YAMLs[6])!,title : YAMLs[0],text : YAMLs[7],thumbUrl : "",summary : YAMLs[5],category : YAMLs[3],tag : YAMLs[4],language : language)
+            Sqlite.addPost(cidd : Int64(YAMLs[6])!,title : YAMLs[0],text : YAMLs[7],thumbUrl : "",summary : YAMLs[5],category : YAMLs[3],tag : YAMLs[4],created : YAMLs[1],updated : YAMLs[2],language : language)
         } catch {
             print(error)
         }

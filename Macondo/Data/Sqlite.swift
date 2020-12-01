@@ -189,7 +189,7 @@ struct Sqlite {
         newPost(title: "New Post", text: "placeholder", thumbUrl: "placeholder", summary: "placeholder", category: "placeholder", tag: "placeholder", language: language)
     }
     
-    static func addPost(cidd : Int64, title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
+    static func addPost(cidd : Int64, title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,created : String,updated : String,language : String){
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         
@@ -217,8 +217,8 @@ struct Sqlite {
                 pdType <- 0,
                 pdTitle <- Base64.toBase64(s: title),
                 pdSlug <- Base64.toBase64(s: title),
-                pdCreated <- Base64.toBase64(s: Time.getTime()),
-                pdModified <- Base64.toBase64(s: Time.getTime()),
+                pdCreated <- Base64.toBase64(s: created),
+                pdModified <- Base64.toBase64(s: updated),
                 pdText <- Base64.toBase64(s: text),
                 pdThumbUrl <- Base64.toBase64(s: thumbUrl),
                 pdSummary <- Base64.toBase64(s: summary),
