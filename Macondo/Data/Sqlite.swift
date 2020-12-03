@@ -253,7 +253,15 @@ struct Sqlite {
             let pdCategory = Expression<String>("category")
             let pdTag = Expression<String>("tag")
             
-            let maxCid : Int64 = Int64(try (database.scalar(pd.select(cid.max))!))
+            let maxCid : Int64
+            
+            if try database.scalar(pd.select(cid.max)) != nil {
+                maxCid = Int64(try database.scalar(pd.select(cid.max))!)
+            } else {
+                maxCid = 1
+            }
+            
+            //let maxCid : Int64 = Int64(try ())
             
             try database.run(pd.insert(
                 cid <- (maxCid + 1),
@@ -501,8 +509,13 @@ struct Sqlite {
             let ldImage = Expression<String>("image")
             let ldDescription = Expression<String>("description")
             
-            let maxLid : Int64 = Int64(try (database.scalar(ld.select(lid.max))!))
-            print(maxLid)
+            let maxLid : Int64
+            
+            if try database.scalar(ld.select(lid.max)) != nil {
+                maxLid = Int64(try database.scalar(ld.select(lid.max))!)
+            } else {
+                maxLid = 1
+            }
             
             try database.run(ld.insert(
                 lid <- (maxLid + 1),
@@ -671,7 +684,13 @@ struct Sqlite {
             let bdLsbn = Expression<String>("lsbn")
             let bdImage = Expression<String>("image")
             
-            let maxBid : Int64 = Int64(try database.scalar(bd.select(bid.max))!)
+            let maxBid : Int64
+            
+            if try database.scalar(bd.select(bid.max)) != nil {
+                maxBid = Int64(try database.scalar(bd.select(bid.max))!)
+            } else {
+                maxBid = 1
+            }
             
             try database.run(bd.insert(
                 bid <- (maxBid + 1),
@@ -830,7 +849,13 @@ struct Sqlite {
             let adNameZH = Expression<String>("nameZH")
             let adImage = Expression<String>("image")
             
-            let maxAid : Int64 = Int64(try database.scalar(ad.select(aid.max))!)
+            let maxAid : Int64
+            
+            if try database.scalar(ad.select(aid.max)) != nil {
+                maxAid = Int64(try database.scalar(ad.select(aid.max))!)
+            } else {
+                maxAid = 1
+            }
             
             try database.run(ad.insert(
                 aid <- (maxAid + 1),
@@ -983,7 +1008,13 @@ struct Sqlite {
             let vdNameZH = Expression<String>("nameZH")
             let vdImage = Expression<String>("image")
             
-            let maxVid : Int64 = Int64(try database.scalar(vd.select(vid.max))!)
+            let maxVid : Int64
+            
+            if try database.scalar(vd.select(vid.max)) != nil {
+                maxVid = Int64(try database.scalar(vd.select(vid.max))!)
+            } else {
+                maxVid = 1
+            }
             
             try database.run(vd.insert(
                 vid <- (maxVid + 1),
