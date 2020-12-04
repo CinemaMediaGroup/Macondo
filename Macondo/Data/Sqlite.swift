@@ -258,7 +258,7 @@ struct Sqlite {
             if try database.scalar(pd.select(cid.max)) != nil {
                 maxCid = Int64(try database.scalar(pd.select(cid.max))!)
             } else {
-                maxCid = 1
+                maxCid = 0
             }
             
             //let maxCid : Int64 = Int64(try ())
@@ -514,7 +514,7 @@ struct Sqlite {
             if try database.scalar(ld.select(lid.max)) != nil {
                 maxLid = Int64(try database.scalar(ld.select(lid.max))!)
             } else {
-                maxLid = 1
+                maxLid = 0
             }
             
             try database.run(ld.insert(
@@ -689,7 +689,7 @@ struct Sqlite {
             if try database.scalar(bd.select(bid.max)) != nil {
                 maxBid = Int64(try database.scalar(bd.select(bid.max))!)
             } else {
-                maxBid = 1
+                maxBid = 0
             }
             
             try database.run(bd.insert(
@@ -854,7 +854,7 @@ struct Sqlite {
             if try database.scalar(ad.select(aid.max)) != nil {
                 maxAid = Int64(try database.scalar(ad.select(aid.max))!)
             } else {
-                maxAid = 1
+                maxAid = 0
             }
             
             try database.run(ad.insert(
@@ -1013,7 +1013,7 @@ struct Sqlite {
             if try database.scalar(vd.select(vid.max)) != nil {
                 maxVid = Int64(try database.scalar(vd.select(vid.max))!)
             } else {
-                maxVid = 1
+                maxVid = 0
             }
             
             try database.run(vd.insert(
