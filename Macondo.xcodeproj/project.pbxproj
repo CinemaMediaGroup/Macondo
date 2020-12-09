@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770010692580F664005C7BA3 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770010682580F664005C7BA3 /* Translator.swift */; };
 		77654669256A201C0042CC97 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77654668256A201C0042CC97 /* Receiver.swift */; };
 		B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271982252DE97500B81CD7 /* MacondoApp.swift */; };
 		B4271985252DE97500B81CD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271984252DE97500B81CD7 /* ContentView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		770010682580F664005C7BA3 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		77654668256A201C0042CC97 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 		B427197F252DE97500B81CD7 /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4271982252DE97500B81CD7 /* MacondoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoApp.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				B42719D3252DEFDD00B81CD7 /* Time.swift */,
 				B4BCC6A8252EE55100F8FA20 /* Generator.swift */,
 				77654668256A201C0042CC97 /* Receiver.swift */,
+				770010682580F664005C7BA3 /* Translator.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				B42719D4252DEFDD00B81CD7 /* Time.swift in Sources */,
 				B42719CA252DEF6A00B81CD7 /* Base64.swift in Sources */,
 				B42719CF252DEFBD00B81CD7 /* Data.swift in Sources */,
+				770010692580F664005C7BA3 /* Translator.swift in Sources */,
 				B4271985252DE97500B81CD7 /* ContentView.swift in Sources */,
 				B4BCC6A9252EE55100F8FA20 /* Generator.swift in Sources */,
 				B42719C1252DEF2900B81CD7 /* Sqlite.swift in Sources */,
@@ -469,7 +473,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macondo/Macondo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Macondo/Preview Content\"";
 				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -495,7 +499,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macondo/Macondo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Macondo/Preview Content\"";
 				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
 				ENABLE_HARDENED_RUNTIME = YES;

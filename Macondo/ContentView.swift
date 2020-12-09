@@ -23,19 +23,19 @@ struct ContentView: View {
         NavigationView {
             List {
                 NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
-                    ListRowView(icon: "square.and.pencil", title: "Post")
+                    ListRowView(icon: "square.and.pencil", title: T.me(t: "Post", language: self.showView.lang))
                 }
                 NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView){
-                    ListRowView(icon: "link", title: "Link")
+                    ListRowView(icon: "link", title: T.me(t: "Link", language: self.showView.lang))
                 }
                 NavigationLink(destination: BookView(language: self.showView.lang), tag: 3, selection: self.$showView.showView){
-                    ListRowView(icon: "book", title: "Book")
+                    ListRowView(icon: "book", title: T.me(t: "Book", language: self.showView.lang))
                 }
                 NavigationLink(destination: AnimeView(language: self.showView.lang), tag: 4, selection: self.$showView.showView){
-                    ListRowView(icon: "airplayvideo", title: "Anime")
+                    ListRowView(icon: "airplayvideo", title: T.me(t: "Anime", language: self.showView.lang))
                 }
                 NavigationLink(destination: VideoView(language: self.showView.lang), tag: 5, selection: self.$showView.showView){
-                    ListRowView(icon: "film", title: "Video")
+                    ListRowView(icon: "film", title: T.me(t: "Video", language: self.showView.lang))
                 }
             }
             .listStyle(SidebarListStyle())
@@ -54,7 +54,7 @@ struct ContentView: View {
             ToolbarItem(placement: .status){
                 VStack(alignment: .leading){
                     Text("Version \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)")
-                    Text("Current language: " + self.showView.lang)
+                    Text(T.me(t: "Current language: ", language: self.showView.lang) + T.me(t: self.showView.lang, language: self.showView.lang))
                 }
             }
         }
@@ -134,24 +134,24 @@ struct EditPostView : View{
         VStack{
             HStack{
                 VStack{
-                    TextField("Add title",text: $title)
+                    TextField(T.me(t: "Add title", language: self.showView.lang),text: $title)
                     TextEditor(text: $text)
                 }
                 VStack{
                     HStack{
-                        Text("Category: ")
+                        Text(T.me(t: "Category: ", language: self.showView.lang))
                         TextField("", text: $category)
                     }
                     HStack{
-                        Text("Tag: ")
+                        Text(T.me(t: "Tag: ", language: self.showView.lang))
                         TextField("", text: $tag)
                     }
-                    Text("Custom YAML")
+                    Text(T.me(t: "Custom YAML", language: self.showView.lang))
                     TextEditor(text: $image)
                 }
             }
             HStack{
-                Text("Summary: ")
+                Text(T.me(t: "Summary: ", language: self.showView.lang))
                 TextField("",text: $summary)
             }
             Spacer()
@@ -159,14 +159,14 @@ struct EditPostView : View{
                 Button(action: {
                     self.showView.showView = 0
                 }){
-                    Text("Cancel")
+                    Text(T.me(t: "Cancel", language: self.showView.lang))
                 }
                 
                 Button(action: {
                     Sqlite.deletePost(cidd: self.cid,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Delete")
+                    Text(T.me(t: "Delete", language: self.showView.lang))
                     .foregroundColor(Color.red)
                     .bold()
                 }
@@ -175,7 +175,7 @@ struct EditPostView : View{
                     Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Update")
+                    Text(T.me(t: "Update", language: self.showView.lang))
                 }.disabled(title.isEmpty || text.isEmpty || summary.isEmpty)
             }
             Spacer()
@@ -227,24 +227,24 @@ struct EditLinkView : View{
     
     var body : some View {
         VStack{
-            TextField("Name",text: $name)
-            TextField("Link",text: $url)
-            TextField("Thumb Url",text: $image)
-            TextField("Description",text: $description)
+            TextField(T.me(t: "Name", language: self.showView.lang),text: $name)
+            TextField(T.me(t: "Link", language: self.showView.lang),text: $url)
+            TextField(T.me(t: "Thumb Url", language: self.showView.lang),text: $image)
+            TextField(T.me(t: "Description", language: self.showView.lang),text: $description)
             
             Spacer()
             HStack{
                 Button(action: {
                     self.showView.showView = 0
                 }){
-                    Text("Cancel")
+                    Text(T.me(t: "Cancel", language: self.showView.lang))
                 }
                 
                 Button(action: {
                     Sqlite.deleteLink(lidd: self.lid,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Delete")
+                    Text(T.me(t: "Delete", language: self.showView.lang))
                     .foregroundColor(Color.red)
                     .bold()
                 }
@@ -253,7 +253,7 @@ struct EditLinkView : View{
                     Sqlite.editLink(lidd: self.lid,name: self.name,url: self.url,image: self.image,description: self.description,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Update")
+                    Text(T.me(t: "Update", language: self.showView.lang))
                 }.disabled(name.isEmpty || url.isEmpty || image.isEmpty || description.isEmpty)
             }
             Spacer()
@@ -305,24 +305,24 @@ struct EditBookView : View{
     
     var body : some View {
         VStack{
-            TextField("Name",text: $name)
+            TextField(T.me(t: "Name", language: self.showView.lang),text: $name)
             TextField("ISBN",text: $isbn)
             TextField("LSBN",text: $lsbn)
-            TextField("Thumb Url",text: $image)
+            TextField(T.me(t: "Thumb Url", language: self.showView.lang),text: $image)
             
             Spacer()
             HStack{
                 Button(action: {
                     self.showView.showView = 0
                 }){
-                    Text("Cancel")
+                    Text(T.me(t: "Cancel", language: self.showView.lang))
                 }
                 
                 Button(action: {
                     Sqlite.deleteBook(bidd: self.bid,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Delete")
+                    Text(T.me(t: "Delete", language: self.showView.lang))
                     .foregroundColor(Color.red)
                     .bold()
                 }
@@ -331,7 +331,7 @@ struct EditBookView : View{
                     Sqlite.editBook(bidd: self.bid,name: self.name,isbn: self.isbn,lsbn: self.lsbn,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Update")
+                    Text(T.me(t: "Update", language: self.showView.lang))
                 }.disabled(name.isEmpty || isbn.isEmpty || lsbn.isEmpty || image.isEmpty)
             }
             Spacer()
@@ -381,23 +381,23 @@ struct EditAnimeView : View{
     
     var body : some View {
         VStack{
-            TextField("Japanese Name",text: $nameJA)
-            TextField("Chinese Name",text: $nameZH)
-            TextField("Thumb Url",text: $image)
+            TextField(T.me(t: "Japanese Name", language: self.showView.lang),text: $nameJA)
+            TextField(T.me(t: "Chinese Name", language: self.showView.lang),text: $nameZH)
+            TextField(T.me(t: "Thumb Url", language: self.showView.lang),text: $image)
             
             Spacer()
             HStack{
                 Button(action: {
                     self.showView.showView = 0
                 }){
-                    Text("Cancel")
+                    Text(T.me(t: "Cancel", language: self.showView.lang))
                 }
                 
                 Button(action: {
                     Sqlite.deleteAnime(aidd: self.aid,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Delete")
+                    Text(T.me(t: "Delete", language: self.showView.lang))
                     .foregroundColor(Color.red)
                     .bold()
                 }
@@ -406,7 +406,7 @@ struct EditAnimeView : View{
                     Sqlite.editAnime(aidd: self.aid,nameJA: self.nameJA,nameZH: self.nameZH,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Update")
+                    Text(T.me(t: "Update", language: self.showView.lang))
                 }.disabled(nameJA.isEmpty || nameZH.isEmpty || image.isEmpty)
             }
             Spacer()
@@ -458,23 +458,23 @@ struct EditVideoView : View{
     
     var body : some View {
         VStack{
-            TextField("Japanese Name",text: $nameJA)
-            TextField("Chinese Name",text: $nameZH)
-            TextField("Thumb Url",text: $image)
+            TextField(T.me(t: "Japanese Name", language: self.showView.lang),text: $nameJA)
+            TextField(T.me(t: "Chinese Name", language: self.showView.lang),text: $nameZH)
+            TextField(T.me(t: "Thumb Url", language: self.showView.lang),text: $image)
             
             Spacer()
             HStack{
                 Button(action: {
                     self.showView.showView = 0
                 }){
-                    Text("Cancel")
+                    Text(T.me(t: "Cancel", language: self.showView.lang))
                 }
                 
                 Button(action: {
                     Sqlite.deleteVideo(vidd: self.vid,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Delete")
+                    Text(T.me(t: "Delete", language: self.showView.lang))
                     .foregroundColor(Color.red)
                     .bold()
                 }
@@ -483,7 +483,7 @@ struct EditVideoView : View{
                     Sqlite.editVideo(vidd: self.vid,nameJA: self.nameJA,nameZH: self.nameZH,image: self.image,language: self.showView.lang)
                     self.showView.showView = 0
                 }){
-                    Text("Update")
+                    Text(T.me(t: "Update", language: self.showView.lang))
                 }.disabled(nameJA.isEmpty || nameZH.isEmpty || image.isEmpty)
             }
             Spacer()
