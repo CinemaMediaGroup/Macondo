@@ -91,11 +91,19 @@ struct PostView : View {
         NavigationView{
             List(pds, id: \.self) { (pd)  in
                 NavigationLink(destination: EditPostView(cid: pd.getCid(),language: self.showView.lang)){
-                    Text(pd.getTitle())
+                    VStack(alignment: .leading){
+                        Text(pd.getTitle()).font(.headline)
+                        Text(pd.getSummary()).font(.body)
+                        //Divider()
+                    }
+                    .padding(.vertical, 8)
                 }
+                //.aspectRatio(contentMode: .fit)
             }
-            .listStyle(SidebarListStyle())
-            .frame(minWidth: 160, idealWidth: 160, maxWidth: 350, maxHeight: .infinity)
+            //.listStyle(SidebarListStyle())
+            .listStyle(InsetListStyle())
+            
+            .frame(minWidth: 200, idealWidth: 350, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
