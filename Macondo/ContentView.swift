@@ -23,19 +23,19 @@ struct ContentView: View {
         NavigationView {
             List {
                 NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
-                    ListRowView(icon: "square.and.pencil", title: T.me(t: "Post", language: self.showView.lang))
+                    Label(T.me(t: "Post", language: self.showView.lang), systemImage: "square.and.pencil")
                 }
                 NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView){
-                    ListRowView(icon: "link", title: T.me(t: "Link", language: self.showView.lang))
+                    Label(T.me(t: "Link", language: self.showView.lang), systemImage: "link")
                 }
                 NavigationLink(destination: BookView(language: self.showView.lang), tag: 3, selection: self.$showView.showView){
-                    ListRowView(icon: "book", title: T.me(t: "Book", language: self.showView.lang))
+                    Label(T.me(t: "Book", language: self.showView.lang), systemImage: "book")
                 }
                 NavigationLink(destination: AnimeView(language: self.showView.lang), tag: 4, selection: self.$showView.showView){
-                    ListRowView(icon: "airplayvideo", title: T.me(t: "Anime", language: self.showView.lang))
+                    Label(T.me(t: "Anime", language: self.showView.lang), systemImage: "airplayvideo")
                 }
                 NavigationLink(destination: VideoView(language: self.showView.lang), tag: 5, selection: self.$showView.showView){
-                    ListRowView(icon: "film", title: T.me(t: "Video", language: self.showView.lang))
+                    Label(T.me(t: "Video", language: self.showView.lang), systemImage: "film")
                 }
             }
             .listStyle(SidebarListStyle())
@@ -57,22 +57,6 @@ struct ContentView: View {
                     Text(T.me(t: "Current language: ", language: self.showView.lang) + T.me(t: self.showView.lang, language: self.showView.lang))
                 }
             }
-        }
-    }
-}
-
-struct ListRowView : View {
-    let icon : String
-    let title : String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: icon)
-                .resizable()
-                .frame(width: 16,height: 16)
-                
-            Text(title)
-                .font(.headline)
         }
     }
 }
