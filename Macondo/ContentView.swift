@@ -77,12 +77,10 @@ struct PostView : View {
                 NavigationLink(destination: EditPostView(cid: pd.getCid(),language: self.showView.lang)){
                     VStack(alignment: .leading){
                         Text(pd.getTitle()).font(.headline)
-                        Text(pd.getSummary()).font(.body)
-                        //Divider()
+                        Text(pd.getSummary()).fontWeight(.thin)
                     }
-                    .padding(.vertical, 8)
                 }
-                //.aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fit)
             }
             //.listStyle(SidebarListStyle())
             .listStyle(InsetListStyle())
@@ -90,6 +88,11 @@ struct PostView : View {
             .frame(minWidth: 200, idealWidth: 350, maxWidth: 350, maxHeight: .infinity)
         }
     }
+    func texts(count: Int) -> [String] {
+            return (1...count).map {
+                (1...$0).reduce("", {$0 + " " + String($1)})
+            }
+        }
 }
 
 struct EditPostView : View{
