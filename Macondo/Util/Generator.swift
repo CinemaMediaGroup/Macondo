@@ -82,7 +82,7 @@ struct Generator{
         let frontMatter = """
         ---
         layout: friends
-        title: 我的朋友们
+        title: \(T.me(t: "My friends", language: language))
         ---
 
         <!-- more -->
@@ -109,7 +109,7 @@ struct Generator{
         let frontMatter = """
         ---
         layout: page
-        title: 月盈阁
+        title: \(T.me(t: "Book Shelf", language: language))
         ---
 
         """
@@ -135,7 +135,7 @@ struct Generator{
         let frontMatter = """
         ---
         layout: page
-        title: 看番
+        title: \(T.me(t: "Anime", language: language))
         ---
 
         """
@@ -161,7 +161,7 @@ struct Generator{
         let frontMatter = """
         ---
         layout: page
-        title: 追剧
+        title: \(T.me(t: "TV series", language: language))
         ---
 
         """

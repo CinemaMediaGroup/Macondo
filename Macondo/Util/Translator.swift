@@ -50,6 +50,12 @@ struct T{
                 return "日文名称"
             }else if t == "Chinese Name"{
                 return "简体中文名称"
+            } else if t == "My friends" {
+                return "我的朋友们"
+            } else if t == "Book Shelf" {
+                return "书架"
+            } else if t == "TV series" {
+                return "影视"
             }
         }else if language == "zh-TW" {
             if t == "Post" {
@@ -92,8 +98,14 @@ struct T{
                 return "日文名稱"
             }else if t == "Chinese Name"{
                 return "正體中文名稱"
+            } else if t == "My friends" {
+                return "我的朋友們"
+            } else if t == "Book Shelf" {
+                return "書架"
+            } else if t == "TV series" {
+                return "影視"
             }
-        }else{
+        } else {
             if t == "Chinese Name"{
                 return "English Name"
             }
