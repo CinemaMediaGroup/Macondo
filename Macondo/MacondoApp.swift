@@ -43,7 +43,7 @@ struct MacondoApp: App {
                     Button(action: {
                         Sqlite.newTempVideo(language: self.lang)
                     }){
-                        Text("Video")
+                        Text("TV series")
                     }
                 }
                 
@@ -172,7 +172,7 @@ struct MacondoApp: App {
                             return
                         }
                     }){
-                        Text("Videos")
+                        Text("TV series")
                     }
                 }
                 

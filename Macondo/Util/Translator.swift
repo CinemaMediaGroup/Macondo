@@ -108,6 +108,8 @@ struct T{
         } else {
             if t == "Chinese Name"{
                 return "English Name"
+            } else if t == "Video" {
+                return "TV series"
             }
             return t
         }
