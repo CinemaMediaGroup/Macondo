@@ -113,11 +113,11 @@ struct EditPostView : View{
         _tag = State(initialValue: pd.getTag())
         
 
-        let defaults = UserDefaults.standard
+        /*let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
         dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
-        }
+        }*/
     }
     
     var body : some View {
