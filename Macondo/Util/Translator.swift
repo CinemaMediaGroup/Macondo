@@ -87,7 +87,7 @@ struct T {
             } else if t == "Delete" {
                 return "刪除"
             } else if t == "Update" {
-                return "更新"
+                return "更動"
             } else if t == "Name" {
                 return "名稱"
             } else if t == "Thumb Url" {
