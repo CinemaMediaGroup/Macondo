@@ -18,7 +18,7 @@ struct PostView : View {
         lang = language
     }
     
-    var body: some View {
+    var body : some View {
         NavigationView {
             List(pds, id: \.self) { (pd)  in
                 NavigationLink(destination: EditPostView(cid: pd.getCid(),language: self.showView.lang)) {
