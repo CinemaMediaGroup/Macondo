@@ -25,16 +25,16 @@ struct ContentView: View {
                 NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
                     Label(T.me(t: "Post", language: self.showView.lang), systemImage: "square.and.pencil")
                 }
-                NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView){
+                NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView) {
                     Label(T.me(t: "Link", language: self.showView.lang), systemImage: "link")
                 }
-                NavigationLink(destination: BookView(language: self.showView.lang), tag: 3, selection: self.$showView.showView){
+                NavigationLink(destination: BookView(language: self.showView.lang), tag: 3, selection: self.$showView.showView) {
                     Label(T.me(t: "Book", language: self.showView.lang), systemImage: "book")
                 }
-                NavigationLink(destination: AnimeView(language: self.showView.lang), tag: 4, selection: self.$showView.showView){
+                NavigationLink(destination: AnimeView(language: self.showView.lang), tag: 4, selection: self.$showView.showView) {
                     Label(T.me(t: "Anime", language: self.showView.lang), systemImage: "airplayvideo")
                 }
-                NavigationLink(destination: VideoView(language: self.showView.lang), tag: 5, selection: self.$showView.showView){
+                NavigationLink(destination: VideoView(language: self.showView.lang), tag: 5, selection: self.$showView.showView) {
                     Label(T.me(t: "Video", language: self.showView.lang), systemImage: "film")
                 }
             }
@@ -51,34 +51,12 @@ struct ContentView: View {
             .frame(minWidth: 150, idealWidth: 150, maxWidth: 250, minHeight: 400, maxHeight: .infinity)
         }
         .toolbar {
-            ToolbarItem(placement: .status){
-                VStack(alignment: .leading){
+            ToolbarItem(placement: .status) {
+                VStack(alignment: .leading) {
                     Text("Version \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)")
                     Text(T.me(t: "Current language: ", language: self.showView.lang) + T.me(t: self.showView.lang, language: self.showView.lang))
                 }
             }
-        }
-    }
-}
-
-struct LinkView : View{
-    var lds : [LinksData] = [LinksData]()
-    var lang : String
-    
-    init(language : String){
-        lds = Sqlite.getLinkList(language: language)
-        lang = language
-    }
-    
-    var body: some View {
-        NavigationView{
-            List(lds, id: \.self) { (ld)  in
-                NavigationLink(destination: EditLinkView(lid: ld.getLid(),language: self.lang)){
-                    Text(ld.getName())
-                }
-            }
-            .listStyle(SidebarListStyle())
-            .frame(minWidth: 160, idealWidth: 160, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
