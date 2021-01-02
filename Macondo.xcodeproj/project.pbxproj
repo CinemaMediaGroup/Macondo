@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		770010692580F664005C7BA3 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770010682580F664005C7BA3 /* Translator.swift */; };
+		7731E55B25A02BF0006B0573 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E55A25A02BF0006B0573 /* PostView.swift */; };
 		77654669256A201C0042CC97 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77654668256A201C0042CC97 /* Receiver.swift */; };
 		B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271982252DE97500B81CD7 /* MacondoApp.swift */; };
 		B4271985252DE97500B81CD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271984252DE97500B81CD7 /* ContentView.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		770010682580F664005C7BA3 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
+		7731E55A25A02BF0006B0573 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		77654668256A201C0042CC97 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 		B427197F252DE97500B81CD7 /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4271982252DE97500B81CD7 /* MacondoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoApp.swift; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7731E55925A02BD2006B0573 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7731E55A25A02BF0006B0573 /* PostView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B4271976252DE97500B81CD7 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +122,7 @@
 		B4271981252DE97500B81CD7 /* Macondo */ = {
 			isa = PBXGroup;
 			children = (
+				7731E55925A02BD2006B0573 /* View */,
 				B42719C8252DEF5B00B81CD7 /* Util */,
 				B42719BF252DEF0800B81CD7 /* Data */,
 				B4271982252DE97500B81CD7 /* MacondoApp.swift */,
@@ -314,6 +325,7 @@
 				B4BCC6A9252EE55100F8FA20 /* Generator.swift in Sources */,
 				B42719C1252DEF2900B81CD7 /* Sqlite.swift in Sources */,
 				77654669256A201C0042CC97 /* Receiver.swift in Sources */,
+				7731E55B25A02BF0006B0573 /* PostView.swift in Sources */,
 				B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
