@@ -16,6 +16,7 @@
 		7731E57425A02F9D006B0573 /* EditBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E57325A02F9D006B0573 /* EditBookView.swift */; };
 		7731E57925A033C5006B0573 /* AnimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E57825A033C5006B0573 /* AnimeView.swift */; };
 		7731E57E25A03D9D006B0573 /* EditAnimeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E57D25A03D9D006B0573 /* EditAnimeVIew.swift */; };
+		7731E58325A03E72006B0573 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E58225A03E72006B0573 /* VideoView.swift */; };
 		77654669256A201C0042CC97 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77654668256A201C0042CC97 /* Receiver.swift */; };
 		B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271982252DE97500B81CD7 /* MacondoApp.swift */; };
 		B4271985252DE97500B81CD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271984252DE97500B81CD7 /* ContentView.swift */; };
@@ -58,6 +59,7 @@
 		7731E57325A02F9D006B0573 /* EditBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookView.swift; sourceTree = "<group>"; };
 		7731E57825A033C5006B0573 /* AnimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeView.swift; sourceTree = "<group>"; };
 		7731E57D25A03D9D006B0573 /* EditAnimeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnimeVIew.swift; sourceTree = "<group>"; };
+		7731E58225A03E72006B0573 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		77654668256A201C0042CC97 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 		B427197F252DE97500B81CD7 /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4271982252DE97500B81CD7 /* MacondoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoApp.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				7731E57325A02F9D006B0573 /* EditBookView.swift */,
 				7731E57825A033C5006B0573 /* AnimeView.swift */,
 				7731E57D25A03D9D006B0573 /* EditAnimeVIew.swift */,
+				7731E58225A03E72006B0573 /* VideoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				770010692580F664005C7BA3 /* Translator.swift in Sources */,
 				B4271985252DE97500B81CD7 /* ContentView.swift in Sources */,
 				7731E56F25A02F3B006B0573 /* BookView.swift in Sources */,
+				7731E58325A03E72006B0573 /* VideoView.swift in Sources */,
 				7731E57425A02F9D006B0573 /* EditBookView.swift in Sources */,
 				7731E56A25A02E9C006B0573 /* EditLinkView.swift in Sources */,
 				7731E57E25A03D9D006B0573 /* EditAnimeVIew.swift in Sources */,
