@@ -20,7 +20,7 @@ struct BookView : View {
     var body: some View {
         NavigationView {
             List(bds, id: \.self) { (bd)  in
-                NavigationLink(destination: EditBookView(bid: bd.getBid(),language: self.lang)){
+                NavigationLink(destination: EditBookView(bid: bd.getBid(), language: self.lang)) {
                     Text(bd.getName())
                 }
             }
