@@ -1,5 +1,5 @@
 //
-//  EditLinkView.swift
+//  EditAnimeVIew.swift
 //  Macondo
 //
 //  Created by Louis Shen on 2021/1/2.
@@ -8,31 +8,28 @@
 import Foundation
 import SwiftUI
 
-struct EditLinkView : View {
+struct EditAnimeView : View{
     @EnvironmentObject var showView : ViewNavigation
     
-    @State var name : String = ""
-    @State var url : String = ""
+    @State var nameJA : String = ""
+    @State var nameZH : String = ""
     @State var image : String = ""
-    @State var description : String = ""
     
-    var lid : Int = 0
+    var aid : Int = 0
     
-    init(lid : Int, language : String) {
-        let ld : LinksData = Sqlite.getLinkData(lidd: lid, language: language)
-        self.lid = lid
-        _name = State(initialValue: ld.getName())
-        _url = State(initialValue: ld.getUrl())
-        _image = State(initialValue: ld.getImage())
-        _description = State(initialValue: ld.getDescription())
+    init(aid : Int, language : String) {
+        let ad : AnimeData = Sqlite.getAnimeData(aidd: aid, language: language)
+        self.aid = aid
+        _nameJA = State(initialValue: ad.getNameJA())
+        _nameZH = State(initialValue: ad.getNameZH())
+        _image = State(initialValue: ad.getImage())
     }
     
     var body : some View {
         VStack {
-            TextField(T.me(t: "Name", language: self.showView.lang), text: $name)
-            TextField(T.me(t: "Link", language: self.showView.lang), text: $url)
+            TextField(T.me(t: "Japanese Name", language: self.showView.lang), text: $nameJA)
+            TextField(T.me(t: "Chinese Name", language: self.showView.lang), text: $nameZH)
             TextField(T.me(t: "Thumb Url", language: self.showView.lang), text: $image)
-            TextField(T.me(t: "Description", language: self.showView.lang), text: $description)
             
             Spacer()
             HStack {
@@ -43,7 +40,7 @@ struct EditLinkView : View {
                 }
                 
                 Button(action: {
-                    Sqlite.deleteLink(lidd: self.lid,language: self.showView.lang)
+                    Sqlite.deleteAnime(aidd: self.aid, language: self.showView.lang)
                     self.showView.showView = 0
                 }) {
                     Text(T.me(t: "Delete", language: self.showView.lang))
@@ -52,12 +49,12 @@ struct EditLinkView : View {
                 }
                 
                 Button(action: {
-                    Sqlite.editLink(lidd: self.lid, name: self.name, url: self.url, image: self.image, description: self.description, language: self.showView.lang)
+                    Sqlite.editAnime(aidd: self.aid, nameJA: self.nameJA, nameZH: self.nameZH, image: self.image, language: self.showView.lang)
                     self.showView.showView = 0
                 }) {
                     Text(T.me(t: "Update", language: self.showView.lang))
                 }
-                .disabled(name.isEmpty || url.isEmpty || image.isEmpty || description.isEmpty)
+                .disabled(nameJA.isEmpty || nameZH.isEmpty || image.isEmpty)
             }
             Spacer()
         }

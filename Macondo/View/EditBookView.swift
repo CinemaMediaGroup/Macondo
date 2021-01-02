@@ -18,7 +18,7 @@ struct EditBookView : View {
     
     var bid : Int = 0
     
-    init(bid : Int,language : String) {
+    init(bid : Int, language : String) {
         let bd : BookData = Sqlite.getBookData(bidd: bid, language: language)
         self.bid = bid
         _name = State(initialValue: bd.getName())
