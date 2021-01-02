@@ -1,5 +1,5 @@
 //
-//  BookView.swift
+//  AnimeView.swift
 //  Macondo
 //
 //  Created by Louis Shen on 2021/1/2.
@@ -8,20 +8,20 @@
 import Foundation
 import SwiftUI
 
-struct BookView : View {
-    var bds : [BookData] = [BookData]()
+struct AnimeView : View {
+    var ads : [AnimeData] = [AnimeData]()
     var lang : String
     
     init(language : String) {
-        bds = Sqlite.getBookList(language: language)
+        ads = Sqlite.getAnimeList(language: language)
         lang = language
     }
-
+    
     var body : some View {
         NavigationView {
-            List(bds, id: \.self) { (bd)  in
-                NavigationLink(destination: EditBookView(bid: bd.getBid(), language: self.lang)) {
-                    Text(bd.getName())
+            List(ads, id: \.self) { (ad)  in
+                NavigationLink(destination: EditAnimeView(aid: ad.getAid(), language: self.lang)) {
+                    Text(ad.getNameZH())
                 }
             }
             .listStyle(SidebarListStyle())
