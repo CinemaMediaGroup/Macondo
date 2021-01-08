@@ -19,6 +19,7 @@
 		7731E58325A03E72006B0573 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E58225A03E72006B0573 /* VideoView.swift */; };
 		7731E58825A03F08006B0573 /* EditVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E58725A03F08006B0573 /* EditVideoView.swift */; };
 		7744E5E525A86BCD004AFECB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7744E5E425A86BCD004AFECB /* README.md */; };
+		7744E5F125A86D12004AFECB /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 7744E5F025A86D12004AFECB /* Ink */; };
 		77654669256A201C0042CC97 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77654668256A201C0042CC97 /* Receiver.swift */; };
 		B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271982252DE97500B81CD7 /* MacondoApp.swift */; };
 		B4271985252DE97500B81CD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271984252DE97500B81CD7 /* ContentView.swift */; };
@@ -91,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B42719B9252DEADF00B81CD7 /* SQLite in Frameworks */,
+				7744E5F125A86D12004AFECB /* Ink in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +232,7 @@
 			name = Macondo;
 			packageProductDependencies = (
 				B42719B8252DEADF00B81CD7 /* SQLite */,
+				7744E5F025A86D12004AFECB /* Ink */,
 			);
 			productName = Macondo;
 			productReference = B427197F252DE97500B81CD7 /* Macondo.app */;
@@ -304,6 +307,7 @@
 			mainGroup = B4271976252DE97500B81CD7;
 			packageReferences = (
 				B42719B7252DEADF00B81CD7 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				7744E5EF25A86D12004AFECB /* XCRemoteSwiftPackageReference "Ink" */,
 			);
 			productRefGroup = B4271980252DE97500B81CD7 /* Products */;
 			projectDirPath = "";
@@ -525,7 +529,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macondo/Macondo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Macondo/Preview Content\"";
 				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -536,7 +540,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.Macondo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -551,7 +555,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macondo/Macondo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Macondo/Preview Content\"";
 				DEVELOPMENT_TEAM = 7VKUQ8WZHV;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -562,7 +566,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.Macondo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -695,6 +699,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7744E5EF25A86D12004AFECB /* XCRemoteSwiftPackageReference "Ink" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Ink";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 		B42719B7252DEADF00B81CD7 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
@@ -706,6 +718,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7744E5F025A86D12004AFECB /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7744E5EF25A86D12004AFECB /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
+		};
 		B42719B8252DEADF00B81CD7 /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B42719B7252DEADF00B81CD7 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
