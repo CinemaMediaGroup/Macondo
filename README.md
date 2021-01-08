@@ -8,7 +8,7 @@ A blog manager for hexo with GUI, powered by [Swift](https://github.com/apple/sw
 
 This repo relies on the following third-party projects:
 
-- [SQLite.swift](https://github.com/stephencelis/SQLite.swift)
+- [stephencelis/SQLite.swift](https://github.com/stephencelis/SQLite.swift)
 
 ## License
 

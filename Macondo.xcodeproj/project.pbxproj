@@ -18,6 +18,7 @@
 		7731E57E25A03D9D006B0573 /* EditAnimeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E57D25A03D9D006B0573 /* EditAnimeVIew.swift */; };
 		7731E58325A03E72006B0573 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E58225A03E72006B0573 /* VideoView.swift */; };
 		7731E58825A03F08006B0573 /* EditVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E58725A03F08006B0573 /* EditVideoView.swift */; };
+		7744E5E525A86BCD004AFECB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7744E5E425A86BCD004AFECB /* README.md */; };
 		77654669256A201C0042CC97 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77654668256A201C0042CC97 /* Receiver.swift */; };
 		B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271982252DE97500B81CD7 /* MacondoApp.swift */; };
 		B4271985252DE97500B81CD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4271984252DE97500B81CD7 /* ContentView.swift */; };
@@ -62,6 +63,7 @@
 		7731E57D25A03D9D006B0573 /* EditAnimeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnimeVIew.swift; sourceTree = "<group>"; };
 		7731E58225A03E72006B0573 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		7731E58725A03F08006B0573 /* EditVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoView.swift; sourceTree = "<group>"; };
+		7744E5E425A86BCD004AFECB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		77654668256A201C0042CC97 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 		B427197F252DE97500B81CD7 /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4271982252DE97500B81CD7 /* MacondoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacondoApp.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		B4271976252DE97500B81CD7 = {
 			isa = PBXGroup;
 			children = (
+				7744E5E425A86BCD004AFECB /* README.md */,
 				B4271981252DE97500B81CD7 /* Macondo */,
 				B4271994252DE97700B81CD7 /* MacondoTests */,
 				B427199F252DE97700B81CD7 /* MacondoUITests */,
@@ -318,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7744E5E525A86BCD004AFECB /* README.md in Resources */,
 				B427198A252DE97700B81CD7 /* Preview Assets.xcassets in Resources */,
 				B4271987252DE97700B81CD7 /* Assets.xcassets in Resources */,
 			);
