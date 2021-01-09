@@ -18,6 +18,7 @@
 		7731E57E25A03D9D006B0573 /* EditAnimeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E57D25A03D9D006B0573 /* EditAnimeVIew.swift */; };
 		7731E58325A03E72006B0573 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E58225A03E72006B0573 /* VideoView.swift */; };
 		7731E58825A03F08006B0573 /* EditVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E58725A03F08006B0573 /* EditVideoView.swift */; };
+		774368DA25A96D9F00781D0F /* CustomWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774368D925A96D9F00781D0F /* CustomWebView.swift */; };
 		7744E5E525A86BCD004AFECB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7744E5E425A86BCD004AFECB /* README.md */; };
 		7744E5F125A86D12004AFECB /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 7744E5F025A86D12004AFECB /* Ink */; };
 		77654669256A201C0042CC97 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77654668256A201C0042CC97 /* Receiver.swift */; };
@@ -64,6 +65,7 @@
 		7731E57D25A03D9D006B0573 /* EditAnimeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnimeVIew.swift; sourceTree = "<group>"; };
 		7731E58225A03E72006B0573 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		7731E58725A03F08006B0573 /* EditVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoView.swift; sourceTree = "<group>"; };
+		774368D925A96D9F00781D0F /* CustomWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWebView.swift; sourceTree = "<group>"; };
 		7744E5E425A86BCD004AFECB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		77654668256A201C0042CC97 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 		B427197F252DE97500B81CD7 /* Macondo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macondo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,7 @@
 				7731E57D25A03D9D006B0573 /* EditAnimeVIew.swift */,
 				7731E58225A03E72006B0573 /* VideoView.swift */,
 				7731E58725A03F08006B0573 /* EditVideoView.swift */,
+				774368D925A96D9F00781D0F /* CustomWebView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				B42719C1252DEF2900B81CD7 /* Sqlite.swift in Sources */,
 				7731E58825A03F08006B0573 /* EditVideoView.swift in Sources */,
 				77654669256A201C0042CC97 /* Receiver.swift in Sources */,
+				774368DA25A96D9F00781D0F /* CustomWebView.swift in Sources */,
 				7731E56025A02D14006B0573 /* EditPostView.swift in Sources */,
 				7731E55B25A02BF0006B0573 /* PostView.swift in Sources */,
 				7731E56525A02E28006B0573 /* LinkView.swift in Sources */,
