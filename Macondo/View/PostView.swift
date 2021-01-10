@@ -33,6 +33,7 @@ struct PostView : View {
                         }
                         Label(pd.getCategory(), systemImage: "folder")
                             .font(.footnote)
+                            .foregroundColor(.gray)
                     }
                 }
                 .aspectRatio(contentMode: .fit)
@@ -41,7 +42,7 @@ struct PostView : View {
             //.listStyle(SidebarListStyle())
             .listStyle(InsetListStyle())
             
-            .frame(minWidth: 200, idealWidth: 350, maxWidth: 350, maxHeight: .infinity)
+            .frame(minWidth: 280, idealWidth: 350, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
