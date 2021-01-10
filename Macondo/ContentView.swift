@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import WebKit
-import Ink
 
 class ViewNavigation: ObservableObject {
     @Published var showView : Int? = 0

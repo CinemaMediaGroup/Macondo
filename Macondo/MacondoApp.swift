@@ -14,7 +14,7 @@ struct MacondoApp: App {
     @State var lang : String = "zh-CN"
     
     var body: some Scene {
-        WindowGroup {
+        WindowGroup("") {
             ContentView().environmentObject(viewNavi)
         }
         .commands {
