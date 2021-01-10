@@ -22,7 +22,7 @@ struct EditPostView : View{
     var cid : Int = 0
     
     init(cid : Int, language : String) {
-        let parser = MarkdownParser()
+        //let parser = MarkdownParser()
         
         //let css = "<style>body{font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;}</style>"
         
@@ -84,5 +84,10 @@ struct EditPostView : View{
         }
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Text("Text")
+            }
+        }
     }
 }
