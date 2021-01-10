@@ -2,7 +2,7 @@
 
 A blog manager for hexo with GUI, powered by [Swift](https://github.com/apple/swift).
 
-![img 164](https://cdn.jsdelivr.net/gh/CinemaMediaGroup/ImagePack2@latest/00000164.webp)
+![img 164](https://cdn.jsdelivr.net/gh/CinemaMediaGroup/ImagePack2@latest/00000210.webp)
 
 ## Credits
 
