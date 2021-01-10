@@ -24,10 +24,19 @@ struct PostView : View {
                 NavigationLink(destination: EditPostView(cid: pd.getCid(),language: self.showView.lang)) {
                     VStack(alignment: .leading) {
                         Text(pd.getTitle()).font(.headline)
-                        Text(pd.getSummary()).fontWeight(.thin)
+                        HStack {
+                            Text(Time.getFriendlyTime(pd.getModified()))
+                                .font(.body)
+                            Text(pd.getSummary())
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        Label(pd.getCategory(), systemImage: "folder")
+                            .font(.footnote)
                     }
                 }
                 .aspectRatio(contentMode: .fit)
+                .padding(.vertical, 6)
             }
             //.listStyle(SidebarListStyle())
             .listStyle(InsetListStyle())
