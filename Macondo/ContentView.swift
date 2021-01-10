@@ -48,7 +48,7 @@ struct ContentView: View {
             .onReceive(setLanguageZhTWSelected) {_ in
                 self.showView.lang = "zh-TW"
             }
-            .frame(minWidth: 150, idealWidth: 150, maxWidth: 250, minHeight: 400, maxHeight: .infinity)
+            .frame(minWidth: 220, idealWidth: 220, maxWidth: 220, minHeight: 400, maxHeight: .infinity)
         }
         .toolbar {
             ToolbarItem(placement: .navigation) {

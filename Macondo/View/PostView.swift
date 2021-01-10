@@ -39,7 +39,6 @@ struct PostView : View {
                 .aspectRatio(contentMode: .fit)
                 .padding(.vertical, 6)
             }
-            //.listStyle(SidebarListStyle())
             .listStyle(InsetListStyle())
             
             .frame(minWidth: 280, idealWidth: 350, maxWidth: 350, maxHeight: .infinity)
