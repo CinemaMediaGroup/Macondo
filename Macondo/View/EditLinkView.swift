@@ -33,34 +33,30 @@ struct EditLinkView : View {
             TextField(T.me(t: "Link", language: self.showView.lang), text: $url)
             TextField(T.me(t: "Thumb Url", language: self.showView.lang), text: $image)
             TextField(T.me(t: "Description", language: self.showView.lang), text: $description)
-            
-            Spacer()
-            HStack {
-                Button(action: {
-                    self.showView.showView = 0
-                }) {
-                    Text(T.me(t: "Cancel", language: self.showView.lang))
-                }
-                
-                Button(action: {
-                    Sqlite.deleteLink(lidd: self.lid,language: self.showView.lang)
-                    self.showView.showView = 0
-                }) {
-                    Text(T.me(t: "Delete", language: self.showView.lang))
-                    .foregroundColor(Color.red)
-                    .bold()
-                }
-                
-                Button(action: {
-                    Sqlite.editLink(lidd: self.lid, name: self.name, url: self.url, image: self.image, description: self.description, language: self.showView.lang)
-                    self.showView.showView = 0
-                }) {
-                    Text(T.me(t: "Update", language: self.showView.lang))
-                }
-                .disabled(name.isEmpty || url.isEmpty || image.isEmpty || description.isEmpty)
-            }
             Spacer()
         }
+        .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                HStack {
+                    Button(action: {
+                        Sqlite.deleteLink(lidd: self.lid,language: self.showView.lang)
+                        self.showView.showView = 0
+                    }) {
+                        Image(systemName: "trash")
+                            .foregroundColor(Color.red)
+                    }
+                    
+                    Button(action: {
+                        Sqlite.editLink(lidd: self.lid, name: self.name, url: self.url, image: self.image, description: self.description, language: self.showView.lang)
+                        self.showView.showView = 2
+                    }) {
+                        Image(systemName: "square.and.arrow.down")
+                    }
+                    .disabled(name.isEmpty || url.isEmpty || image.isEmpty || description.isEmpty)
+                }
+            }
+        }
     }
 }
