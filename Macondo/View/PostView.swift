@@ -21,7 +21,7 @@ struct PostView : View {
     var body : some View {
         NavigationView {
             List(pds, id: \.self) { (pd)  in
-                NavigationLink(destination: EditPostView(cid: pd.getCid(),language: self.showView.lang)) {
+                NavigationLink(destination: EditPostView(cid: pd.getCid(), language: self.showView.lang)) {
                     VStack(alignment: .leading) {
                         Text(pd.getTitle()).font(.headline)
                         HStack {

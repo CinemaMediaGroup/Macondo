@@ -23,7 +23,9 @@ struct ContentView: View {
         NavigationView {
             List {
                 NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
-                    Label(T.me(t: "Post", language: self.showView.lang), systemImage: "square.and.pencil")
+                    HStack {
+                        Label(T.me(t: "Post", language: self.showView.lang), systemImage: "square.and.pencil")
+                    }
                 }
                 NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView) {
                     Label(T.me(t: "Link", language: self.showView.lang), systemImage: "link")

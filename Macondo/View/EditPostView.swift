@@ -22,10 +22,6 @@ struct EditPostView : View{
     var cid : Int = 0
     
     init(cid : Int, language : String) {
-        //let parser = MarkdownParser()
-        
-        //let css = "<style>body{font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;}</style>"
-        
         let pd : PostData = Sqlite.getPostData(cidd: cid, language: language)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
@@ -56,8 +52,6 @@ struct EditPostView : View{
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
             TextEditor(text: $text)
             //SafariWebView(html: text)
-            
-            //Spacer()
         }
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
@@ -80,7 +74,7 @@ struct EditPostView : View{
                     
                     Button(action: {
                         Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag,language: self.showView.lang)
-                        self.showView.showView = 0
+                        self.showView.showView = 1
                     }) {
                         Image(systemName: "square.and.arrow.down")
                     }
