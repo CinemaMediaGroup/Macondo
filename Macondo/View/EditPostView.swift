@@ -56,37 +56,36 @@ struct EditPostView : View{
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
             TextEditor(text: $text)
             //SafariWebView(html: text)
-            HStack {
-                Button(action: {
-                    self.showView.showView = 0
-                }) {
-                    Text(T.me(t: "Cancel", language: self.showView.lang))
-                }
-                
-                Button(action: {
-                    Sqlite.deletePost(cidd: self.cid, language: self.showView.lang)
-                    self.showView.showView = 0
-                }) {
-                    Text(T.me(t: "Delete", language: self.showView.lang))
-                    .foregroundColor(Color.red)
-                    .bold()
-                }
-                
-                Button(action: {
-                    Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag,language: self.showView.lang)
-                    self.showView.showView = 0
-                }) {
-                    Text(T.me(t: "Update", language: self.showView.lang))
-                }
-                .disabled(title.isEmpty || text.isEmpty || summary.isEmpty)
-            }
+            
             //Spacer()
         }
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Text("Text")
+                HStack {
+                    /*Button(action: {
+                        self.showView.showView = 0
+                    }) {
+                        Text(T.me(t: "Cancel", language: self.showView.lang))
+                    }*/
+                    
+                    Button(action: {
+                        Sqlite.deletePost(cidd: self.cid, language: self.showView.lang)
+                        self.showView.showView = 0
+                    }) {
+                        Image(systemName: "trash")
+                            .foregroundColor(Color.red)
+                    }
+                    
+                    Button(action: {
+                        Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag,language: self.showView.lang)
+                        self.showView.showView = 0
+                    }) {
+                        Image(systemName: "square.and.arrow.down")
+                    }
+                    .disabled(title.isEmpty || text.isEmpty || summary.isEmpty)
+                }
             }
         }
     }
