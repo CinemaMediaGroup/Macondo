@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Ink
 
 struct EditPostView : View{
     @EnvironmentObject var showView : ViewNavigation
@@ -21,6 +22,10 @@ struct EditPostView : View{
     var cid : Int = 0
     
     init(cid : Int, language : String) {
+        let parser = MarkdownParser()
+        
+        //let css = "<style>body{font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;}</style>"
+        
         let pd : PostData = Sqlite.getPostData(cidd: cid, language: language)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
@@ -33,29 +38,24 @@ struct EditPostView : View{
     
     var body : some View {
         VStack {
+            TextField(T.me(t: "Add title", language: self.showView.lang),text: $title)
             HStack {
-                VStack {
-                    TextField(T.me(t: "Add title", language: self.showView.lang),text: $title)//.textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextEditor(text: $text)
-                }
-                VStack {
-                    HStack {
-                        Text(T.me(t: "Category: ", language: self.showView.lang))
-                        TextField("", text: $category)
-                    }
-                    HStack {
-                        Text(T.me(t: "Tag: ", language: self.showView.lang))
-                        TextField("", text: $tag)
-                    }
-                    Text(T.me(t: "Custom YAML", language: self.showView.lang))
-                    TextEditor(text: $image)
-                }
+                Text(T.me(t: "Category: ", language: self.showView.lang))
+                TextField("", text: $category)
+            }
+            HStack {
+                Text(T.me(t: "Tag: ", language: self.showView.lang))
+                TextField("", text: $tag)
             }
             HStack {
                 Text(T.me(t: "Summary: ", language: self.showView.lang))
                 TextField("",text: $summary)
             }
-            Spacer()
+            Text(T.me(t: "Custom YAML", language: self.showView.lang))
+            TextEditor(text: $image)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+            TextEditor(text: $text)
+            //SafariWebView(html: text)
             HStack {
                 Button(action: {
                     self.showView.showView = 0
@@ -80,8 +80,9 @@ struct EditPostView : View{
                 }
                 .disabled(title.isEmpty || text.isEmpty || summary.isEmpty)
             }
-            Spacer()
+            //Spacer()
         }
+        .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
     }
 }
