@@ -27,7 +27,7 @@ struct VideoView : View {
                 }
             }
             .listStyle(SidebarListStyle())
-            .frame(minWidth: 160, idealWidth: 160, maxWidth: 350, maxHeight: .infinity)
+            .frame(minWidth: 280, idealWidth: 280, maxWidth: 350, maxHeight: .infinity)
         }
     }
 }
