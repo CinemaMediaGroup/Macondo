@@ -33,6 +33,7 @@ struct EditAnimeView : View{
             
             Spacer()
         }
+        .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {

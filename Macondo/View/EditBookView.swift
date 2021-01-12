@@ -36,6 +36,7 @@ struct EditBookView : View {
             
             Spacer()
         }
+        .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -44,16 +45,15 @@ struct EditBookView : View {
                         Sqlite.deleteBook(bidd: self.bid, language: self.showView.lang)
                         self.showView.showView = 0
                     }) {
-                        Text(T.me(t: "Delete", language: self.showView.lang))
-                        .foregroundColor(Color.red)
-                        .bold()
+                        Image(systemName: "trash")
+                            .foregroundColor(Color.red)
                     }
                     
                     Button(action: {
                         Sqlite.editBook(bidd: self.bid, name: self.name, isbn: self.isbn, lsbn: self.lsbn, image: self.image, language: self.showView.lang)
                         self.showView.showView = 3
                     }) {
-                        Text(T.me(t: "Update", language: self.showView.lang))
+                        Image(systemName: "square.and.arrow.down")
                     }
                     .disabled(name.isEmpty || isbn.isEmpty || lsbn.isEmpty || image.isEmpty)
                 }
