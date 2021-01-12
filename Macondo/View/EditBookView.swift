@@ -43,7 +43,11 @@ struct EditBookView : View {
                 HStack {
                     Button(action: {
                         Sqlite.deleteBook(bidd: self.bid, language: self.showView.lang)
-                        self.showView.showView = 0
+                        self.showView.showView = 3
+                        self.name = ""
+                        self.isbn = ""
+                        self.lsbn = ""
+                        self.image = ""
                     }) {
                         Image(systemName: "trash")
                             .foregroundColor(Color.red)

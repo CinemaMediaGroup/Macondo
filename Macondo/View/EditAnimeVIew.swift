@@ -40,7 +40,10 @@ struct EditAnimeView : View{
                 HStack {
                     Button(action: {
                         Sqlite.deleteAnime(aidd: self.aid, language: self.showView.lang)
-                        self.showView.showView = 0
+                        self.showView.showView = 4
+                        self.nameJA = ""
+                        self.nameZH = ""
+                        self.image = ""
                     }) {
                         Image(systemName: "trash")
                             .foregroundColor(Color.red)

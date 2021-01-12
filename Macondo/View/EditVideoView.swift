@@ -40,7 +40,11 @@ struct EditVideoView : View {
                 HStack {
                     Button(action: {
                         Sqlite.deleteVideo(vidd: self.vid, language: self.showView.lang)
-                        self.showView.showView = 0
+                        self.showView.showView = 5
+                        self.nameJA = ""
+                        self.nameZH = ""
+                        self.image = ""
+                        
                     }) {
                         Image(systemName: "trash")
                             .foregroundColor(Color.red)

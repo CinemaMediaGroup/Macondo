@@ -51,22 +51,21 @@ struct EditPostView : View{
             TextEditor(text: $image)
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
             TextEditor(text: $text)
-            //SafariWebView(html: text)
         }
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 HStack {
-                    /*Button(action: {
-                        self.showView.showView = 0
-                    }) {
-                        Text(T.me(t: "Cancel", language: self.showView.lang))
-                    }*/
-                    
                     Button(action: {
                         Sqlite.deletePost(cidd: self.cid, language: self.showView.lang)
-                        self.showView.showView = 0
+                        self.showView.showView = 1
+                        self.title = ""
+                        self.text = ""
+                        self.image = ""
+                        self.summary = ""
+                        self.category = ""
+                        self.tag = ""
                     }) {
                         Image(systemName: "trash")
                             .foregroundColor(Color.red)

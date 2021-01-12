@@ -42,7 +42,11 @@ struct EditLinkView : View {
                 HStack {
                     Button(action: {
                         Sqlite.deleteLink(lidd: self.lid,language: self.showView.lang)
-                        self.showView.showView = 0
+                        self.showView.showView = 2
+                        self.name = ""
+                        self.url = ""
+                        self.image = ""
+                        self.description = ""
                     }) {
                         Image(systemName: "trash")
                             .foregroundColor(Color.red)
