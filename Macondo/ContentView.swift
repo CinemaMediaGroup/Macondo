@@ -51,6 +51,12 @@ struct ContentView: View {
                 self.showView.lang = "zh-TW"
             }
             .frame(minWidth: 220, idealWidth: 220, maxWidth: 220, minHeight: 400, maxHeight: .infinity)
+            .toolbar {
+                Button(action: toggleSidebar) {
+                    Image(systemName: "sidebar.left")
+                    .help("Toggle Sidebar")
+                }
+            }
         }
         .toolbar {
             ToolbarItem(placement: .navigation) {
@@ -60,6 +66,10 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    private func toggleSidebar() {
+        NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
     }
 }
 
