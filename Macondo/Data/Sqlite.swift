@@ -1288,4 +1288,22 @@ struct Sqlite {
         }
         return cnt
     }
+    
+    static func getAnimeCount(_ language : String) -> Int {
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        var cnt : Int = 0
+        do {
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+    
+            let ad = Table("AnimeDatas")
+            let aid = Expression<Int64>("aid")
+            
+            cnt = try database.scalar(ad.select(aid.count))
+        } catch {
+            print(error)
+        }
+        return cnt
+    }
 }
