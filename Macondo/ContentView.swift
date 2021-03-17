@@ -25,6 +25,9 @@ struct ContentView: View {
                 NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
                     HStack {
                         Label(T.me(t: "Post", language: self.showView.lang), systemImage: "square.and.pencil")
+                        Spacer()
+                        Text(String(Sqlite.getPostCount(self.showView.lang)))
+                            .foregroundColor(.gray)
                     }
                 }
                 NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView) {

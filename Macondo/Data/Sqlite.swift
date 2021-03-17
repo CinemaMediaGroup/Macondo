@@ -1234,4 +1234,22 @@ struct Sqlite {
             print(error)
         }
     }
+    
+    static func getPostCount(_ language : String) -> Int {
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        var cnt : Int = 0
+        do {
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+    
+            let pd = Table("PostDatas")
+            let cid = Expression<Int64>("cid")
+            
+            cnt = try database.scalar(pd.select(cid.count))
+        } catch {
+            print(error)
+        }
+        return cnt
+    }
 }
