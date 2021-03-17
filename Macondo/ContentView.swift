@@ -39,7 +39,12 @@ struct ContentView: View {
                     }
                 }
                 NavigationLink(destination: BookView(language: self.showView.lang), tag: 3, selection: self.$showView.showView) {
-                    Label(T.me(t: "Book", language: self.showView.lang), systemImage: "book")
+                    HStack {
+                        Label(T.me(t: "Book", language: self.showView.lang), systemImage: "book")
+                        Spacer()
+                        Text(String(Sqlite.getBookCount(self.showView.lang)))
+                            .foregroundColor(.gray)
+                    }
                 }
                 NavigationLink(destination: AnimeView(language: self.showView.lang), tag: 4, selection: self.$showView.showView) {
                     Label(T.me(t: "Anime", language: self.showView.lang), systemImage: "airplayvideo")

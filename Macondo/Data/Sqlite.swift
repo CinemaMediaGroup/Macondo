@@ -1270,4 +1270,22 @@ struct Sqlite {
         }
         return cnt
     }
+    
+    static func getBookCount(_ language : String) -> Int {
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        var cnt : Int = 0
+        do {
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+    
+            let bd = Table("BookDatas")
+            let bid = Expression<Int64>("bid")
+            
+            cnt = try database.scalar(bd.select(bid.count))
+        } catch {
+            print(error)
+        }
+        return cnt
+    }
 }
