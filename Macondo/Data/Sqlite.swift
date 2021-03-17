@@ -1252,4 +1252,22 @@ struct Sqlite {
         }
         return cnt
     }
+    
+    static func getLinkCount(_ language : String) -> Int {
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        var cnt : Int = 0
+        do {
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+    
+            let ld = Table("LinksDatas")
+            let lid = Expression<Int64>("lid")
+            
+            cnt = try database.scalar(ld.select(lid.count))
+        } catch {
+            print(error)
+        }
+        return cnt
+    }
 }
