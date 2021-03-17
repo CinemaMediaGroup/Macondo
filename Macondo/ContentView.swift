@@ -55,7 +55,12 @@ struct ContentView: View {
                     }
                 }
                 NavigationLink(destination: VideoView(language: self.showView.lang), tag: 5, selection: self.$showView.showView) {
-                    Label(T.me(t: "Video", language: self.showView.lang), systemImage: "film")
+                    HStack {
+                        Label(T.me(t: "Video", language: self.showView.lang), systemImage: "film")
+                        Spacer()
+                        Text(String(Sqlite.getVideoCount(self.showView.lang)))
+                            .foregroundColor(.gray)
+                    }
                 }
             }
             .listStyle(SidebarListStyle())

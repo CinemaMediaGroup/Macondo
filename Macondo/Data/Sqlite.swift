@@ -1306,4 +1306,22 @@ struct Sqlite {
         }
         return cnt
     }
+    
+    static func getVideoCount(_ language : String) -> Int {
+        var database : Connection
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        var cnt : Int = 0
+        do {
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            database = try Connection("\(path)/" + "blog." + language + ".db")
+    
+            let vd = Table("VideoDatas")
+            let vid = Expression<Int64>("vid")
+            
+            cnt = try database.scalar(vd.select(vid.count))
+        } catch {
+            print(error)
+        }
+        return cnt
+    }
 }
