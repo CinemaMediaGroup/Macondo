@@ -15,8 +15,12 @@ struct MacondoApp: App {
     
     var body: some Scene {
         WindowGroup("") {
-            ContentView().environmentObject(viewNavi)
+            ContentView()
+                .environmentObject(viewNavi)
+                .ignoresSafeArea()
+                .frame(width: 800, height: 460)
         }
+        .windowStyle(HiddenTitleBarWindowStyle())
         .commands {
             CommandGroup(before: .saveItem) {
                 Menu("New"){
