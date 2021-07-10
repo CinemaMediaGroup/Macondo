@@ -14,13 +14,14 @@ struct MacondoApp: App {
     @State var lang : String = "zh-CN"
     
     var body: some Scene {
-        WindowGroup("") {
-            ContentView()
-                .environmentObject(viewNavi)
-                .ignoresSafeArea()
-                .frame(width: 800, height: 460)
+        WindowGroup {
+            AppWelcomeView()
         }
         .windowStyle(HiddenTitleBarWindowStyle())
+        WindowGroup {
+            ContentView()
+                .environmentObject(viewNavi)
+        }
         .commands {
             CommandGroup(before: .saveItem) {
                 Menu("New"){
@@ -235,8 +236,43 @@ struct MacondoApp: App {
     }
 }
 
+struct AppWelcomeView : View {
+    @State private var window : NSWindow?
+    //@StateObject var model = AppViewModel()
+
+    var body : some View {
+        contents
+            .background(WindowAccessor(window: $window))
+            .onReceive(NotificationCenter.default.publisher(for: .hideWelcomeWindow), perform: { _ in
+                window?.close()
+            })
+    }
+
+    @ViewBuilder
+    private var contents : some View {
+        WelcomeView()
+            .ignoresSafeArea()
+            .frame(width: 800, height: 460)
+    }
+}
+
+struct WindowAccessor : NSViewRepresentable {
+    @Binding var window: NSWindow?
+
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async {
+            self.window = view.window
+        }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
+}
+
 extension Notification.Name {
     static let setLanguageEn = Notification.Name("en")
     static let setLanguageZhTW = Notification.Name("zh-TW")
     static let setLanguageZhCN = Notification.Name("zh-CN")
+    static let hideWelcomeWindow = NSNotification.Name("hide-welcome-window")
 }

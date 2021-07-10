@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		770010692580F664005C7BA3 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770010682580F664005C7BA3 /* Translator.swift */; };
+		772379932699A49A00CD20AF /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772379922699A49A00CD20AF /* WelcomeView.swift */; };
 		7731E55B25A02BF0006B0573 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E55A25A02BF0006B0573 /* PostView.swift */; };
 		7731E56025A02D14006B0573 /* EditPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E55F25A02D14006B0573 /* EditPostView.swift */; };
 		7731E56525A02E28006B0573 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731E56425A02E28006B0573 /* LinkView.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		770010682580F664005C7BA3 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
+		772379922699A49A00CD20AF /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		7731E55A25A02BF0006B0573 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		7731E55F25A02D14006B0573 /* EditPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostView.swift; sourceTree = "<group>"; };
 		7731E56425A02E28006B0573 /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		7731E55925A02BD2006B0573 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				772379922699A49A00CD20AF /* WelcomeView.swift */,
 				7731E55A25A02BF0006B0573 /* PostView.swift */,
 				7731E55F25A02D14006B0573 /* EditPostView.swift */,
 				7771D7B02619CB5100E69BD3 /* EditPostMetaView.swift */,
@@ -375,6 +378,7 @@
 				77654669256A201C0042CC97 /* Receiver.swift in Sources */,
 				774368DA25A96D9F00781D0F /* CustomWebView.swift in Sources */,
 				7731E56025A02D14006B0573 /* EditPostView.swift in Sources */,
+				772379932699A49A00CD20AF /* WelcomeView.swift in Sources */,
 				7731E55B25A02BF0006B0573 /* PostView.swift in Sources */,
 				7731E56525A02E28006B0573 /* LinkView.swift in Sources */,
 				B4271983252DE97500B81CD7 /* MacondoApp.swift in Sources */,
@@ -548,7 +552,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.Macondo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -574,7 +578,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = world.jxx.Macondo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

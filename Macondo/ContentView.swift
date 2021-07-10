@@ -12,7 +12,7 @@ class ViewNavigation: ObservableObject {
     @Published var lang = "zh-CN"
 }
 
-struct ContentView: View {
+struct ContentView : View {
     @EnvironmentObject var showView : ViewNavigation
     
     var setLanguageEnSelected = NotificationCenter.default.publisher(for: .setLanguageEn).receive(on: RunLoop.main)
@@ -20,48 +20,7 @@ struct ContentView: View {
     var setLanguageZhTWSelected = NotificationCenter.default.publisher(for: .setLanguageZhTW).receive(on: RunLoop.main)
     
     var body: some View {
-        
-        HStack(spacing: 0) {
-            VStack(spacing: 0) {
-                Image("512")
-                    .resizable()
-                    .frame(width: 256, height: 256)
-                Text("Welcome to Macondo")
-                    .font(.system(size: 40, weight: .regular))
-                Spacer().frame(height: 10)
-                Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "–")")
-                    .foregroundColor(.secondary)
-            }
-            .frame(width: 540, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-            .background(Color(NSColor.windowBackgroundColor))
-            
-            VStack(spacing: 32) {
-                VStack(alignment: .leading) {
-                    Spacer()
-                    Form {
-                        Section(header: Text("Placeholder").foregroundColor(.secondary)) {
-                            Button(action: {
-                                if let url = URL(string: "") {
-                                    NSWorkspace.shared.open(url)
-                                }
-                            }) {
-                                HStack {
-                                    Image(systemName: "heart.fill")
-                                        .foregroundColor(Color.pink)
-                                    Text("Placeholder")
-                                        .foregroundColor(Color.primary)
-                                }
-                            }
-                        }
-                    }.padding()
-                }
-            }
-            .frame(width: 260, alignment: .top)
-            .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-    }
-        
-        /*NavigationView {
+        //NavigationView {
             List {
                 NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
                     HStack {
@@ -121,7 +80,7 @@ struct ContentView: View {
                     .help("Toggle Sidebar")
                 }
             }
-        }
+        //}
         /*.toolbar {
             ToolbarItem(placement: .navigation) {
                 VStack(alignment: .leading) {
@@ -129,7 +88,7 @@ struct ContentView: View {
                     Text(T.me(t: "Current language: ", language: self.showView.lang) + T.me(t: self.showView.lang, language: self.showView.lang))
                 }
             }
-        }*/*/
+        }*/
     }
     
     private func toggleSidebar() {
