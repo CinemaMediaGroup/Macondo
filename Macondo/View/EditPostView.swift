@@ -7,9 +7,9 @@
 
 import Foundation
 import SwiftUI
-import Ink
+import SQLite
 
-struct EditPostView : View {
+struct EditPostView : SwiftUI.View {
     @EnvironmentObject var showView : ViewNavigation
     
     @State var title : String = ""
@@ -23,8 +23,8 @@ struct EditPostView : View {
     
     var cid : Int = 0
     
-    init(cid : Int, language : String) {
-        let pd : PostData = Sqlite.getPostData(cidd: cid, language: language)
+    init(cid : Int, db : Connection?) {
+        let pd : PostData = Sqlite.getPostData(cidd: cid, /*language: language*/db: db)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
         _text = State(initialValue: pd.getText())
@@ -34,7 +34,7 @@ struct EditPostView : View {
         _tag = State(initialValue: pd.getTag())
     }
     
-    var body : some View {
+    var body : some SwiftUI.View {
         //VStack {
             /*TextField(T.me(t: "Add title", language: self.showView.lang),text: $title)
             HStack {

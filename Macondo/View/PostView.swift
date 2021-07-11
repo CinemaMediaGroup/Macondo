@@ -7,21 +7,26 @@
 
 import Foundation
 import SwiftUI
+import SQLite
 
-struct PostView : View {
+struct PostView : SwiftUI.View {
     @EnvironmentObject var showView : ViewNavigation
     var pds : [PostData] = [PostData]()
-    var lang : String
+    //var lang : String
+    //var dbPath : URL
+    var db : Connection?
     
-    init(language : String) {
-        pds = Sqlite.getPostList(language: language)
-        lang = language
+    init(db : Connection?/*language : String*/) {
+        pds = Sqlite.getPostList(db: db/*language: language*/)
+        //lang = language
+        //self.dbPath = dbPath
+        self.db = db
     }
     
-    var body : some View {
+    var body : some SwiftUI.View {
         NavigationView {
             List(pds, id: \.self) { (pd)  in
-                NavigationLink(destination: EditPostView(cid: pd.getCid(), language: self.showView.lang)) {
+                NavigationLink(destination: EditPostView(cid: pd.getCid(), db: db)) {
                     VStack(alignment: .leading) {
                         Text(pd.getTitle()).font(.headline)
                         HStack {

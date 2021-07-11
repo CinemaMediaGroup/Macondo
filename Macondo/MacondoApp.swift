@@ -13,20 +13,46 @@ struct MacondoApp: App {
     
     @State var lang : String = "zh-CN"
     
+    func getStoredUrl() -> URL {
+        let data = UserDefaults.standard.data(forKey: "open")
+            
+        var isStale = false
+        var newUrl : URL? = nil
+        do {
+           newUrl  = try URL(resolvingBookmarkData: data!,
+                                 options: .withSecurityScope,
+                                 relativeTo: nil,
+                                 bookmarkDataIsStale: &isStale)
+            
+
+        } catch {
+            print(error)
+        }
+        _ = newUrl!.startAccessingSecurityScopedResource()
+        /*guard newUrl.startAccessingSecurityScopedResource() else {
+            print("Could not start accessing security scoped resource: \(newUrl.path)")
+        }*/
+        return newUrl!
+    }
+    
     var body: some Scene {
         WindowGroup {
             AppWelcomeView()
+                .environmentObject(viewNavi)
         }
         .windowStyle(HiddenTitleBarWindowStyle())
         WindowGroup {
+            //AppView()
             ContentView()
+                .handlesExternalEvents(preferring: Set(arrayLiteral: "mainview"), allowing: Set(arrayLiteral: "*"))
                 .environmentObject(viewNavi)
         }
+        .handlesExternalEvents(matching: Set(arrayLiteral: "*"))
         .commands {
             CommandGroup(before: .saveItem) {
                 Menu("New"){
                     Button(action: {
-                        Sqlite.newTempPost(language: self.lang)
+                        Sqlite.newTempPost(db: self.viewNavi.db)
                     }){
                         Text("Post")
                     }
@@ -238,7 +264,7 @@ struct MacondoApp: App {
 
 struct AppWelcomeView : View {
     @State private var window : NSWindow?
-    //@StateObject var model = AppViewModel()
+    @StateObject var model = AppViewModel()
 
     var body : some View {
         contents
@@ -253,6 +279,58 @@ struct AppWelcomeView : View {
         WelcomeView()
             .ignoresSafeArea()
             .frame(width: 800, height: 460)
+    }
+}
+
+struct AppView : View {
+    @StateObject var model = AppViewModel()
+
+    var body: some View {
+        ContentView()
+            //.environmentObject(viewNavi)
+            .onOpenURL(perform: model.openDatabase)
+    }
+}
+
+func openDocument() {
+    let dialog = NSOpenPanel()
+
+    dialog.title = "Select a Pulse document (has .pulse extension)"
+    dialog.showsResizeIndicator = true
+    dialog.showsHiddenFiles = false
+    dialog.canChooseDirectories = false
+    dialog.canCreateDirectories = false
+    dialog.allowsMultipleSelection = false
+    dialog.canChooseDirectories = true
+    dialog.allowedFileTypes = ["txt"]
+
+    guard dialog.runModal() == NSApplication.ModalResponse.OK else {
+        return // User cancelled the action
+    }
+
+    if let selectedUrl = dialog.url {
+        NSWorkspace.shared.open(selectedUrl)
+    }
+}
+
+struct AlertViewModel : Hashable, Identifiable {
+    var id: String = UUID().uuidString
+    let title: String
+    let message: String
+}
+
+final class AppViewModel : ObservableObject {
+    @Published var alert : AlertViewModel?
+
+    init() {
+//        if ProcessInfo.processInfo.environment["PULSE_MOCK_STORE_ENABLED"] != nil {
+            // selectedStore = .mock
+//        }
+    }
+
+    func openDatabase(at url: URL) {
+            NotificationCenter.default.post(name: .hideWelcomeWindow, object: nil)
+            NSDocumentController.shared.noteNewRecentDocumentURL(url)
     }
 }
 

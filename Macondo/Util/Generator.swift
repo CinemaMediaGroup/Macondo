@@ -28,7 +28,7 @@ struct Generator{
     }
     
     static func generate(directory : URL,language : String){
-        let posts = Sqlite.getPostList(language: language)
+        /*let posts = Sqlite.getPostList(language: language)
         let postDir = directory.appendingPathComponent("_posts")
         for i in posts{
             let delta = generateMarkdownFile(post: i)
@@ -38,7 +38,7 @@ struct Generator{
             }catch{
                 print(error)
             }
-        }
+        }*/
     }
     
     static private func generateLink(link : LinksData) -> String{
