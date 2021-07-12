@@ -57,7 +57,7 @@ struct EditPostView : SwiftUI.View {
         .textFieldStyle(RoundedBorderTextFieldStyle())
         //.padding()
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem(placement: .principal) {
                 HStack {
                     Button(action: {
                         self.isVisible = true

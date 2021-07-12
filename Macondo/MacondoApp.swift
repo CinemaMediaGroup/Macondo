@@ -22,20 +22,20 @@ struct MacondoApp: App {
         }
         .windowStyle(HiddenTitleBarWindowStyle())
         WindowGroup {
-            //AppView()
             ContentView()
                 .handlesExternalEvents(preferring: Set(arrayLiteral: "mainview"), allowing: Set(arrayLiteral: "*"))
                 .environmentObject(viewNavi)
         }
+        .windowStyle(HiddenTitleBarWindowStyle())
         .handlesExternalEvents(matching: Set(arrayLiteral: "mainview"))
         .commands {
             CommandGroup(before: .saveItem) {
                 Menu("New"){
-                    Button(action: {
+                    /*Button(action: {
                         Sqlite.newTempPost(language: self.viewNavi.lang)
                     }){
                         Text("Post")
-                    }
+                    }*/
                     Button(action: {
                         Sqlite.newTempLink(language: self.lang)
                     }){

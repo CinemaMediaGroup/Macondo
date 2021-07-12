@@ -33,7 +33,7 @@ struct ContentView : SwiftUI.View {
                             .foregroundColor(.gray)
                     }
                 }
-                /*NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView) {
+                NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView) {
                     HStack {
                         Label(T.me(t: "Link", language: self.showView.lang), systemImage: "link")
                         Spacer()
@@ -64,19 +64,10 @@ struct ContentView : SwiftUI.View {
                         Text(String(Sqlite.getVideoCount(self.showView.lang)))
                             .foregroundColor(.gray)
                     }
-                }*/
+                }
             }
             .listStyle(SidebarListStyle())
-            /*.onReceive(setLanguageEnSelected) {_ in
-                self.showView.lang = "en"
-            }
-            .onReceive(setLanguageZhCNSelected) {_ in
-                self.showView.lang = "zh-CN"
-            }
-            .onReceive(setLanguageZhTWSelected) {_ in
-                self.showView.lang = "zh-TW"
-            }*/
-            //.frame(minWidth: 220, idealWidth: 220, maxWidth: 220, minHeight: 400, maxHeight: .infinity)
+            .frame(minWidth: 220, idealWidth: 220, maxWidth: 220, minHeight: 400, maxHeight: .infinity)
             .toolbar {
                 Button(action: toggleSidebar) {
                     Image(systemName: "sidebar.left")
@@ -84,14 +75,6 @@ struct ContentView : SwiftUI.View {
                 }
             }
         }
-        /*.toolbar {
-            ToolbarItem(placement: .navigation) {
-                VStack(alignment: .leading) {
-                    Text("Version \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)")
-                    Text(T.me(t: "Current language: ", language: self.showView.lang) + T.me(t: self.showView.lang, language: self.showView.lang))
-                }
-            }
-        }*/
     }
     
     private func toggleSidebar() {

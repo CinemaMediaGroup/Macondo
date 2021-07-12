@@ -43,6 +43,14 @@ struct PostView : SwiftUI.View {
             .listStyle(InsetListStyle())
             
             .frame(minWidth: 280, idealWidth: 350, maxWidth: 350, maxHeight: .infinity)
+            .toolbar {
+                Button(action: {
+                    Sqlite.newTempPost(language: self.showView.lang)
+                }) {
+                    Image(systemName: "square.and.pencil")
+                    .help("Create a new post")
+                }
+            }
         }
     }
 }
