@@ -18,14 +18,14 @@ class ViewNavigation : ObservableObject {
 struct ContentView : SwiftUI.View {
     @EnvironmentObject var showView : ViewNavigation
     
-    var setLanguageEnSelected = NotificationCenter.default.publisher(for: .setLanguageEn).receive(on: RunLoop.main)
+    /*var setLanguageEnSelected = NotificationCenter.default.publisher(for: .setLanguageEn).receive(on: RunLoop.main)
     var setLanguageZhCNSelected = NotificationCenter.default.publisher(for: .setLanguageZhCN).receive(on: RunLoop.main)
-    var setLanguageZhTWSelected = NotificationCenter.default.publisher(for: .setLanguageZhTW).receive(on: RunLoop.main)
+    var setLanguageZhTWSelected = NotificationCenter.default.publisher(for: .setLanguageZhTW).receive(on: RunLoop.main)*/
     
     var body: some SwiftUI.View {
         NavigationView {
             List {
-                NavigationLink(destination: PostView(db: self.showView.db), tag: 1, selection: self.$showView.showView) {
+                NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
                     HStack {
                         Label(T.me(t: "Post", language: self.showView.lang), systemImage: "square.and.pencil")
                         Spacer()
@@ -67,7 +67,7 @@ struct ContentView : SwiftUI.View {
                 }*/
             }
             .listStyle(SidebarListStyle())
-            .onReceive(setLanguageEnSelected) {_ in
+            /*.onReceive(setLanguageEnSelected) {_ in
                 self.showView.lang = "en"
             }
             .onReceive(setLanguageZhCNSelected) {_ in
@@ -75,7 +75,7 @@ struct ContentView : SwiftUI.View {
             }
             .onReceive(setLanguageZhTWSelected) {_ in
                 self.showView.lang = "zh-TW"
-            }
+            }*/
             //.frame(minWidth: 220, idealWidth: 220, maxWidth: 220, minHeight: 400, maxHeight: .infinity)
             .toolbar {
                 Button(action: toggleSidebar) {

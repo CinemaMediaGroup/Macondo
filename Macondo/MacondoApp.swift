@@ -13,31 +13,11 @@ struct MacondoApp: App {
     
     @State var lang : String = "zh-CN"
     
-    func getStoredUrl() -> URL {
-        let data = UserDefaults.standard.data(forKey: "open")
-            
-        var isStale = false
-        var newUrl : URL? = nil
-        do {
-           newUrl  = try URL(resolvingBookmarkData: data!,
-                                 options: .withSecurityScope,
-                                 relativeTo: nil,
-                                 bookmarkDataIsStale: &isStale)
-            
-
-        } catch {
-            print(error)
-        }
-        _ = newUrl!.startAccessingSecurityScopedResource()
-        /*guard newUrl.startAccessingSecurityScopedResource() else {
-            print("Could not start accessing security scoped resource: \(newUrl.path)")
-        }*/
-        return newUrl!
-    }
-    
     var body: some Scene {
         WindowGroup {
-            AppWelcomeView()
+            WelcomeView()
+                .ignoresSafeArea()
+                .frame(width: 800, height: 460)
                 .environmentObject(viewNavi)
         }
         .windowStyle(HiddenTitleBarWindowStyle())
@@ -47,12 +27,12 @@ struct MacondoApp: App {
                 .handlesExternalEvents(preferring: Set(arrayLiteral: "mainview"), allowing: Set(arrayLiteral: "*"))
                 .environmentObject(viewNavi)
         }
-        .handlesExternalEvents(matching: Set(arrayLiteral: "*"))
+        .handlesExternalEvents(matching: Set(arrayLiteral: "mainview"))
         .commands {
             CommandGroup(before: .saveItem) {
                 Menu("New"){
                     Button(action: {
-                        Sqlite.newTempPost(db: self.viewNavi.db)
+                        Sqlite.newTempPost(language: self.viewNavi.lang)
                     }){
                         Text("Post")
                     }
@@ -76,16 +56,6 @@ struct MacondoApp: App {
                     }){
                         Text("TV series")
                     }
-                }
-                
-                Divider()
-                
-                Button(action: {
-                    Sqlite.createTables(language: "zh-CN")
-                    Sqlite.createTables(language: "zh-TW")
-                    Sqlite.createTables(language: "en")
-                }){
-                    Text("Create Tables")
                 }
                 
                 Divider()
@@ -237,7 +207,7 @@ struct MacondoApp: App {
                 Divider()
             }
             
-            CommandMenu("Language"){
+            /*CommandMenu("Language"){
                 Button(action: {
                     self.lang = "zh-CN"
                     NotificationCenter.default.post(name: .setLanguageZhCN, object: nil)
@@ -257,12 +227,12 @@ struct MacondoApp: App {
                 }){
                     Text("Englist (en)")
                 }
-            }
+            }*/
         }
     }
 }
 
-struct AppWelcomeView : View {
+/*struct AppWelcomeView : View {
     @State private var window : NSWindow?
     @StateObject var model = AppViewModel()
 
@@ -280,8 +250,8 @@ struct AppWelcomeView : View {
             .ignoresSafeArea()
             .frame(width: 800, height: 460)
     }
-}
-
+}*/
+/*
 struct AppView : View {
     @StateObject var model = AppViewModel()
 
@@ -311,9 +281,9 @@ func openDocument() {
     if let selectedUrl = dialog.url {
         NSWorkspace.shared.open(selectedUrl)
     }
-}
+}*/
 
-struct AlertViewModel : Hashable, Identifiable {
+/*struct AlertViewModel : Hashable, Identifiable {
     var id: String = UUID().uuidString
     let title: String
     let message: String
@@ -332,9 +302,9 @@ final class AppViewModel : ObservableObject {
             NotificationCenter.default.post(name: .hideWelcomeWindow, object: nil)
             NSDocumentController.shared.noteNewRecentDocumentURL(url)
     }
-}
+}*/
 
-struct WindowAccessor : NSViewRepresentable {
+/*struct WindowAccessor : NSViewRepresentable {
     @Binding var window: NSWindow?
 
     func makeNSView(context: Context) -> NSView {
@@ -346,11 +316,11 @@ struct WindowAccessor : NSViewRepresentable {
     }
 
     func updateNSView(_ nsView: NSView, context: Context) {}
-}
+}*/
 
-extension Notification.Name {
+/*extension Notification.Name {
     static let setLanguageEn = Notification.Name("en")
     static let setLanguageZhTW = Notification.Name("zh-TW")
     static let setLanguageZhCN = Notification.Name("zh-CN")
     static let hideWelcomeWindow = NSNotification.Name("hide-welcome-window")
-}
+}*/

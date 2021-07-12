@@ -12,21 +12,17 @@ import SQLite
 struct PostView : SwiftUI.View {
     @EnvironmentObject var showView : ViewNavigation
     var pds : [PostData] = [PostData]()
-    //var lang : String
-    //var dbPath : URL
-    var db : Connection?
+    var lang : String
     
-    init(db : Connection?/*language : String*/) {
-        pds = Sqlite.getPostList(db: db/*language: language*/)
-        //lang = language
-        //self.dbPath = dbPath
-        self.db = db
+    init(language : String) {
+        pds = Sqlite.getPostList(language: language)
+        lang = language
     }
     
     var body : some SwiftUI.View {
         NavigationView {
             List(pds, id: \.self) { (pd)  in
-                NavigationLink(destination: EditPostView(cid: pd.getCid(), db: db)) {
+                NavigationLink(destination: EditPostView(cid: pd.getCid(), language : lang)) {
                     VStack(alignment: .leading) {
                         Text(pd.getTitle()).font(.headline)
                         HStack {

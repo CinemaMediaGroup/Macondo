@@ -185,8 +185,8 @@ struct Sqlite {
         }
     }
     
-    static func newTempPost(db : Connection?/*language : String*/) {
-        newPost(title: "New Post", text: "placeholder", thumbUrl: "placeholder", summary: "placeholder", category: "placeholder", tag: "placeholder", db: db)
+    static func newTempPost(language : String) {
+        newPost(title: "New Post", text: "placeholder", thumbUrl: "placeholder", summary: "placeholder", category: "placeholder", tag: "placeholder", language : language)
     }
     
     static func addPost(cidd : Int64, title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,created : String,updated : String,language : String){
@@ -230,14 +230,14 @@ struct Sqlite {
         }
     }
     
-    static func newPost(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String, db : Connection?){
+    static func newPost(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String, language : String) {
         var database : Connection
-        //let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         
         do{
             //try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            database = db!//try Connection(db!.path/*"\(path)/" + "blog." + language + ".db"*/)
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             //print("++++++ :\(dbPath.path)")
             
             let pd = Table("PostDatas")
@@ -320,68 +320,62 @@ struct Sqlite {
         }
     }
     
-    static func getPostList(db : Connection?/*language : String*/) -> [PostData]{
+    static func getPostList(language : String) -> [PostData] {
         var res : [PostData] = [PostData]()
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         var database : Connection
-        //let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-
+        
         do{
             //try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             //print("\(path)/" + "blog." + language + ".db")
             
-            //database = try Connection(dbPath.path/*"\(path)/" + "blog." + language + ".db"*/)
-            if db != nil {
-                database = db!//try Connection(db!.path/*"\(path)/" + "blog." + language + ".db"*/)
+            database = try Connection("\(path)/" + "blog." + language + ".db")
                 
-                let pd = Table("PostDatas")
-                
-                let cid = Expression<Int64>("cid")
-                let pdType = Expression<Int64>("type")
-                let pdTitle = Expression<String>("title")
-                let pdSlug = Expression<String>("slug")
-                let pdCreated = Expression<String>("created")
-                let pdModified = Expression<String>("modified")
-                let pdText = Expression<String>("text")
-                let pdThumbUrl = Expression<String>("thumbUrl")
-                let pdSummary = Expression<String>("summary")
-                let pdCategory = Expression<String>("category")
-                let pdTag = Expression<String>("tag")
-                
-                for pds in try database.prepare(pd){
-                    if Int(pds[pdType]) == 1{
-                        continue
-                    }
-                    res.append(PostData(cid: Int(pds[cid]), type: Int(pds[pdType]),
-                                        title: Base64.toString(s: pds[pdTitle]),
-                                        slug: Base64.toString(s: pds[pdSlug]),
-                                        created: Base64.toString(s: pds[pdCreated]),
-                                        modified: Base64.toString(s: pds[pdModified]),
-                                        text: Base64.toString(s: pds[pdText]),
-                                        thumbUrl: Base64.toString(s: pds[pdThumbUrl]),
-                                        summary: Base64.toString(s: pds[pdSummary]),
-                                        category: Base64.toString(s: pds[pdCategory]),
-                                        tag: Base64.toString(s: pds[pdTag])))
+            let pd = Table("PostDatas")
+            
+            let cid = Expression<Int64>("cid")
+            let pdType = Expression<Int64>("type")
+            let pdTitle = Expression<String>("title")
+            let pdSlug = Expression<String>("slug")
+            let pdCreated = Expression<String>("created")
+            let pdModified = Expression<String>("modified")
+            let pdText = Expression<String>("text")
+            let pdThumbUrl = Expression<String>("thumbUrl")
+            let pdSummary = Expression<String>("summary")
+            let pdCategory = Expression<String>("category")
+            let pdTag = Expression<String>("tag")
+            
+            for pds in try database.prepare(pd) {
+                if Int(pds[pdType]) == 1 {
+                    continue
                 }
+                res.append(PostData(cid: Int(pds[cid]), type: Int(pds[pdType]),
+                                    title: Base64.toString(s: pds[pdTitle]),
+                                    slug: Base64.toString(s: pds[pdSlug]),
+                                    created: Base64.toString(s: pds[pdCreated]),
+                                    modified: Base64.toString(s: pds[pdModified]),
+                                    text: Base64.toString(s: pds[pdText]),
+                                    thumbUrl: Base64.toString(s: pds[pdThumbUrl]),
+                                    summary: Base64.toString(s: pds[pdSummary]),
+                                    category: Base64.toString(s: pds[pdCategory]),
+                                    tag: Base64.toString(s: pds[pdTag])))
             }
-            
-            
-        }catch{
+        } catch {
             print(error)
         }
         return res
     }
     
-    static func getPostData(cidd : Int,/*language : String*/ db : Connection?) -> PostData {
+    static func getPostData(cidd : Int, language : String) -> PostData {
         var res : PostData = PostData()
-        
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         var database : Connection
-        //let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         
         do{
             //try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            database = db!//try Connection(db!.path/*"\(path)/" + "blog." + language + ".db"*/)
+            database = try Connection("\(path)/" + "blog." + language + ".db")
             
             let pd = Table("PostDatas")
             

@@ -23,8 +23,8 @@ struct EditPostView : SwiftUI.View {
     
     var cid : Int = 0
     
-    init(cid : Int, db : Connection?) {
-        let pd : PostData = Sqlite.getPostData(cidd: cid, /*language: language*/db: db)
+    init(cid : Int, language : String) {
+        let pd : PostData = Sqlite.getPostData(cidd: cid, language: language)
         self.cid = cid
         _title = State(initialValue: pd.getTitle())
         _text = State(initialValue: pd.getText())
