@@ -63,6 +63,7 @@ struct EditPostView : SwiftUI.View {
                         self.isVisible = true
                     }) {
                         Image(systemName: "rectangle.and.pencil.and.ellipsis")
+                            .help("Edit meta data of this post")
                     }
                     Button(action: {
                         Sqlite.deletePost(cidd: self.cid, language: self.showView.lang)
@@ -76,6 +77,7 @@ struct EditPostView : SwiftUI.View {
                     }) {
                         Image(systemName: "trash")
                             .foregroundColor(Color.red)
+                            .help("Delete this post")
                     }
                     
                     Button(action: {
@@ -83,6 +85,7 @@ struct EditPostView : SwiftUI.View {
                         self.showView.showView = 1
                     }) {
                         Image(systemName: "square.and.arrow.down")
+                            .help("Save this post")
                     }
                     .disabled(title.isEmpty || text.isEmpty || summary.isEmpty)
                 }
