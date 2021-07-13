@@ -21,7 +21,7 @@ struct PostView : View {
     var body : some View {
         NavigationView {
             List(pds, id: \.self) { (pd)  in
-                NavigationLink(destination: EditPostView(cid: pd.getCid(), language: self.showView.lang)) {
+                NavigationLink(destination: EditPostView(cid: pd.getCid(), language : lang)) {
                     VStack(alignment: .leading) {
                         Text(pd.getTitle()).font(.headline)
                         HStack {
@@ -40,8 +40,16 @@ struct PostView : View {
                 .padding(.vertical, 6)
             }
             .listStyle(InsetListStyle())
-            
             .frame(minWidth: 280, idealWidth: 350, maxWidth: 350, maxHeight: .infinity)
+            .toolbar {
+                Button(action: {
+                    Sqlite.newTempPost(language: self.showView.lang)
+                    self.showView.showView = 1
+                }) {
+                    Image(systemName: "square.and.pencil")
+                    .help("Create a new post")
+                }
+            }
         }
     }
 }

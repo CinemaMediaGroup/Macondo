@@ -7,9 +7,8 @@
 
 import Foundation
 import SwiftUI
-import Ink
 
-struct EditPostView : View {
+struct EditPostView : SwiftUI.View {
     @EnvironmentObject var showView : ViewNavigation
     
     @State var title : String = ""
@@ -35,34 +34,16 @@ struct EditPostView : View {
     }
     
     var body : some View {
-        //VStack {
-            /*TextField(T.me(t: "Add title", language: self.showView.lang),text: $title)
-            HStack {
-                Text(T.me(t: "Category: ", language: self.showView.lang))
-                TextField("", text: $category)
-            }
-            HStack {
-                Text(T.me(t: "Tag: ", language: self.showView.lang))
-                TextField("", text: $tag)
-            }
-            HStack {
-                Text(T.me(t: "Summary: ", language: self.showView.lang))
-                TextField("",text: $summary)
-            }
-            Text(T.me(t: "Custom YAML", language: self.showView.lang))
-            TextEditor(text: $image)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)*/
         TextEditor(text: $text)
-        //}
-        .textFieldStyle(RoundedBorderTextFieldStyle())
-        //.padding()
+            .textFieldStyle(RoundedBorderTextFieldStyle())
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem(placement: .principal) {
                 HStack {
                     Button(action: {
                         self.isVisible = true
                     }) {
                         Image(systemName: "rectangle.and.pencil.and.ellipsis")
+                            .help("Edit meta data of this post")
                     }
                     Button(action: {
                         Sqlite.deletePost(cidd: self.cid, language: self.showView.lang)
@@ -76,13 +57,21 @@ struct EditPostView : View {
                     }) {
                         Image(systemName: "trash")
                             .foregroundColor(Color.red)
+                            .help("Delete this post")
                     }
-                    
                     Button(action: {
-                        Sqlite.editPost(cidd: self.cid,title: self.title, text: self.text, thumbUrl: self.image, summary: self.summary, category: self.category, tag: self.tag,language: self.showView.lang)
+                        Sqlite.editPost(cidd: self.cid,
+                                        title: self.title,
+                                        text: self.text,
+                                        thumbUrl: self.image,
+                                        summary: self.summary,
+                                        category: self.category,
+                                        tag: self.tag,
+                                        language: self.showView.lang)
                         self.showView.showView = 1
                     }) {
                         Image(systemName: "square.and.arrow.down")
+                            .help("Save this post")
                     }
                     .disabled(title.isEmpty || text.isEmpty || summary.isEmpty)
                 }

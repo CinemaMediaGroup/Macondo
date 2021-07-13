@@ -14,17 +14,28 @@ struct MacondoApp: App {
     @State var lang : String = "zh-CN"
     
     var body: some Scene {
-        WindowGroup("") {
-            ContentView().environmentObject(viewNavi)
+        WindowGroup {
+            WelcomeView()
+                .ignoresSafeArea()
+                .frame(width: 800, height: 460)
+                .environmentObject(viewNavi)
         }
+        .windowStyle(HiddenTitleBarWindowStyle())
+        WindowGroup {
+            ContentView()
+                .handlesExternalEvents(preferring: Set(arrayLiteral: "mainview"), allowing: Set(arrayLiteral: "*"))
+                .environmentObject(viewNavi)
+        }
+        .windowStyle(HiddenTitleBarWindowStyle())
+        .handlesExternalEvents(matching: Set(arrayLiteral: "mainview"))
         .commands {
             CommandGroup(before: .saveItem) {
                 Menu("New"){
-                    Button(action: {
-                        Sqlite.newTempPost(language: self.lang)
+                    /*Button(action: {
+                        Sqlite.newTempPost(language: self.viewNavi.lang)
                     }){
                         Text("Post")
-                    }
+                    }*/
                     Button(action: {
                         Sqlite.newTempLink(language: self.lang)
                     }){
@@ -45,16 +56,6 @@ struct MacondoApp: App {
                     }){
                         Text("TV series")
                     }
-                }
-                
-                Divider()
-                
-                Button(action: {
-                    Sqlite.createTables(language: "zh-CN")
-                    Sqlite.createTables(language: "zh-TW")
-                    Sqlite.createTables(language: "en")
-                }){
-                    Text("Create Tables")
                 }
                 
                 Divider()
@@ -206,7 +207,7 @@ struct MacondoApp: App {
                 Divider()
             }
             
-            CommandMenu("Language"){
+            /*CommandMenu("Language"){
                 Button(action: {
                     self.lang = "zh-CN"
                     NotificationCenter.default.post(name: .setLanguageZhCN, object: nil)
@@ -226,13 +227,100 @@ struct MacondoApp: App {
                 }){
                     Text("Englist (en)")
                 }
-            }
+            }*/
         }
     }
 }
 
-extension Notification.Name {
+/*struct AppWelcomeView : View {
+    @State private var window : NSWindow?
+    @StateObject var model = AppViewModel()
+
+    var body : some View {
+        contents
+            .background(WindowAccessor(window: $window))
+            .onReceive(NotificationCenter.default.publisher(for: .hideWelcomeWindow), perform: { _ in
+                window?.close()
+            })
+    }
+
+    @ViewBuilder
+    private var contents : some View {
+        WelcomeView()
+            .ignoresSafeArea()
+            .frame(width: 800, height: 460)
+    }
+}*/
+/*
+struct AppView : View {
+    @StateObject var model = AppViewModel()
+
+    var body: some View {
+        ContentView()
+            //.environmentObject(viewNavi)
+            .onOpenURL(perform: model.openDatabase)
+    }
+}
+
+func openDocument() {
+    let dialog = NSOpenPanel()
+
+    dialog.title = "Select a Pulse document (has .pulse extension)"
+    dialog.showsResizeIndicator = true
+    dialog.showsHiddenFiles = false
+    dialog.canChooseDirectories = false
+    dialog.canCreateDirectories = false
+    dialog.allowsMultipleSelection = false
+    dialog.canChooseDirectories = true
+    dialog.allowedFileTypes = ["txt"]
+
+    guard dialog.runModal() == NSApplication.ModalResponse.OK else {
+        return // User cancelled the action
+    }
+
+    if let selectedUrl = dialog.url {
+        NSWorkspace.shared.open(selectedUrl)
+    }
+}*/
+
+/*struct AlertViewModel : Hashable, Identifiable {
+    var id: String = UUID().uuidString
+    let title: String
+    let message: String
+}
+
+final class AppViewModel : ObservableObject {
+    @Published var alert : AlertViewModel?
+
+    init() {
+//        if ProcessInfo.processInfo.environment["PULSE_MOCK_STORE_ENABLED"] != nil {
+            // selectedStore = .mock
+//        }
+    }
+
+    func openDatabase(at url: URL) {
+            NotificationCenter.default.post(name: .hideWelcomeWindow, object: nil)
+            NSDocumentController.shared.noteNewRecentDocumentURL(url)
+    }
+}*/
+
+/*struct WindowAccessor : NSViewRepresentable {
+    @Binding var window: NSWindow?
+
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async {
+            self.window = view.window
+        }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
+}*/
+
+/*extension Notification.Name {
     static let setLanguageEn = Notification.Name("en")
     static let setLanguageZhTW = Notification.Name("zh-TW")
     static let setLanguageZhCN = Notification.Name("zh-CN")
-}
+    static let hideWelcomeWindow = NSNotification.Name("hide-welcome-window")
+}*/

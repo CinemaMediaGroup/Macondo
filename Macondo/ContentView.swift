@@ -6,25 +6,28 @@
 //
 
 import SwiftUI
+import SQLite
 
-class ViewNavigation: ObservableObject {
+class ViewNavigation : ObservableObject {
     @Published var showView : Int? = 0
     @Published var lang = "zh-CN"
+    @Published var dbPath = URL(fileURLWithPath: "/")
+    @Published var db : Connection?
 }
 
-struct ContentView: View {
+struct ContentView : SwiftUI.View {
     @EnvironmentObject var showView : ViewNavigation
     
-    var setLanguageEnSelected = NotificationCenter.default.publisher(for: .setLanguageEn).receive(on: RunLoop.main)
+    /*var setLanguageEnSelected = NotificationCenter.default.publisher(for: .setLanguageEn).receive(on: RunLoop.main)
     var setLanguageZhCNSelected = NotificationCenter.default.publisher(for: .setLanguageZhCN).receive(on: RunLoop.main)
-    var setLanguageZhTWSelected = NotificationCenter.default.publisher(for: .setLanguageZhTW).receive(on: RunLoop.main)
+    var setLanguageZhTWSelected = NotificationCenter.default.publisher(for: .setLanguageZhTW).receive(on: RunLoop.main)*/
     
-    var body: some View {
+    var body: some SwiftUI.View {
         NavigationView {
             List {
                 NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Post", language: self.showView.lang), systemImage: "square.and.pencil")
+                        Label("Post", systemImage: "square.and.pencil")
                         Spacer()
                         Text(String(Sqlite.getPostCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -32,7 +35,7 @@ struct ContentView: View {
                 }
                 NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Link", language: self.showView.lang), systemImage: "link")
+                        Label("Link", systemImage: "link")
                         Spacer()
                         Text(String(Sqlite.getLinkCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -40,7 +43,7 @@ struct ContentView: View {
                 }
                 NavigationLink(destination: BookView(language: self.showView.lang), tag: 3, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Book", language: self.showView.lang), systemImage: "book")
+                        Label("Book", systemImage: "book")
                         Spacer()
                         Text(String(Sqlite.getBookCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -48,7 +51,7 @@ struct ContentView: View {
                 }
                 NavigationLink(destination: AnimeView(language: self.showView.lang), tag: 4, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Anime", language: self.showView.lang), systemImage: "airplayvideo")
+                        Label("Anime", systemImage: "airplayvideo")
                         Spacer()
                         Text(String(Sqlite.getAnimeCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -56,7 +59,7 @@ struct ContentView: View {
                 }
                 NavigationLink(destination: VideoView(language: self.showView.lang), tag: 5, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Video", language: self.showView.lang), systemImage: "film")
+                        Label("Video", systemImage: "film")
                         Spacer()
                         Text(String(Sqlite.getVideoCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -64,16 +67,7 @@ struct ContentView: View {
                 }
             }
             .listStyle(SidebarListStyle())
-            .onReceive(setLanguageEnSelected) {_ in
-                self.showView.lang = "en"
-            }
-            .onReceive(setLanguageZhCNSelected) {_ in
-                self.showView.lang = "zh-CN"
-            }
-            .onReceive(setLanguageZhTWSelected) {_ in
-                self.showView.lang = "zh-TW"
-            }
-            //.frame(minWidth: 220, idealWidth: 220, maxWidth: 220, minHeight: 400, maxHeight: .infinity)
+            .frame(minWidth: 220, idealWidth: 220, maxWidth: 220, minHeight: 400, maxHeight: .infinity)
             .toolbar {
                 Button(action: toggleSidebar) {
                     Image(systemName: "sidebar.left")
@@ -81,14 +75,6 @@ struct ContentView: View {
                 }
             }
         }
-        /*.toolbar {
-            ToolbarItem(placement: .navigation) {
-                VStack(alignment: .leading) {
-                    Text("Version \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)")
-                    Text(T.me(t: "Current language: ", language: self.showView.lang) + T.me(t: self.showView.lang, language: self.showView.lang))
-                }
-            }
-        }*/
     }
     
     private func toggleSidebar() {
@@ -97,7 +83,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
+    static var previews: some SwiftUI.View {
         ContentView()
     }
 }

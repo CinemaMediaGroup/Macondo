@@ -29,10 +29,10 @@ struct EditLinkView : View {
     
     var body : some View {
         VStack {
-            TextField(T.me(t: "Name", language: self.showView.lang), text: $name)
-            TextField(T.me(t: "Link", language: self.showView.lang), text: $url)
-            TextField(T.me(t: "Thumb Url", language: self.showView.lang), text: $image)
-            TextField(T.me(t: "Description", language: self.showView.lang), text: $description)
+            TextField("Name", text: $name)
+            TextField("Link", text: $url)
+            TextField("Thumb Url", text: $image)
+            TextField("Description", text: $description)
             Spacer()
         }
         .textFieldStyle(RoundedBorderTextFieldStyle())

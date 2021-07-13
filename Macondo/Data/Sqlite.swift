@@ -186,7 +186,7 @@ struct Sqlite {
     }
     
     static func newTempPost(language : String) {
-        newPost(title: "New Post", text: "placeholder", thumbUrl: "placeholder", summary: "placeholder", category: "placeholder", tag: "placeholder", language: language)
+        newPost(title: "New Post", text: "placeholder", thumbUrl: "placeholder", summary: "placeholder", category: "placeholder", tag: "placeholder", language : language)
     }
     
     static func addPost(cidd : Int64, title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,created : String,updated : String,language : String){
@@ -230,14 +230,15 @@ struct Sqlite {
         }
     }
     
-    static func newPost(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String,language : String){
+    static func newPost(title : String,text : String,thumbUrl : String,summary : String,category : String,tag : String, language : String) {
         var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
         
         do{
-            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            //try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             database = try Connection("\(path)/" + "blog." + language + ".db")
+            //print("++++++ :\(dbPath.path)")
             
             let pd = Table("PostDatas")
             
@@ -319,18 +320,18 @@ struct Sqlite {
         }
     }
     
-    static func getPostList(language : String) -> [PostData]{
+    static func getPostList(language : String) -> [PostData] {
         var res : [PostData] = [PostData]()
-        var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
-
+        var database : Connection
+        
         do{
-            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            //try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
-            print("\(path)/" + "blog." + language + ".db")
+            //print("\(path)/" + "blog." + language + ".db")
             
             database = try Connection("\(path)/" + "blog." + language + ".db")
-            
+                
             let pd = Table("PostDatas")
             
             let cid = Expression<Int64>("cid")
@@ -345,8 +346,8 @@ struct Sqlite {
             let pdCategory = Expression<String>("category")
             let pdTag = Expression<String>("tag")
             
-            for pds in try database.prepare(pd){
-                if Int(pds[pdType]) == 1{
+            for pds in try database.prepare(pd) {
+                if Int(pds[pdType]) == 1 {
                     continue
                 }
                 res.append(PostData(cid: Int(pds[cid]), type: Int(pds[pdType]),
@@ -360,20 +361,19 @@ struct Sqlite {
                                     category: Base64.toString(s: pds[pdCategory]),
                                     tag: Base64.toString(s: pds[pdTag])))
             }
-        }catch{
+        } catch {
             print(error)
         }
         return res
     }
     
-    static func getPostData(cidd : Int,language : String) -> PostData{
+    static func getPostData(cidd : Int, language : String) -> PostData {
         var res : PostData = PostData()
-        
-        var database : Connection
         let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
+        var database : Connection
         
         do{
-            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            //try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
 
             database = try Connection("\(path)/" + "blog." + language + ".db")
             

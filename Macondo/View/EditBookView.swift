@@ -29,10 +29,10 @@ struct EditBookView : View {
     
     var body : some View {
         VStack {
-            TextField(T.me(t: "Name", language: self.showView.lang), text: $name)
+            TextField("Name", text: $name)
             TextField("ISBN", text: $isbn)
             TextField("LSBN", text: $lsbn)
-            TextField(T.me(t: "Thumb Url", language: self.showView.lang), text: $image)
+            TextField("Thumb Url", text: $image)
             
             Spacer()
         }

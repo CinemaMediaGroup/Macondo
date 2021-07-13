@@ -36,20 +36,20 @@ struct EditPostMetaView : View {
     
     var body : some View {
         VStack {
-            TextField(T.me(t: "Add title", language: self.showView.lang),text: $title)
+            TextField("Add title", text: $title)
             HStack {
-                Text(T.me(t: "Category: ", language: self.showView.lang))
+                Text("Category: ")
                 TextField("", text: $category)
             }
             HStack {
-                Text(T.me(t: "Tag: ", language: self.showView.lang))
+                Text("Tag: ")
                 TextField("", text: $tag)
             }
             HStack {
-                Text(T.me(t: "Summary: ", language: self.showView.lang))
+                Text("Summary: ")
                 TextField("",text: $summary)
             }
-            Text(T.me(t: "Custom YAML", language: self.showView.lang))
+            Text("Custom YAML")
             TextEditor(text: $image)
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
             
