@@ -27,9 +27,9 @@ struct EditAnimeView : View{
     
     var body : some View {
         VStack {
-            TextField(T.me(t: "Japanese Name", language: self.showView.lang), text: $nameJA)
-            TextField(T.me(t: "Chinese Name", language: self.showView.lang), text: $nameZH)
-            TextField(T.me(t: "Thumb Url", language: self.showView.lang), text: $image)
+            TextField("Japanese Name", text: $nameJA)
+            TextField("Chinese Name", text: $nameZH)
+            TextField("Thumb Url", text: $image)
             
             Spacer()
         }

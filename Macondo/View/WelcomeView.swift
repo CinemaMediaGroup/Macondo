@@ -59,7 +59,6 @@ struct WelcomeView : View {
             .frame(maxHeight: .infinity)
             .background(Color(NSColor.windowBackgroundColor))
             
-            
             let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! + "/" + Bundle.main.bundleIdentifier!
             let languages = ["en", "zh-CN", "zh-TW"]
             
@@ -107,7 +106,6 @@ struct WelcomeView : View {
         }
         return res
     }
-    
     
     private func waitToClose() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {

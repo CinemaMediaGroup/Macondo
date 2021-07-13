@@ -27,7 +27,7 @@ struct ContentView : SwiftUI.View {
             List {
                 NavigationLink(destination: PostView(language: self.showView.lang), tag: 1, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Post", language: self.showView.lang), systemImage: "square.and.pencil")
+                        Label("Post", systemImage: "square.and.pencil")
                         Spacer()
                         Text(String(Sqlite.getPostCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -35,7 +35,7 @@ struct ContentView : SwiftUI.View {
                 }
                 NavigationLink(destination: LinkView(language: self.showView.lang), tag: 2, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Link", language: self.showView.lang), systemImage: "link")
+                        Label("Link", systemImage: "link")
                         Spacer()
                         Text(String(Sqlite.getLinkCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -43,7 +43,7 @@ struct ContentView : SwiftUI.View {
                 }
                 NavigationLink(destination: BookView(language: self.showView.lang), tag: 3, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Book", language: self.showView.lang), systemImage: "book")
+                        Label("Book", systemImage: "book")
                         Spacer()
                         Text(String(Sqlite.getBookCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -51,7 +51,7 @@ struct ContentView : SwiftUI.View {
                 }
                 NavigationLink(destination: AnimeView(language: self.showView.lang), tag: 4, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Anime", language: self.showView.lang), systemImage: "airplayvideo")
+                        Label("Anime", systemImage: "airplayvideo")
                         Spacer()
                         Text(String(Sqlite.getAnimeCount(self.showView.lang)))
                             .foregroundColor(.gray)
@@ -59,7 +59,7 @@ struct ContentView : SwiftUI.View {
                 }
                 NavigationLink(destination: VideoView(language: self.showView.lang), tag: 5, selection: self.$showView.showView) {
                     HStack {
-                        Label(T.me(t: "Video", language: self.showView.lang), systemImage: "film")
+                        Label("Video", systemImage: "film")
                         Spacer()
                         Text(String(Sqlite.getVideoCount(self.showView.lang)))
                             .foregroundColor(.gray)

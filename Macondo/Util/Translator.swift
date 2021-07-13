@@ -8,7 +8,7 @@
 import Foundation
 
 struct T {
-    public static func me(t : String,language : String) -> String {
+    /*public static func me(t : String,language : String) -> String {
         if language == "zh-CN" {
             if t == "Post" {
                 return "文章"
@@ -114,5 +114,5 @@ struct T {
             return t
         }
         return "placeholder"
-    }
+    }*/
 }
