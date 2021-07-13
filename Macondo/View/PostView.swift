@@ -46,6 +46,7 @@ struct PostView : SwiftUI.View {
             .toolbar {
                 Button(action: {
                     Sqlite.newTempPost(language: self.showView.lang)
+                    self.showView.showView = 1
                 }) {
                     Image(systemName: "square.and.pencil")
                     .help("Create a new post")
