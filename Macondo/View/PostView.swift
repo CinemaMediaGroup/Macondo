@@ -7,9 +7,8 @@
 
 import Foundation
 import SwiftUI
-import SQLite
 
-struct PostView : SwiftUI.View {
+struct PostView : View {
     @EnvironmentObject var showView : ViewNavigation
     var pds : [PostData] = [PostData]()
     var lang : String
@@ -19,7 +18,7 @@ struct PostView : SwiftUI.View {
         lang = language
     }
     
-    var body : some SwiftUI.View {
+    var body : some View {
         NavigationView {
             List(pds, id: \.self) { (pd)  in
                 NavigationLink(destination: EditPostView(cid: pd.getCid(), language : lang)) {
@@ -41,7 +40,6 @@ struct PostView : SwiftUI.View {
                 .padding(.vertical, 6)
             }
             .listStyle(InsetListStyle())
-            
             .frame(minWidth: 280, idealWidth: 350, maxWidth: 350, maxHeight: .infinity)
             .toolbar {
                 Button(action: {
